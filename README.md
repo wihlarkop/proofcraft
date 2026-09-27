@@ -8,9 +8,9 @@ The suite follows the portable Agent Skills shape (`SKILL.md` plus on-demand ref
 
 ## Status
 
-Proofcraft is in early development (`v0.x`) and is being dogfooded before the public workflow contract is stabilized at `v1.0.0`.
+Proofcraft is in early development (`v0.x`). The first public release is `v0.1.0`; the workflow contract will continue to evolve before `v1.0.0`.
 
-The current checkpoint implements the full planned v0.1 surface: **10 core orchestration skills + 13 domain skills = 23 distributable skills**.
+Release `v0.1.0` implements the full planned v0.1 surface: **10 core orchestration skills + 13 domain skills = 23 distributable skills**.
 
 ## Core workflow
 

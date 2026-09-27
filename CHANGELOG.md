@@ -2,7 +2,7 @@
 
 All notable changes to Proofcraft are documented here.
 
-## [Unreleased]
+## [0.1.0] - 2026-09-28
 
 ### Fixed
 - `privacy-engineering` now distinguishes settled architecture from executable implementation readiness, preserving unresolved retention, deletion, consent/revocation, residency, and user-rights policy as explicit planning gates instead of allowing placeholder lifecycle defaults.
