@@ -10,7 +10,7 @@ The suite follows the portable Agent Skills shape (`SKILL.md` plus on-demand ref
 
 Proofcraft is in early development (`v0.x`) and is being dogfooded before the public workflow contract is stabilized at `v1.0.0`.
 
-The current checkpoint implements all **10 core orchestration skills** plus the first **2 domain skills**: `ui-engineering` and `mobile-engineering`. The remaining domain layer is tracked in `suite.yaml`.
+The current checkpoint implements all **10 core orchestration skills** plus **7 domain skills**. The remaining domain layer is tracked in `suite.yaml`.
 
 ## Core workflow
 
@@ -41,8 +41,13 @@ setup -> shape/architect -> plan -> implement/debug -> accept/review -> finish
 
 | Skill | Purpose |
 | --- | --- |
-| `ui-engineering` | Surface-aware UI engineering for web, desktop, mobile UI, and hybrid/WebView experiences; responsive/adaptive behavior, accessibility, visual craft, and optional specialist design providers. |
-| `mobile-engineering` | Mobile lifecycle/background behavior, local-first/offline sync, conflict handling, device capabilities, input/platform behavior, and hybrid native boundaries. |
+| `ui-engineering` | Surface-aware UI engineering for web, desktop, mobile UI, and hybrid/WebView experiences. |
+| `mobile-engineering` | Mobile lifecycle/background behavior, local-first/offline sync, device concerns, and native/hybrid boundaries. |
+| `database-engineering` | Application data modeling, constraints, transactions, query shapes, and indexes. |
+| `migration-engineering` | Safe current-to-target transitions, compatibility windows, reconciliation, cutover, and deprecation. |
+| `api-design` | Consumer-facing HTTP/RPC/GraphQL/event/webhook contracts, failures, idempotency, and evolution. |
+| `integration-engineering` | External-system boundaries, mapping, rate limits/retries, webhooks/polling, and reconciliation. |
+| `async-work` | Background jobs, queues/events, ownership, acknowledgement, retries, ordering, cancellation, replay, and backpressure. |
 
 Domain skills are normally composed by a core workflow from detected concerns; users do not need to invoke every specialist manually.
 

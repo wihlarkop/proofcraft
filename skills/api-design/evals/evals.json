@@ -1,0 +1,10 @@
+{
+  "skill_name": "api-design",
+  "evals": [
+    {"id":"rest-contract","prompt":"Design a public endpoint that creates exports and may take minutes to complete.","expected_output":"The contract covers long-running operation semantics, identifiers, status, errors, and idempotency.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"event-contract","prompt":"Define an order-created event consumed by several teams with at-least-once delivery.","expected_output":"The event contract makes identity, schema, duplicates, ordering scope, and evolution explicit.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"negative-third-party","prompt":"Integrate our service with Salesforce's existing REST API and map its objects into our domain.","expected_output":"api-design is not the primary owner; integration-engineering owns the external boundary.","force_skill_invocation":false,"should_trigger":false},
+    {"id":"compatibility","prompt":"Add a field and enum value to an API used by old mobile clients that will remain deployed.","expected_output":"The skill evaluates consumer compatibility rather than assuming additive syntax is automatically safe.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"retry-unknown-outcome","prompt":"Design a payment-intent mutation where clients may timeout after the server commits.","expected_output":"The contract defines idempotency/preconditions and safe behavior for unknown outcomes.","force_skill_invocation":false,"should_trigger":true}
+  ]
+}

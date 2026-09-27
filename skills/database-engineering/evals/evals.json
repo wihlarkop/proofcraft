@@ -1,0 +1,10 @@
+{
+  "skill_name": "database-engineering",
+  "evals": [
+    {"id":"schema-invariant","prompt":"Design persistence for playlists where names are unique per owner and entries preserve explicit order.","expected_output":"Database modeling starts from identity, ownership, ordering, and constraints rather than ORM defaults.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"transaction-invariant","prompt":"Two concurrent requests must not allocate the same limited reward twice.","expected_output":"The skill identifies the atomic invariant and transaction/concurrency boundary.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"negative-api","prompt":"Define a backwards-compatible public REST error contract.","expected_output":"database-engineering does not activate; api-design owns the request.","force_skill_invocation":false,"should_trigger":false},
+    {"id":"existing-engine","prompt":"This repository already uses SQLite. Add a model needed by a desktop feature; PostgreSQL expertise is available globally.","expected_output":"SQLite remains the project engine unless intentionally revisited; provider availability does not replace it.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"migration-handoff","prompt":"Change a live table while old workers using the previous schema remain deployed.","expected_output":"Database concerns are handled and a migration-engineering concern is reported for coexistence/cutover.","force_skill_invocation":false,"should_trigger":true}
+  ]
+}

@@ -3,29 +3,19 @@
     {
       "id": "direct-ui-tweak",
       "prompt": "Change the track-row height from 48px to 44px.",
-      "expected": {
-        "depth": "direct",
-        "primary": ["ui-engineering"]
-      },
+      "expected": {"depth": "direct", "primary": ["ui-engineering"]},
       "forbidden": ["migration-engineering", "security-engineering", "platform-engineering"]
     },
     {
       "id": "duplicate-webhook",
       "prompt": "Webhook retries sometimes create the same reward twice.",
-      "expected": {
-        "work": "bug",
-        "owner": "debug",
-        "primary": ["integration-engineering", "async-work"]
-      },
+      "expected": {"work": "bug", "owner": "debug", "primary": ["integration-engineering", "async-work"]},
       "forbidden": ["mobile-engineering", "ui-engineering"]
     },
     {
       "id": "live-id-migration",
       "prompt": "Move live customer identifiers to a new schema while old workers remain active.",
-      "expected": {
-        "depth": "high-assurance",
-        "primary": ["migration-engineering", "database-engineering"]
-      },
+      "expected": {"depth": "high-assurance", "primary": ["migration-engineering", "database-engineering"]},
       "required_concepts": ["compatibility", "reconciliation", "irreversible steps", "recovery"]
     },
     {
@@ -37,28 +27,44 @@
     {
       "id": "provider-neutral-iac",
       "prompt": "Plan infrastructure changes. Terraform is installed globally, but this repository already uses Pulumi.",
-      "expected": {
-        "primary": ["platform-engineering"],
-        "provider": "Pulumi/existing project"
-      },
+      "expected": {"primary": ["platform-engineering"], "provider": "Pulumi/existing project"},
       "forbidden": ["select Terraform because installed"]
     },
     {
       "id": "responsive-web-not-mobile",
       "prompt": "Make a browser dashboard responsive from 360px to ultrawide desktop. It is not an installed mobile app.",
-      "expected": {
-        "primary": ["ui-engineering"]
-      },
+      "expected": {"primary": ["ui-engineering"]},
       "forbidden": ["mobile-engineering"]
     },
     {
       "id": "mobile-offline-sync",
       "prompt": "A Flutter field app must accept edits offline, survive process death, then sync without duplicate writes when connectivity returns.",
-      "expected": {
-        "primary": ["mobile-engineering"],
-        "supporting": ["database-engineering", "async-work"]
-      },
+      "expected": {"primary": ["mobile-engineering"], "supporting": ["database-engineering", "async-work"]},
       "required_concepts": ["local-first", "durable mutation identity", "restart recovery", "sync"]
+    },
+    {
+      "id": "greenfield-schema-not-migration",
+      "prompt": "Design the initial schema for a brand-new empty desktop application.",
+      "expected": {"primary": ["database-engineering"]},
+      "forbidden": ["migration-engineering"]
+    },
+    {
+      "id": "api-vs-integration",
+      "prompt": "Integrate our backend with Salesforce's existing REST API and map account statuses into our domain.",
+      "expected": {"primary": ["integration-engineering"]},
+      "forbidden": ["api-design as primary owner"]
+    },
+    {
+      "id": "own-public-api",
+      "prompt": "Design our public API for creating long-running exports with retries and status polling.",
+      "expected": {"primary": ["api-design"]},
+      "forbidden": ["integration-engineering as primary owner"]
+    },
+    {
+      "id": "async-crash-retry",
+      "prompt": "A durable background job can crash after committing its side effect but before acknowledgement.",
+      "expected": {"primary": ["async-work"]},
+      "required_concepts": ["acknowledgement point", "idempotency", "restart/retry behavior"]
     }
   ]
 }

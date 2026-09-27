@@ -1,0 +1,10 @@
+{
+  "skill_name": "integration-engineering",
+  "evals": [
+    {"id":"salesforce","prompt":"Synchronize selected Salesforce records into our application without letting Salesforce-specific statuses leak across the domain.","expected_output":"The skill defines a mapping/anti-corruption boundary, failure semantics, and reconciliation.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"lyrics-provider","prompt":"Download lyrics from an external API in the background while music keeps playing, handling provider failures without blocking playback.","expected_output":"Integration failure/mapping is explicit and supporting async/reliability concerns are reported.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"negative-own-api","prompt":"Design the public API contract our own consumers will call.","expected_output":"integration-engineering is not primary; api-design owns the contract.","force_skill_invocation":false,"should_trigger":false},
+    {"id":"rate-limit","prompt":"A provider returns 429s under load and retries are making the outage worse.","expected_output":"The skill addresses deadlines, retry classification, backoff/provider signals, and observability rather than blindly retrying.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"missed-webhook","prompt":"Payment webhooks occasionally arrive twice or not at all; local state must eventually converge.","expected_output":"The skill defines deduplication, source of truth, acknowledgement, and reconciliation/backfill behavior.","force_skill_invocation":false,"should_trigger":true}
+  ]
+}

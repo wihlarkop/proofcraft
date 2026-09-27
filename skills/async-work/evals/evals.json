@@ -1,0 +1,10 @@
+{
+  "skill_name": "async-work",
+  "evals": [
+    {"id":"durable-job","prompt":"A background export must survive worker crashes and should not run twice after a retry.","expected_output":"The skill defines durable ownership, ack/commit point, idempotency, crash recovery, and retry behavior.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"event-ordering","prompt":"Account events may be duplicated and reordered across workers, but each account's balance updates must remain correct.","expected_output":"The skill scopes identity, ordering, concurrency, and reconciliation rather than assuming global ordering.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"negative-sync-call","prompt":"Add one synchronous pure function that formats a display name.","expected_output":"async-work does not activate.","force_skill_invocation":false,"should_trigger":false},
+    {"id":"cancellation","prompt":"Users can cancel a queued media conversion while it is pending or already processing.","expected_output":"The skill defines cancellation lifecycle, ownership, and partial/restart behavior.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"overload","prompt":"Producers can generate jobs ten times faster than consumers during bursts.","expected_output":"The skill requires bounded backpressure/overload behavior instead of an unbounded queue.","force_skill_invocation":false,"should_trigger":true}
+  ]
+}

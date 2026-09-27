@@ -43,32 +43,20 @@
     "finish",
     "continue",
     "ui-engineering",
-    "mobile-engineering"
+    "mobile-engineering",
+    "database-engineering",
+    "migration-engineering",
+    "api-design",
+    "integration-engineering",
+    "async-work"
   ],
   "aliases": {
-    "spec": {
-      "skill": "shape",
-      "mode": "spec"
-    },
-    "wayfind": {
-      "skill": "shape",
-      "mode": "wayfind"
-    },
-    "test": {
-      "skill": "accept",
-      "mode": "test"
-    },
-    "release": {
-      "skill": "finish",
-      "mode": "release"
-    },
-    "ui-refine": {
-      "skill": "ui-engineering",
-      "mode": "refine"
-    },
-    "ui-finish": {
-      "skill": "ui-engineering",
-      "mode": "finish"
-    }
+    "spec": {"skill": "shape", "mode": "spec"},
+    "wayfind": {"skill": "shape", "mode": "wayfind"},
+    "test": {"skill": "accept", "mode": "test"},
+    "release": {"skill": "finish", "mode": "release"},
+    "ui-refine": {"skill": "ui-engineering", "mode": "refine"},
+    "ui-finish": {"skill": "ui-engineering", "mode": "finish"},
+    "db-change": {"skill": "database-engineering", "mode": "change"}
   }
 }

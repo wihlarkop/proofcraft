@@ -1,0 +1,10 @@
+{
+  "skill_name": "migration-engineering",
+  "evals": [
+    {"id":"live-schema","prompt":"Add a new customer identifier format while old application workers remain active for several deploys.","expected_output":"The skill defines compatibility/coexistence, transition phases, reconciliation, and contraction timing.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"api-v1-v2","prompt":"Move external consumers from v1 events to v2 over several months.","expected_output":"Migration owns the transition while api-design owns event contract semantics.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"negative-greenfield","prompt":"Design the initial schema for a brand-new empty application with no existing data or consumers.","expected_output":"migration-engineering should not activate; database-engineering is sufficient.","force_skill_invocation":false,"should_trigger":false},
+    {"id":"irreversible","prompt":"Rewrite production history into a lossy normalized format and drop the original fields.","expected_output":"The skill marks irreversibility, requires recovery/restore evidence, and separates destructive contraction.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"reconciliation","prompt":"Move durable queue authority from one store to another without losing pending work.","expected_output":"The plan defines authority transfer, coexistence, reconciliation, and cutover evidence.","force_skill_invocation":false,"should_trigger":true}
+  ]
+}
