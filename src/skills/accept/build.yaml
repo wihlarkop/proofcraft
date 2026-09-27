@@ -2,6 +2,7 @@
   "shared": [
     "constitution/principles.md",
     "orchestration/reality-check.md",
+    "orchestration/concerns.md",
     "artifacts/acceptance.md",
     "verification/evidence.md",
     "verification/verdicts.md",

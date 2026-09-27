@@ -5,6 +5,7 @@ All notable changes to Proofcraft are documented here.
 ## [Unreleased]
 
 ### Fixed
+- `accept` now composes material domain verification skills, stays read-only unless repair is explicitly requested, distinguishes host evidence from device/runtime evidence, and prevents aggregate PASS wording when required criteria remain blocked or not run.
 - `implement` now explicitly composes material domain skills, preserves open product decisions while allowing reversible implementation mechanisms, keeps sibling core workflows out of the implementation phase, and treats blocked runtime evidence and expected no-match cleanup probes cleanly.
 - `setup` now places project-local-context and optional-Git bootstrap guards in the managed `AGENTS.md` guidance so they apply before task-specific skills load.
 - `plan` now explicitly loads selected material domain skill contracts instead of treating broad skill-tree discovery as composition.
