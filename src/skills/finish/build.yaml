@@ -8,6 +8,8 @@
     "orchestration/concerns.md",
     "orchestration/reconcile.md",
     "orchestration/handoff.md",
+    "artifacts/artifact-model.md",
+    "artifacts/acceptance.md",
     "engineering/diff-discipline.md",
     "verification/evidence.md",
     "verification/verdicts.md",

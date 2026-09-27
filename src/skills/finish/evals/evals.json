@@ -1,40 +1,15 @@
 {
   "skill_name": "finish",
   "evals": [
-    {
-      "id": "natural-trigger",
-      "prompt": "Use normal engineering judgment for a task that should naturally activate finish.",
-      "expected_output": "The finish workflow is selected and follows its contract.",
-      "force_skill_invocation": false,
-      "should_trigger": true
-    },
-    {
-      "id": "explicit-invoke",
-      "prompt": "Use the finish skill for this task.",
-      "expected_output": "The finish workflow is followed without unrelated ceremony.",
-      "force_skill_invocation": true,
-      "should_trigger": true
-    },
-    {
-      "id": "negative-trigger",
-      "prompt": "Fix a one-character typo in a README heading and do nothing else.",
-      "expected_output": "The finish skill should not be unnecessarily activated unless it is the direct owner of the request.",
-      "force_skill_invocation": false,
-      "should_trigger": false
-    },
-    {
-      "id": "behavior",
-      "prompt": "Demonstrate the core decision procedure of finish while preserving existing project decisions.",
-      "expected_output": "Output follows the finish workflow and respects decision lock/provider neutrality.",
-      "force_skill_invocation": true,
-      "should_trigger": true
-    },
-    {
-      "id": "edge",
-      "prompt": "Use finish in a repository with unrelated uncommitted user changes.",
-      "expected_output": "The unrelated changes are preserved and the workflow does not reset or overwrite them.",
-      "force_skill_invocation": true,
-      "should_trigger": true
-    }
+    {"id":"natural-trigger","prompt":"Use normal engineering judgment for a task that should naturally activate finish.","expected_output":"The finish workflow is selected and follows its contract.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"explicit-invoke","prompt":"Use the finish skill for this task.","expected_output":"The finish workflow is followed without unrelated ceremony.","force_skill_invocation":true,"should_trigger":true},
+    {"id":"negative-trigger","prompt":"Fix a one-character typo in a README heading and do nothing else.","expected_output":"The finish skill should not be unnecessarily activated unless it is the direct owner of the request.","force_skill_invocation":false,"should_trigger":false},
+    {"id":"behavior","prompt":"Finish a bounded milestone with current acceptance evidence and a known remaining verification gap.","expected_output":"Finish performs only the closure evidence needed, reconciles durable artifacts, and produces a factual readiness/handoff state without overstating completion.","force_skill_invocation":true,"should_trigger":true},
+    {"id":"edge","prompt":"Use finish in a repository with unrelated uncommitted user changes.","expected_output":"The unrelated changes are preserved and never reset or overwritten.","force_skill_invocation":true,"should_trigger":true},
+    {"id":"single-core-owner","prompt":"Finish a milestone after implementation and acceptance are already complete. Existing acceptance evidence is available.","expected_output":"Finish remains the sole core workflow owner, consumes existing acceptance evidence, and does not invoke accept/review/implement as sibling core workflows merely to close the milestone.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"domain-composition","prompt":"Finish a phone-first Flutter milestone with local SQLite persistence and a blocked phone-runtime gate.","expected_output":"Finish loads only the material domain skills needed to interpret the final mobile/database/UI evidence and does not load incidental specialists.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"artifact-ownership","prompt":"Finish a milestone where the plan is implemented, project orientation is stale, and a readiness handoff is needed.","expected_output":"Project context is reconciled for orientation, the plan may receive only a concise status or pointer if useful, and the handoff/readiness artifact owns exact final evidence, blockers, and next state without duplicating the ledger across artifacts.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"blocked-readiness","prompt":"All host checks pass but required phone/device runtime evidence is unavailable.","expected_output":"Finish may mark implementation complete to the supported degree, keeps the device gate BLOCKED, and does not claim the milestone fully verified on-device.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"non-git-workspace","prompt":"Finish a milestone in a project folder that is not a Git repository.","expected_output":"Finish treats non-Git as normal, skips diff/branch claims that cannot exist, and still produces evidence and handoff from project-local reality.","force_skill_invocation":false,"should_trigger":true}
   ]
 }

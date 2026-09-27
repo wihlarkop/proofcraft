@@ -5,6 +5,7 @@ All notable changes to Proofcraft are documented here.
 ## [Unreleased]
 
 ### Fixed
+- `finish` now remains the single core workflow owner, composes only material domain skills, reuses sufficient acceptance evidence instead of replaying earlier workflows, and keeps final evidence/blockers owned by handoff/readiness rather than duplicated across plan/context artifacts.
 - `accept` now composes material domain verification skills, stays read-only unless repair is explicitly requested, distinguishes host evidence from device/runtime evidence, and prevents aggregate PASS wording when required criteria remain blocked or not run.
 - `implement` now explicitly composes material domain skills, preserves open product decisions while allowing reversible implementation mechanisms, keeps sibling core workflows out of the implementation phase, and treats blocked runtime evidence and expected no-match cleanup probes cleanly.
 - `setup` now places project-local-context and optional-Git bootstrap guards in the managed `AGENTS.md` guidance so they apply before task-specific skills load.
