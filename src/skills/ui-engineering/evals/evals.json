@@ -1,0 +1,47 @@
+{
+  "skill_name": "ui-engineering",
+  "evals": [
+    {
+      "id": "responsive-web",
+      "prompt": "Make this existing dashboard work well from narrow mobile browser widths through large desktop screens without changing its product behavior.",
+      "expected_output": "ui-engineering activates, inspects existing design, and reasons about responsive/adaptive layout and input behavior.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "explicit-refine",
+      "prompt": "Use ui-engineering to refine this desktop settings page while preserving our existing DESIGN.md.",
+      "expected_output": "The project design system remains authoritative and refinement stays proportional.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "negative-backend",
+      "prompt": "A queue consumer duplicates jobs after retry; find the root cause.",
+      "expected_output": "ui-engineering does not activate.",
+      "force_skill_invocation": false,
+      "should_trigger": false
+    },
+    {
+      "id": "hybrid-boundary",
+      "prompt": "Design a WebView checkout screen where native owns authentication and deep links but web owns navigation inside checkout.",
+      "expected_output": "ui-engineering makes the native/web ownership boundary explicit and reports supporting integration/security concerns where relevant.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "provider-does-not-win",
+      "prompt": "Impeccable is installed, but DESIGN.md requires subtle dense desktop UI. Improve typography and spacing.",
+      "expected_output": "The provider may be composed for typography/layout but DESIGN.md remains authoritative and no new visual direction is invented.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "accessibility-input",
+      "prompt": "Review a track actions menu that works with mouse but cannot be opened from keyboard.",
+      "expected_output": "ui-engineering treats keyboard accessibility as product behavior and verifies the relevant interaction.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    }
+  ]
+}

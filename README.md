@@ -10,7 +10,7 @@ The suite follows the portable Agent Skills shape (`SKILL.md` plus on-demand ref
 
 Proofcraft is in early development (`v0.x`) and is being dogfooded before the public workflow contract is stabilized at `v1.0.0`.
 
-The current checkpoint implements all **10 core orchestration skills**. The planned domain layer is tracked in `suite.yaml` and will be added incrementally.
+The current checkpoint implements all **10 core orchestration skills** plus the first **2 domain skills**: `ui-engineering` and `mobile-engineering`. The remaining domain layer is tracked in `suite.yaml`.
 
 ## Core workflow
 
@@ -36,6 +36,15 @@ setup -> shape/architect -> plan -> implement/debug -> accept/review -> finish
 | `review` | Review the intended change with evidence-backed findings. |
 | `finish` | Verify, reconcile, check diff hygiene, and produce closure/handoff evidence. |
 | `continue` | Reconstruct current truth and resume the first eligible work. |
+
+### Implemented domain skills
+
+| Skill | Purpose |
+| --- | --- |
+| `ui-engineering` | Surface-aware UI engineering for web, desktop, mobile UI, and hybrid/WebView experiences; responsive/adaptive behavior, accessibility, visual craft, and optional specialist design providers. |
+| `mobile-engineering` | Mobile lifecycle/background behavior, local-first/offline sync, conflict handling, device capabilities, input/platform behavior, and hybrid native boundaries. |
+
+Domain skills are normally composed by a core workflow from detected concerns; users do not need to invoke every specialist manually.
 
 ## Principles
 

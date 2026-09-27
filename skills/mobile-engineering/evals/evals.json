@@ -1,0 +1,47 @@
+{
+  "skill_name": "mobile-engineering",
+  "evals": [
+    {
+      "id": "offline-field-app",
+      "prompt": "Technicians must complete jobs with no connectivity for hours, then sync safely when online again while dispatch may edit the same job remotely.",
+      "expected_output": "mobile-engineering activates local-first, durable mutations, explicit conflict semantics, restart recovery, and user-visible sync behavior.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "explicit-mobile",
+      "prompt": "Use mobile-engineering to design this Flutter background upload flow.",
+      "expected_output": "The existing framework is preserved and lifecycle/background constraints are explicit.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "negative-responsive-web",
+      "prompt": "Make this desktop web dashboard responsive down to 360px browser width; it is not a mobile app.",
+      "expected_output": "mobile-engineering should not activate; ui-engineering owns the request.",
+      "force_skill_invocation": false,
+      "should_trigger": false
+    },
+    {
+      "id": "process-death",
+      "prompt": "A mobile download says completed but disappears if Android kills the process before the next app launch.",
+      "expected_output": "mobile-engineering reasons about durable state, lifecycle boundaries, restart reconciliation, and appropriate regression evidence.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "no-forced-local-first",
+      "prompt": "Build a tiny authenticated mobile status viewer where every screen requires current server data and offline use is explicitly out of scope.",
+      "expected_output": "mobile-engineering does not invent an offline mutation queue or conflict engine.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "hybrid-security-boundary",
+      "prompt": "A mobile WebView needs camera access and sends bridge messages to native code.",
+      "expected_output": "mobile-engineering defines native/web ownership and reports a supporting security concern for bridge/device capability exposure.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    }
+  ]
+}

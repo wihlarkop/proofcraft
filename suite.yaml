@@ -41,7 +41,9 @@
     "debug",
     "review",
     "finish",
-    "continue"
+    "continue",
+    "ui-engineering",
+    "mobile-engineering"
   ],
   "aliases": {
     "spec": {
@@ -59,6 +61,14 @@
     "release": {
       "skill": "finish",
       "mode": "release"
+    },
+    "ui-refine": {
+      "skill": "ui-engineering",
+      "mode": "refine"
+    },
+    "ui-finish": {
+      "skill": "ui-engineering",
+      "mode": "finish"
     }
   }
 }

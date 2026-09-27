@@ -1,0 +1,13 @@
+{
+  "shared": [
+    "constitution/principles.md",
+    "constitution/decision-lock.md",
+    "orchestration/concerns.md",
+    "state/authority.md",
+    "state/lifecycle.md",
+    "state/sync.md",
+    "engineering/provider-neutrality.md",
+    "verification/evidence.md",
+    "verification/risk-depth.md"
+  ]
+}
