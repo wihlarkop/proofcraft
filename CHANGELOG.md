@@ -5,6 +5,7 @@ All notable changes to Proofcraft are documented here.
 ## [Unreleased]
 
 ### Fixed
+- `privacy-engineering` now distinguishes settled architecture from executable implementation readiness, preserving unresolved retention, deletion, consent/revocation, residency, and user-rights policy as explicit planning gates instead of allowing placeholder lifecycle defaults.
 - Proofcraft's own repository guidance now enforces project-local repository truth before harness/global/personal memory during self-dogfood and release assessment.
 - `debug` now stays the single core workflow owner, composes only material domain skills, respects investigation-only requests, distinguishes current facts/reproducers from hypotheses and not-yet-possible future states, and bounds runtime evidence collection instead of inventing a root cause.
 - `shape` now closes only the human decisions actually answered, preserving adjacent unresolved product questions instead of silently collapsing related field scope, conflict, deletion, account-linking, or lifecycle policy.
