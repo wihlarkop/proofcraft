@@ -24,8 +24,8 @@
     },
     {
       "id": "behavior",
-      "prompt": "Demonstrate the core decision procedure of plan while preserving existing project decisions.",
-      "expected_output": "Output follows the plan workflow and respects decision lock/provider neutrality.",
+      "prompt": "Plan a bounded feature while preserving accepted product and architecture decisions.",
+      "expected_output": "The plan removes implementation ambiguity without reopening accepted decisions or writing code in prose.",
       "force_skill_invocation": true,
       "should_trigger": true
     },
@@ -34,6 +34,34 @@
       "prompt": "Use plan in a repository with unrelated uncommitted user changes.",
       "expected_output": "The unrelated changes are preserved and the workflow does not reset or overwrite them.",
       "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "project-local-context-first",
+      "prompt": "Plan a Flutter + SQLite feature in a project with PRODUCT.md and an accepted ADR. The coding harness also has unrelated global memory from other Flutter projects.",
+      "expected_output": "Plan uses project-local durable artifacts as authority and does not search or import unrelated harness/global memory.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "non-git-workspace",
+      "prompt": "Plan a feature in an ordinary non-Git project folder. Do not initialize source control.",
+      "expected_output": "Plan treats non-Git as normal workspace state and does not surface Git commands as failed planning steps.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "do-not-invent-product-policy",
+      "prompt": "Plan a save-for-later slice that says users can add a link with title and notes, browse it, and open details. Requirements do not say which URL schemes are supported or how the list is ordered.",
+      "expected_output": "Plan does not silently choose HTTP-only validation, newest-first ordering, or another user-visible policy. It either leaves reversible non-product implementation details open or surfaces a focused product decision when needed.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "stale-context-vs-accepted-adr",
+      "prompt": "docs/agents/project.md says no architecture is selected, but an accepted ADR selects Flutter and SQLite. Create the implementation plan.",
+      "expected_output": "The accepted ADR wins. Plan identifies the stale orientation and minimally reconciles it when safe or explicitly flags it; it does not leave the contradiction silently unresolved.",
+      "force_skill_invocation": false,
       "should_trigger": true
     }
   ]

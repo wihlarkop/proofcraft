@@ -5,6 +5,7 @@ All notable changes to Proofcraft are documented here.
 ## [Unreleased]
 
 ### Fixed
+- `plan` now starts from project-local durable context, treats non-Git workspaces normally, refuses to invent unresolved product policy merely to complete a plan, and handles direct stale-context contradictions against accepted artifacts.
 - `architect` and the shared reality-check now keep project-local context authoritative, avoid Git probes in non-Git workspaces, reconcile stale orientation after durable decisions, and preserve required architectural properties without prematurely freezing incidental encodings such as UUID.
 - `shape` now keeps workspace-local artifacts authoritative over unrelated harness/global memory, avoids silently resolving material product ambiguity, and surfaces domain concerns without prematurely selecting implementation technology.
 - Canonical authoring skill files now use `SOURCE.md` so installers discover exactly one `SKILL.md` path per skill; this fixes ambiguous project updates caused by duplicate `src/skills/*/SKILL.md` and `skills/*/SKILL.md` matches.
