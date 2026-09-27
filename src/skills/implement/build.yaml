@@ -3,6 +3,7 @@
     "constitution/principles.md",
     "constitution/decision-lock.md",
     "orchestration/reality-check.md",
+    "orchestration/concerns.md",
     "orchestration/gate.md",
     "engineering/diff-discipline.md",
     "engineering/dependency-selection.md",

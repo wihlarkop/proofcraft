@@ -1,40 +1,15 @@
 {
   "skill_name": "implement",
   "evals": [
-    {
-      "id": "natural-trigger",
-      "prompt": "Use normal engineering judgment for a task that should naturally activate implement.",
-      "expected_output": "The implement workflow is selected and follows its contract.",
-      "force_skill_invocation": false,
-      "should_trigger": true
-    },
-    {
-      "id": "explicit-invoke",
-      "prompt": "Use the implement skill for this task.",
-      "expected_output": "The implement workflow is followed without unrelated ceremony.",
-      "force_skill_invocation": true,
-      "should_trigger": true
-    },
-    {
-      "id": "negative-trigger",
-      "prompt": "Fix a one-character typo in a README heading and do nothing else.",
-      "expected_output": "The implement skill should not be unnecessarily activated unless it is the direct owner of the request.",
-      "force_skill_invocation": false,
-      "should_trigger": false
-    },
-    {
-      "id": "behavior",
-      "prompt": "Demonstrate the core decision procedure of implement while preserving existing project decisions.",
-      "expected_output": "Output follows the implement workflow and respects decision lock/provider neutrality.",
-      "force_skill_invocation": true,
-      "should_trigger": true
-    },
-    {
-      "id": "edge",
-      "prompt": "Use implement in a repository with unrelated uncommitted user changes.",
-      "expected_output": "The unrelated changes are preserved and the workflow does not reset or overwrite them.",
-      "force_skill_invocation": true,
-      "should_trigger": true
-    }
+    {"id":"natural-trigger","prompt":"Use normal engineering judgment for a task that should naturally activate implement.","expected_output":"The implement workflow is selected and follows its contract.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"explicit-invoke","prompt":"Use the implement skill for this task.","expected_output":"The implement workflow is followed without unrelated ceremony.","force_skill_invocation":true,"should_trigger":true},
+    {"id":"negative-trigger","prompt":"Fix a one-character typo in a README heading and do nothing else.","expected_output":"The implement skill should not be unnecessarily activated unless it is the direct owner of the request.","force_skill_invocation":false,"should_trigger":false},
+    {"id":"behavior","prompt":"Implement an approved bounded feature while preserving existing product and architecture decisions.","expected_output":"Implementation proceeds in coherent feature slices, preserves settled and explicitly open decisions, and gathers proportional evidence after or alongside implementation.","force_skill_invocation":true,"should_trigger":true},
+    {"id":"edge","prompt":"Use implement in a repository with unrelated uncommitted user changes.","expected_output":"The unrelated changes are preserved and the workflow does not reset or overwrite them.","force_skill_invocation":true,"should_trigger":true},
+    {"id":"domain-composition","prompt":"Implement an approved phone-first Flutter slice with user-facing screens, offline SQLite persistence, and restart durability.","expected_output":"Implement remains the core owner and loads the material ui-engineering, mobile-engineering, and database-engineering skill contracts before implementing those concerns; incidental skills are not loaded.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"preserve-open-decisions","prompt":"Implement a Flutter phone slice where platform support, URL syntax policy, and collection ordering are explicitly still open. The accepted plan only requires local save/list/detail behavior.","expected_output":"Implementation does not convert the open product decisions into durable policy. It may choose reversible mechanisms needed for implementation without updating product/architecture truth or claiming the open decision is settled.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"blocked-runtime-evidence","prompt":"Implement a mobile slice on a machine where static analysis and tests work but the required Android SDK/device is unavailable.","expected_output":"Implement uses the strongest available evidence, reports APK/device runtime verification as blocked, and does not substitute desktop/browser behavior as equivalent mobile acceptance.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"no-core-overcomposition","prompt":"Implement an approved feature and stop when it is ready for acceptance. Review, acceptance, and release are separate later phases.","expected_output":"Implement does not preload or execute accept, review, or finish as sibling workflow owners merely to close the implementation turn.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"expected-no-match-cleanup","prompt":"After implementing a feature, search for leftover template strings. Finding none is the desired result.","expected_output":"A zero-match cleanup search is treated as successful evidence and is not bundled in a way that surfaces the implementation step as a failure.","force_skill_invocation":false,"should_trigger":true}
   ]
 }
