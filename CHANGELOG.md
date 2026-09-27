@@ -5,6 +5,7 @@ All notable changes to Proofcraft are documented here.
 ## [Unreleased]
 
 ### Fixed
+- Proofcraft's own repository guidance now enforces project-local repository truth before harness/global/personal memory during self-dogfood and release assessment.
 - `debug` now stays the single core workflow owner, composes only material domain skills, respects investigation-only requests, distinguishes current facts/reproducers from hypotheses and not-yet-possible future states, and bounds runtime evidence collection instead of inventing a root cause.
 - `shape` now closes only the human decisions actually answered, preserving adjacent unresolved product questions instead of silently collapsing related field scope, conflict, deletion, account-linking, or lifecycle policy.
 - `finish` now remains the single core workflow owner, composes only material domain skills, reuses sufficient acceptance evidence instead of replaying earlier workflows, and keeps final evidence/blockers owned by handoff/readiness rather than duplicated across plan/context artifacts.
@@ -19,6 +20,7 @@ All notable changes to Proofcraft are documented here.
 - `setup` now treats an empty non-Git folder as a first-class greenfield workspace, detects Git before Git-specific probes, and treats expected no-match searches as normal evidence rather than failed setup steps.
 
 ### Added
+- Mame v0.1 dogfood evidence is recorded under `docs/dogfood/` so release audits can distinguish materially exercised workflows from synthetic eval-only coverage.
 - Proofcraft repository identity and initial public project structure.
 - Canonical shared methodology layer and generated self-contained distribution model.
 - All 10 core workflow skills: `setup`, `shape`, `architect`, `plan`, `implement`, `accept`, `debug`, `review`, `finish`, and `continue`.
