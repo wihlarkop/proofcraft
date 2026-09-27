@@ -35,6 +35,27 @@
       "expected_output": "Unrelated changes are preserved and never reset or overwritten.",
       "force_skill_invocation": true,
       "should_trigger": true
+    },
+    {
+      "id": "non-git-project-context",
+      "prompt": "Architect an empty project workspace that is not a Git repository. It has project-local PRODUCT.md and docs/agents/project.md plus unrelated global harness memory.",
+      "expected_output": "Architect uses workspace-local truth, does not search unrelated global memory, detects Git before probing it, and does not surface 'not a git repository' as a failed architecture step.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "minimal-future-sync-identity",
+      "prompt": "Flutter and SQLite are already selected. Keep records locally authoritative now but make future independent-device sync possible without designing sync yet.",
+      "expected_output": "Architect records a storage-independent boundary and stable collision-resistant client-generated identity requirement, but does not choose UUID/ULID/package/encoding unless a current interoperability or contract constraint requires it.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "reconcile-stale-orientation",
+      "prompt": "docs/agents/project.md says no architecture or framework has been selected. Record an accepted ADR selecting Flutter and SQLite.",
+      "expected_output": "Architect records the ADR and minimally reconciles the now-false project-context statement with a pointer/summary instead of leaving contradictory durable artifacts.",
+      "force_skill_invocation": false,
+      "should_trigger": true
     }
   ]
 }

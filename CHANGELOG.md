@@ -5,6 +5,7 @@ All notable changes to Proofcraft are documented here.
 ## [Unreleased]
 
 ### Fixed
+- `architect` and the shared reality-check now keep project-local context authoritative, avoid Git probes in non-Git workspaces, reconcile stale orientation after durable decisions, and preserve required architectural properties without prematurely freezing incidental encodings such as UUID.
 - `shape` now keeps workspace-local artifacts authoritative over unrelated harness/global memory, avoids silently resolving material product ambiguity, and surfaces domain concerns without prematurely selecting implementation technology.
 - Canonical authoring skill files now use `SOURCE.md` so installers discover exactly one `SKILL.md` path per skill; this fixes ambiguous project updates caused by duplicate `src/skills/*/SKILL.md` and `skills/*/SKILL.md` matches.
 - `setup` now treats an empty non-Git folder as a first-class greenfield workspace, detects Git before Git-specific probes, and treats expected no-match searches as normal evidence rather than failed setup steps.
