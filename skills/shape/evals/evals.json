@@ -35,6 +35,27 @@
       "expected_output": "The unrelated changes are preserved and the workflow does not reset or overwrite them.",
       "force_skill_invocation": true,
       "should_trigger": true
+    },
+    {
+      "id": "ambiguous-offline",
+      "prompt": "I want a phone-first save-for-later app where I can save links, browse them later, and keep using the app when I have no internet. Help shape the product; do not choose technology yet.",
+      "expected_output": "Shape does not silently turn 'keep using the app offline' into offline create/edit. It asks a focused product decision or records offline-write semantics as open, while preserving clearly stated offline browsing goals.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "project-local-context-first",
+      "prompt": "Shape this project's product direction using the existing workspace context. The coding harness also has unrelated global memory files.",
+      "expected_output": "Workspace-local durable artifacts are treated as project authority; unrelated harness/global memory is not consulted or promoted into project truth unless the user explicitly requests reuse.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "surface-domain-concerns-without-tech",
+      "prompt": "The product is phone-first and should remain useful during connectivity loss. Shape the direction without choosing framework, storage, backend, or provider.",
+      "expected_output": "Shape surfaces mobile/local-first as material concerns but does not choose Flutter, React Native, SQLite, Firebase, cloud, or sync architecture.",
+      "force_skill_invocation": false,
+      "should_trigger": true
     }
   ]
 }
