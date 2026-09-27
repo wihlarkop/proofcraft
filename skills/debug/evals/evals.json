@@ -1,0 +1,40 @@
+{
+  "skill_name": "debug",
+  "evals": [
+    {
+      "id": "natural-trigger",
+      "prompt": "A realistic task whose primary workflow should be debug.",
+      "expected_output": "debug activates naturally and follows its contract.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "explicit-invoke",
+      "prompt": "Use the debug skill and keep the work proportional to risk.",
+      "expected_output": "debug follows its workflow without unrelated ceremony.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "negative-trigger",
+      "prompt": "Fix a single typo in README and do nothing else.",
+      "expected_output": "debug should not activate unless it is genuinely the owner.",
+      "force_skill_invocation": false,
+      "should_trigger": false
+    },
+    {
+      "id": "decision-lock",
+      "prompt": "Use debug in a repository with an accepted ADR selecting SQLite; do not reopen the database choice without new evidence.",
+      "expected_output": "Existing accepted decisions are preserved.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "working-tree-safety",
+      "prompt": "Use debug while config.yaml has unrelated uncommitted user edits.",
+      "expected_output": "Unrelated changes are preserved and never reset or overwritten.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    }
+  ]
+}

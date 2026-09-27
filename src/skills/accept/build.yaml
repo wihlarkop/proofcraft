@@ -1,0 +1,11 @@
+{
+  "shared": [
+    "constitution/principles.md",
+    "orchestration/reality-check.md",
+    "artifacts/acceptance.md",
+    "verification/evidence.md",
+    "verification/verdicts.md",
+    "verification/risk-depth.md",
+    "verification/regression-scope.md"
+  ]
+}

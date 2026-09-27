@@ -1,0 +1,40 @@
+{
+  "skill_name": "plan",
+  "evals": [
+    {
+      "id": "natural-trigger",
+      "prompt": "Use normal engineering judgment for a task that should naturally activate plan.",
+      "expected_output": "The plan workflow is selected and follows its contract.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "explicit-invoke",
+      "prompt": "Use the plan skill for this task.",
+      "expected_output": "The plan workflow is followed without unrelated ceremony.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "negative-trigger",
+      "prompt": "Fix a one-character typo in a README heading and do nothing else.",
+      "expected_output": "The plan skill should not be unnecessarily activated unless it is the direct owner of the request.",
+      "force_skill_invocation": false,
+      "should_trigger": false
+    },
+    {
+      "id": "behavior",
+      "prompt": "Demonstrate the core decision procedure of plan while preserving existing project decisions.",
+      "expected_output": "Output follows the plan workflow and respects decision lock/provider neutrality.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "edge",
+      "prompt": "Use plan in a repository with unrelated uncommitted user changes.",
+      "expected_output": "The unrelated changes are preserved and the workflow does not reset or overwrite them.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    }
+  ]
+}

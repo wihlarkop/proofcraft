@@ -1,0 +1,32 @@
+name: Validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  proofcraft:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Rebuild distributable skills
+        run: python scripts/build.py
+
+      - name: Validate suite
+        run: python scripts/validate.py
+
+      - name: Check generated tree
+        run: python scripts/check_generated.py
+
+      - name: Ensure generated output is committed
+        run: git diff --exit-code

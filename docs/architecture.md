@@ -1,0 +1,32 @@
+# Repository Architecture
+
+## Authoring and distribution
+
+Canonical methodology lives under `src/`. Build tooling produces self-contained skills under `skills/` so an installer can install one skill without requiring a sibling repository-level `shared/` directory.
+
+Shared references are copied only into skills that declare them. This keeps authoring DRY while preserving portable distribution and progressive disclosure.
+
+## Composition hierarchy
+
+1. A core workflow owns orchestration.
+2. The workflow resolves relevant domain concerns.
+3. Domain skills use focused shared references.
+4. Optional provider integrations enhance a capability only when they match the current project.
+
+Domain skills do not take over orchestration and do not recursively invoke each other. They may report an additional concern to the active workflow owner.
+
+## Runtime philosophy
+
+The suite classifies work by work class, depth, and concerns. Depth is adaptive: direct, bounded, substantial, or high-assurance. Verification depth follows risk rather than a mandatory process.
+
+## Artifact ownership
+
+- `AGENTS.md`, project orientation: setup
+- Product truth/specification: shape
+- Architecture decisions: architect/ADR helper
+- Implementation plan: plan
+- Code: implement
+- Acceptance evidence: accept
+- Closure/reconciliation/handoff: finish
+
+Durable facts should have one canonical owner.

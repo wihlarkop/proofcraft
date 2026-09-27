@@ -1,0 +1,30 @@
+{
+  "cases": [
+    {
+      "id": "rename-variable",
+      "prompt": "Rename a private local variable for clarity.",
+      "expected_depth": "direct",
+      "forbidden_artifacts": [
+        "SPEC",
+        "ADR",
+        "formal PLAN",
+        "production readiness"
+      ]
+    },
+    {
+      "id": "error-copy",
+      "prompt": "Change one user-facing validation sentence without changing behavior.",
+      "expected_depth": "direct",
+      "forbidden_artifacts": [
+        "ADR",
+        "migration plan"
+      ]
+    },
+    {
+      "id": "guard-clause",
+      "prompt": "Add an obvious nil guard to a local helper with an existing regression test location.",
+      "expected_depth": "direct",
+      "expected": "localized implementation + targeted verification"
+    }
+  ]
+}

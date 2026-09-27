@@ -1,0 +1,13 @@
+{
+  "shared": [
+    "constitution/principles.md",
+    "constitution/decision-lock.md",
+    "orchestration/reality-check.md",
+    "orchestration/gate.md",
+    "orchestration/reconcile.md",
+    "orchestration/handoff.md",
+    "artifacts/artifact-model.md",
+    "engineering/diff-discipline.md",
+    "verification/evidence.md"
+  ]
+}

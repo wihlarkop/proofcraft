@@ -1,0 +1,79 @@
+{
+  "cases": [
+    {
+      "id": "direct-ui-tweak",
+      "prompt": "Change the track-row height from 48px to 44px.",
+      "expected": {
+        "depth": "direct",
+        "primary": [
+          "ui-engineering"
+        ]
+      },
+      "forbidden": [
+        "migration-engineering",
+        "security-engineering",
+        "platform-engineering"
+      ]
+    },
+    {
+      "id": "duplicate-webhook",
+      "prompt": "Webhook retries sometimes create the same reward twice.",
+      "expected": {
+        "work": "bug",
+        "owner": "debug",
+        "primary": [
+          "integration-engineering",
+          "async-work"
+        ]
+      },
+      "forbidden": [
+        "mobile-engineering",
+        "ui-engineering"
+      ]
+    },
+    {
+      "id": "live-id-migration",
+      "prompt": "Move live customer identifiers to a new schema while old workers remain active.",
+      "expected": {
+        "depth": "high-assurance",
+        "primary": [
+          "migration-engineering",
+          "database-engineering"
+        ]
+      },
+      "required_concepts": [
+        "compatibility",
+        "reconciliation",
+        "irreversible steps",
+        "recovery"
+      ]
+    },
+    {
+      "id": "readme-typo",
+      "prompt": "Fix one typo in a README heading.",
+      "expected": {
+        "depth": "direct"
+      },
+      "forbidden": [
+        "shape",
+        "architect",
+        "plan",
+        "security-engineering",
+        "migration-engineering"
+      ]
+    },
+    {
+      "id": "provider-neutral-iac",
+      "prompt": "Plan infrastructure changes. Terraform is installed globally, but this repository already uses Pulumi.",
+      "expected": {
+        "primary": [
+          "platform-engineering"
+        ],
+        "provider": "Pulumi/existing project"
+      },
+      "forbidden": [
+        "select Terraform because installed"
+      ]
+    }
+  ]
+}

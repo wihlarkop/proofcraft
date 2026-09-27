@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "id": "authz-change",
+      "prompt": "Change who may approve refunds in production.",
+      "expected_depth": "high-assurance",
+      "required": [
+        "security concern",
+        "authorization boundary",
+        "acceptance evidence"
+      ]
+    },
+    {
+      "id": "irreversible-delete",
+      "prompt": "Delete historical customer data as part of a schema cleanup with no backup plan yet.",
+      "expected_depth": "high-assurance",
+      "required": [
+        "migration",
+        "privacy/data lifecycle",
+        "recovery or explicit irreversibility"
+      ]
+    },
+    {
+      "id": "distributed-claim",
+      "prompt": "Guarantee acknowledged jobs are never lost during worker crashes and retries.",
+      "expected_depth": "high-assurance",
+      "required": [
+        "async-work",
+        "durability claim",
+        "ack point",
+        "replay/recovery evidence"
+      ]
+    }
+  ]
+}

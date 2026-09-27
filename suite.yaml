@@ -1,0 +1,64 @@
+{
+  "name": "proofcraft",
+  "version": "0.1.0",
+  "workflow_schema": 1,
+  "skills": {
+    "core": [
+      "setup",
+      "shape",
+      "architect",
+      "plan",
+      "implement",
+      "accept",
+      "debug",
+      "review",
+      "finish",
+      "continue"
+    ],
+    "domain": [
+      "ui-engineering",
+      "mobile-engineering",
+      "database-engineering",
+      "migration-engineering",
+      "api-design",
+      "integration-engineering",
+      "async-work",
+      "platform-engineering",
+      "reliability-engineering",
+      "security-engineering",
+      "privacy-engineering",
+      "performance-engineering",
+      "ai-engineering"
+    ]
+  },
+  "implemented": [
+    "setup",
+    "shape",
+    "architect",
+    "plan",
+    "implement",
+    "accept",
+    "debug",
+    "review",
+    "finish",
+    "continue"
+  ],
+  "aliases": {
+    "spec": {
+      "skill": "shape",
+      "mode": "spec"
+    },
+    "wayfind": {
+      "skill": "shape",
+      "mode": "wayfind"
+    },
+    "test": {
+      "skill": "accept",
+      "mode": "test"
+    },
+    "release": {
+      "skill": "finish",
+      "mode": "release"
+    }
+  }
+}

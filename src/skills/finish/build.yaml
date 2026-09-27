@@ -1,0 +1,17 @@
+{
+  "shared": [
+    "constitution/principles.md",
+    "constitution/decision-lock.md",
+    "constitution/bounded-work.md",
+    "orchestration/reality-check.md",
+    "orchestration/depth.md",
+    "orchestration/concerns.md",
+    "orchestration/reconcile.md",
+    "orchestration/handoff.md",
+    "engineering/diff-discipline.md",
+    "verification/evidence.md",
+    "verification/verdicts.md",
+    "verification/risk-depth.md",
+    "verification/regression-scope.md"
+  ]
+}

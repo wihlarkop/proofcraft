@@ -1,0 +1,40 @@
+{
+  "skill_name": "setup",
+  "evals": [
+    {
+      "id": "natural-trigger",
+      "prompt": "Use normal engineering judgment for a task that should naturally activate setup.",
+      "expected_output": "The setup workflow is selected and follows its contract.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "explicit-invoke",
+      "prompt": "Use the setup skill for this task.",
+      "expected_output": "The setup workflow is followed without unrelated ceremony.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "negative-trigger",
+      "prompt": "Fix a one-character typo in a README heading and do nothing else.",
+      "expected_output": "The setup skill should not be unnecessarily activated unless it is the direct owner of the request.",
+      "force_skill_invocation": false,
+      "should_trigger": false
+    },
+    {
+      "id": "behavior",
+      "prompt": "Demonstrate the core decision procedure of setup while preserving existing project decisions.",
+      "expected_output": "Output follows the setup workflow and respects decision lock/provider neutrality.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "edge",
+      "prompt": "Use setup in a repository with unrelated uncommitted user changes.",
+      "expected_output": "The unrelated changes are preserved and the workflow does not reset or overwrite them.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    }
+  ]
+}

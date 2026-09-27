@@ -1,0 +1,16 @@
+{
+  "shared": [
+    "constitution/principles.md",
+    "constitution/decision-lock.md",
+    "constitution/bounded-work.md",
+    "orchestration/reality-check.md",
+    "orchestration/depth.md",
+    "orchestration/concerns.md",
+    "orchestration/gate.md",
+    "artifacts/plan.md",
+    "engineering/provider-neutrality.md",
+    "engineering/dependency-selection.md",
+    "verification/evidence.md",
+    "verification/risk-depth.md"
+  ]
+}

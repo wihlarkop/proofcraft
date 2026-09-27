@@ -1,0 +1,12 @@
+{
+  "shared": [
+    "constitution/principles.md",
+    "constitution/decision-lock.md",
+    "orchestration/reality-check.md",
+    "orchestration/depth.md",
+    "orchestration/concerns.md",
+    "artifacts/artifact-model.md",
+    "artifacts/spec.md",
+    "engineering/provider-neutrality.md"
+  ]
+}
