@@ -1,0 +1,10 @@
+{
+  "skill_name": "security-engineering",
+  "evals": [
+    {"id":"authorization","prompt":"Change who may approve refunds and add an admin UI button for it.","expected_output":"The skill treats authorization as a server/resource boundary, not a UI visibility rule.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"file-upload","prompt":"Add user-controlled file uploads that are later processed by a backend worker.","expected_output":"The skill identifies trust/file-processing boundaries and validates controls at the actual processing path.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"negative-retention","prompt":"Define how long analytics events should be retained and deleted after consent withdrawal.","expected_output":"privacy-engineering is primary; security-engineering may support controls but should not own the lifecycle decision.","force_skill_invocation":false,"should_trigger":false},
+    {"id":"secret-client","prompt":"Put a server SDK key in the mobile app so it can call the provider directly.","expected_output":"The skill rejects exposing server credentials in a client and reasons about least privilege/appropriate boundary.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"review-false-positive","prompt":"A scanner reports injection in a framework path that automatically parameterizes this query; review it.","expected_output":"The skill traces the real path and validates framework protections before reporting a finding.","force_skill_invocation":false,"should_trigger":true}
+  ]
+}

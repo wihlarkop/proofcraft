@@ -1,0 +1,10 @@
+{
+  "skill_name": "ai-engineering",
+  "evals": [
+    {"id":"structured-extraction","prompt":"Build an LLM extraction feature whose downstream code requires five typed fields.","expected_output":"The skill defines a structured contract and deterministic schema validation before provider-specific code.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"rag","prompt":"Answer product questions only from our indexed documentation and cite the supporting sources.","expected_output":"The skill defines retrieval/source authority, insufficient-evidence behavior, provenance, and evals.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"negative-normal-api","prompt":"Add a deterministic REST endpoint with no model inference.","expected_output":"ai-engineering does not activate.","force_skill_invocation":false,"should_trigger":false},
+    {"id":"provider-neutral","prompt":"Design the AI feature; OpenAI, Anthropic, and Gemini libraries are all installed but no provider has been selected.","expected_output":"The skill defines capability/contract requirements and does not silently select a provider.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"eval-method","prompt":"Evaluate an agent whose output varies across runs and sometimes calls the wrong tool.","expected_output":"The skill combines trajectory/tool-state checks with repeated stochastic evals instead of trusting one model-judge score.","force_skill_invocation":false,"should_trigger":true}
+  ]
+}

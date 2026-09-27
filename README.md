@@ -10,7 +10,7 @@ The suite follows the portable Agent Skills shape (`SKILL.md` plus on-demand ref
 
 Proofcraft is in early development (`v0.x`) and is being dogfooded before the public workflow contract is stabilized at `v1.0.0`.
 
-The current checkpoint implements all **10 core orchestration skills** plus **7 domain skills**. The remaining domain layer is tracked in `suite.yaml`.
+The current checkpoint implements the full planned v0.1 surface: **10 core orchestration skills + 13 domain skills = 23 distributable skills**.
 
 ## Core workflow
 
@@ -37,17 +37,23 @@ setup -> shape/architect -> plan -> implement/debug -> accept/review -> finish
 | `finish` | Verify, reconcile, check diff hygiene, and produce closure/handoff evidence. |
 | `continue` | Reconstruct current truth and resume the first eligible work. |
 
-### Implemented domain skills
+### Domain skills
 
 | Skill | Purpose |
 | --- | --- |
-| `ui-engineering` | Surface-aware UI engineering for web, desktop, mobile UI, and hybrid/WebView experiences. |
+| `ui-engineering` | Surface-aware web/desktop/mobile/hybrid UI, responsive/adaptive behavior, accessibility, and visual craft. |
 | `mobile-engineering` | Mobile lifecycle/background behavior, local-first/offline sync, device concerns, and native/hybrid boundaries. |
 | `database-engineering` | Application data modeling, constraints, transactions, query shapes, and indexes. |
 | `migration-engineering` | Safe current-to-target transitions, compatibility windows, reconciliation, cutover, and deprecation. |
 | `api-design` | Consumer-facing HTTP/RPC/GraphQL/event/webhook contracts, failures, idempotency, and evolution. |
 | `integration-engineering` | External-system boundaries, mapping, rate limits/retries, webhooks/polling, and reconciliation. |
-| `async-work` | Background jobs, queues/events, ownership, acknowledgement, retries, ordering, cancellation, replay, and backpressure. |
+| `async-work` | Background jobs, queues/events, ownership, acknowledgement, ordering, cancellation, replay, and backpressure. |
+| `platform-engineering` | Workload-to-runtime/platform design, IaC/CI infrastructure, runtime configuration, and deployment topology. |
+| `reliability-engineering` | Observability, dependency failure, graceful degradation, recovery evidence, and incident learning. |
+| `security-engineering` | Trust boundaries, authentication/authorization, secrets, untrusted input, and evidence-based security review. |
+| `privacy-engineering` | Purpose, minimization, retention, deletion, consent, telemetry, derived data, and AI-trace privacy. |
+| `performance-engineering` | Measurement, profiling, optimization experiments, capacity/headroom, and cost tradeoffs. |
+| `ai-engineering` | Provider-neutral LLM/AI contracts, structured outputs, tools, RAG, fallback, evals, and AI observability. |
 
 Domain skills are normally composed by a core workflow from detected concerns; users do not need to invoke every specialist manually.
 

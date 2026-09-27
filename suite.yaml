@@ -48,7 +48,13 @@
     "migration-engineering",
     "api-design",
     "integration-engineering",
-    "async-work"
+    "async-work",
+    "platform-engineering",
+    "reliability-engineering",
+    "security-engineering",
+    "privacy-engineering",
+    "performance-engineering",
+    "ai-engineering"
   ],
   "aliases": {
     "spec": {"skill": "shape", "mode": "spec"},

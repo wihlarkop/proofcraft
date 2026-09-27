@@ -1,0 +1,10 @@
+{
+  "skill_name": "performance-engineering",
+  "evals": [
+    {"id":"latency","prompt":"Search feels slow; improve p95 response time without changing ranking behavior.","expected_output":"The skill establishes a representative baseline, profiles the path, changes a localized bottleneck, and remeasures with ranking correctness as a counter-metric.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"capacity","prompt":"Estimate how much headroom a worker fleet needs for a 3x seasonal load increase while keeping the latency objective.","expected_output":"The skill connects demand, capacity, performance, reliability, and cost without universal utilization thresholds.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"negative-feature","prompt":"Add a new API field; no performance requirement or regression exists.","expected_output":"performance-engineering does not activate speculatively.","force_skill_invocation":false,"should_trigger":false},
+    {"id":"microbenchmark-trap","prompt":"A microbenchmark improved 40% but end-to-end latency is unchanged. Declare the optimization successful.","expected_output":"The skill rejects the claim because the user/system metric did not improve.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"tradeoff","prompt":"Reduce memory by compressing cached state, but decompression may increase CPU and latency.","expected_output":"The skill measures the target and counter-metrics before selecting the tradeoff.","force_skill_invocation":false,"should_trigger":true}
+  ]
+}

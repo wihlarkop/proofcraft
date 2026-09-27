@@ -1,0 +1,10 @@
+{
+  "skill_name": "platform-engineering",
+  "evals": [
+    {"id":"existing-pulumi","prompt":"Plan a runtime change in a repository already using Pulumi. Terraform skills are also installed.","expected_output":"The existing Pulumi architecture wins; Terraform is not selected by availability.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"workload-first","prompt":"We need to deploy a small stateless HTTP service with low traffic and no existing cloud selection.","expected_output":"The skill frames workload requirements before choosing cloud/orchestration technology.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"negative-app-code","prompt":"Fix a pure domain calculation bug with no deployment or runtime change.","expected_output":"platform-engineering does not activate.","force_skill_invocation":false,"should_trigger":false},
+    {"id":"flag-safety","prompt":"Add a kill switch for a new code path that writes data in a new format.","expected_output":"The skill distinguishes code-path rollback from irreversible/already-written data effects.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"ci-infra","prompt":"Design CI infrastructure that builds once and promotes the same artifact across environments.","expected_output":"The skill reasons about build/promotion/config boundaries without forcing a vendor.","force_skill_invocation":false,"should_trigger":true}
+  ]
+}

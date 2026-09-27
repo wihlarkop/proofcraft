@@ -1,0 +1,10 @@
+{
+  "skill_name": "reliability-engineering",
+  "evals": [
+    {"id":"question-first-observability","prompt":"Add observability so we can tell why external calls time out intermittently.","expected_output":"The skill starts from the diagnostic question and selects minimal useful signals instead of adding logs everywhere.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"cache-correctness","prompt":"A so-called cache outage causes pending allocations to disappear and changes business results.","expected_output":"The skill recognizes this is not safely disposable cache state and requires authority/recovery semantics.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"negative-feature","prompt":"Add a local deterministic string formatter.","expected_output":"reliability-engineering does not activate.","force_skill_invocation":false,"should_trigger":false},
+    {"id":"restore-proof","prompt":"We have backups but have never restored them; claim that disaster recovery is ready.","expected_output":"The skill rejects design-only confidence and requires restore/recovery evidence.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"graceful-degradation","prompt":"A recommendation dependency is down but checkout must remain usable.","expected_output":"The skill defines core behavior, timeout/degradation, observability, and verification at the user boundary.","force_skill_invocation":false,"should_trigger":true}
+  ]
+}
