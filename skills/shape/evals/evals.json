@@ -56,6 +56,20 @@
       "expected_output": "Shape surfaces mobile/local-first as material concerns but does not choose Flutter, React Native, SQLite, Firebase, cloud, or sync architecture.",
       "force_skill_invocation": false,
       "should_trigger": true
+    },
+    {
+      "id": "preserve-adjacent-open-decisions",
+      "prompt": "The current sync product artifact has separate open decisions for collection actions, synchronized field scope, conflict resolution, deletion behavior, account linking, and sign-out. The user answers only: 'Support add, edit, and remove, and eventually sync all three actions. Do not infer the other behaviors.' Record that decision and continue shaping.",
+      "expected_output": "Shape records add/edit/remove as the decided synchronized action surface, but keeps synchronized field scope, conflict resolution, deletion/restore semantics, account linking, and sign-out explicitly open. It must not delete or silently narrow those neighboring product questions unless the answer logically entails them.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "single-decision-frontier",
+      "prompt": "Continue shaping a feature with several unresolved product decisions. Ask only the single highest-impact human decision currently blocking executable planning.",
+      "expected_output": "Shape asks one focused product decision and does not silently answer or remove the remaining decision frontier.",
+      "force_skill_invocation": false,
+      "should_trigger": true
     }
   ]
 }

@@ -10,7 +10,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.1"
+  skill-version: "0.1.2"
 ---
 
 
@@ -30,9 +30,10 @@ Convert ambiguous intent into behavior and decisions clear enough for planning.
 2. Separate project facts from human decisions. Discover facts yourself when tools/environment expose them.
 3. Identify the current decision frontier: questions whose answers actually change behavior, scope, compatibility, or architecture.
 4. Do not silently promote an ambiguous phrase into a durable product requirement when multiple interpretations would materially change persistence, offline behavior, synchronization, security/privacy, compatibility, or platform scope. Ask one focused human decision when needed, or leave the point explicitly open if it does not block the current shaping outcome.
-5. Resolve the behavior that is actually decided. Do not interrogate the user about naming/file-placement decisions the project can decide locally.
-6. Detect material domain/architecture concerns and surface them without selecting implementation technology or providers. For example, phone-first plus offline behavior may surface mobile/local-first concerns without deciding framework, storage, or sync design.
-7. Produce/update a specification or durable product artifact when the work is substantial enough to benefit from one.
+5. Resolve only the behavior that is actually decided. When a human answers one decision, close only the decision(s) logically entailed by that answer. Preserve adjacent unresolved decisions explicitly rather than collapsing, deleting, or inferring them because they are related. For example, deciding that add/edit/remove participate in sync does not by itself decide which fields sync, how edit conflicts resolve, how deletion propagates, whether restore exists, how local data links to an account, or what sign-out does.
+6. Do not interrogate the user about naming/file-placement decisions the project can decide locally.
+7. Detect material domain/architecture concerns and surface them without selecting implementation technology or providers. For example, phone-first plus offline behavior may surface mobile/local-first concerns without deciding framework, storage, or sync design.
+8. Produce/update a specification or durable product artifact when the work is substantial enough to benefit from one. When updating an artifact after a decision, re-read the neighboring open-decision section and verify that only answered questions were removed or narrowed.
 
 ## Specification boundary
 
@@ -41,6 +42,7 @@ The spec states WHAT must be true: behavior, invariants, lifecycle/failure seman
 ## Stop
 
 Stop when the work is clear enough to plan. If a genuine human decision remains and guessing would create meaningful product/architecture risk, ask it or record it explicitly as open rather than silently resolving it.
+
 ## Reference Guide
 
 Load only the references needed for the current task:
