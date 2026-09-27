@@ -1,68 +1,15 @@
 {
   "skill_name": "plan",
   "evals": [
-    {
-      "id": "natural-trigger",
-      "prompt": "Use normal engineering judgment for a task that should naturally activate plan.",
-      "expected_output": "The plan workflow is selected and follows its contract.",
-      "force_skill_invocation": false,
-      "should_trigger": true
-    },
-    {
-      "id": "explicit-invoke",
-      "prompt": "Use the plan skill for this task.",
-      "expected_output": "The plan workflow is followed without unrelated ceremony.",
-      "force_skill_invocation": true,
-      "should_trigger": true
-    },
-    {
-      "id": "negative-trigger",
-      "prompt": "Fix a one-character typo in a README heading and do nothing else.",
-      "expected_output": "The plan skill should not be unnecessarily activated unless it is the direct owner of the request.",
-      "force_skill_invocation": false,
-      "should_trigger": false
-    },
-    {
-      "id": "behavior",
-      "prompt": "Plan a bounded feature while preserving accepted product and architecture decisions.",
-      "expected_output": "The plan removes implementation ambiguity without reopening accepted decisions or writing code in prose.",
-      "force_skill_invocation": true,
-      "should_trigger": true
-    },
-    {
-      "id": "edge",
-      "prompt": "Use plan in a repository with unrelated uncommitted user changes.",
-      "expected_output": "The unrelated changes are preserved and the workflow does not reset or overwrite them.",
-      "force_skill_invocation": true,
-      "should_trigger": true
-    },
-    {
-      "id": "project-local-context-first",
-      "prompt": "Plan a Flutter + SQLite feature in a project with PRODUCT.md and an accepted ADR. The coding harness also has unrelated global memory from other Flutter projects.",
-      "expected_output": "Plan uses project-local durable artifacts as authority and does not search or import unrelated harness/global memory.",
-      "force_skill_invocation": false,
-      "should_trigger": true
-    },
-    {
-      "id": "non-git-workspace",
-      "prompt": "Plan a feature in an ordinary non-Git project folder. Do not initialize source control.",
-      "expected_output": "Plan treats non-Git as normal workspace state and does not surface Git commands as failed planning steps.",
-      "force_skill_invocation": false,
-      "should_trigger": true
-    },
-    {
-      "id": "do-not-invent-product-policy",
-      "prompt": "Plan a save-for-later slice that says users can add a link with title and notes, browse it, and open details. Requirements do not say which URL schemes are supported or how the list is ordered.",
-      "expected_output": "Plan does not silently choose HTTP-only validation, newest-first ordering, or another user-visible policy. It either leaves reversible non-product implementation details open or surfaces a focused product decision when needed.",
-      "force_skill_invocation": false,
-      "should_trigger": true
-    },
-    {
-      "id": "stale-context-vs-accepted-adr",
-      "prompt": "docs/agents/project.md says no architecture is selected, but an accepted ADR selects Flutter and SQLite. Create the implementation plan.",
-      "expected_output": "The accepted ADR wins. Plan identifies the stale orientation and minimally reconciles it when safe or explicitly flags it; it does not leave the contradiction silently unresolved.",
-      "force_skill_invocation": false,
-      "should_trigger": true
-    }
+    {"id":"natural-trigger","prompt":"Use normal engineering judgment for a task that should naturally activate plan.","expected_output":"The plan workflow is selected and follows its contract.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"explicit-invoke","prompt":"Use the plan skill for this task.","expected_output":"The plan workflow is followed without unrelated ceremony.","force_skill_invocation":true,"should_trigger":true},
+    {"id":"negative-trigger","prompt":"Fix a one-character typo in a README heading and do nothing else.","expected_output":"The plan skill should not be unnecessarily activated unless it is the direct owner of the request.","force_skill_invocation":false,"should_trigger":false},
+    {"id":"behavior","prompt":"Plan a bounded feature while preserving accepted product and architecture decisions.","expected_output":"The plan removes implementation ambiguity without reopening accepted decisions or writing code in prose.","force_skill_invocation":true,"should_trigger":true},
+    {"id":"edge","prompt":"Use plan in a repository with unrelated uncommitted user changes.","expected_output":"The unrelated changes are preserved and the workflow does not reset or overwrite them.","force_skill_invocation":true,"should_trigger":true},
+    {"id":"project-local-context-first","prompt":"Plan a Flutter + SQLite feature in a project with PRODUCT.md and an accepted ADR. The coding harness also has unrelated global memory from other Flutter projects.","expected_output":"Plan uses project-local durable artifacts as authority and does not search or import unrelated harness/global memory.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"non-git-workspace","prompt":"Plan a feature in an ordinary non-Git project folder. Do not initialize source control.","expected_output":"Plan treats non-Git as normal workspace state and does not surface Git commands as failed planning steps.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"do-not-invent-product-policy","prompt":"Plan a save-for-later slice that says users can add a link with title and notes, browse it, and open details. Requirements do not say which URL schemes are supported or how the list is ordered.","expected_output":"Plan does not silently choose HTTP-only validation, newest-first ordering, or another user-visible policy. It either leaves reversible non-product implementation details open or surfaces a focused product decision when needed.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"stale-context-vs-accepted-adr","prompt":"docs/agents/project.md says no architecture is selected, but an accepted ADR selects Flutter and SQLite. Create the implementation plan.","expected_output":"The accepted ADR wins. Plan identifies the stale orientation and minimally reconciles it when safe or explicitly flags it; it does not leave the contradiction silently unresolved.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"domain-composition","prompt":"Plan a phone-first Flutter feature with SQLite persistence and user-facing screens.","expected_output":"Plan loads only the material domain skill contracts such as mobile-engineering, database-engineering, and ui-engineering before finalizing; it does not treat a broad grep of installed skills as composition.","force_skill_invocation":false,"should_trigger":true}
   ]
 }

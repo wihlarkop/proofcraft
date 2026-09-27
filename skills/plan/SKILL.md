@@ -11,7 +11,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.1"
+  skill-version: "0.1.2"
 ---
 
 
@@ -25,7 +25,7 @@ Create the smallest implementation contract that removes meaningful ambiguity.
 2. Reality-check accepted decisions and direct contradictions. If a stale summary/pointer directly conflicts with a clearly authoritative accepted artifact, minimally reconcile the stale summary when safe; otherwise surface the contradiction as a blocker rather than silently choosing.
 3. Classify work depth: direct, bounded, substantial, or high-assurance. A direct task may not need a formal plan.
 4. Identify primary and supporting concerns before selecting specialists.
-5. Compose only domain capabilities that materially affect the plan. Domain skills report additional concerns; this skill remains the orchestration owner.
+5. For every material concern, load the relevant domain skill contract before finalizing the plan. Compose only those specialists; do not grep the entire installed skill tree as a substitute for reading the selected domain guidance. Domain skills report additional concerns; this skill remains the orchestration owner.
 6. Preserve existing architecture and provider choices unless the requested change explicitly revisits them.
 7. Separate product decisions from implementation decisions. Do not invent user-visible behavior, supported platforms, validation policy, ordering semantics, lifecycle promises, or other product policy merely to make the plan feel complete. Ask/route back to shape when such a decision blocks an executable plan. Reversible implementation details may be selected when they stay within accepted product and architecture constraints.
 8. Break substantial work into coherent behavior slices with clear interfaces/dependencies rather than test-first microsteps.
