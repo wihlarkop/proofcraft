@@ -1,48 +1,50 @@
 ---
 name: setup
 description: >-
-  Initialize or reconcile repository operating context for coding agents. Use for a fresh
-  repository, first-time project onboarding, a materially changed project structure, or an
+  Initialize or reconcile workspace operating context for coding agents. Use for a fresh workspace
+  or repository, first-time project onboarding, a materially changed project structure, or an
   explicit request to create/reconcile AGENTS.md and project context. Preserve existing human
-  instructions; do not invent undecided architecture or mutate a repository merely because the
-  suite was updated.
+  instructions; do not invent undecided architecture or mutate a project merely because the suite
+  was updated.
 license: MIT
 compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.0"
+  skill-version: "0.1.1"
 ---
 
 
 # Setup
 
-Establish the minimum durable context an agent needs to work safely in a repository.
+Establish the minimum durable context an agent needs to work safely in a project workspace.
 
 ## Trigger
 
-Use for greenfield repository initialization, first-time onboarding after this suite is installed, explicit AGENTS/project-context reconciliation, or a material project/tooling reorganization.
+Use for greenfield workspace/repository initialization, first-time onboarding after this suite is installed, explicit AGENTS/project-context reconciliation, or a material project/tooling reorganization.
 
 Do not use for normal feature work.
 
 ## Workflow
 
 1. Read the relevant shared constitution and run a focused reality check.
-2. Classify the repository as greenfield or existing.
-3. Inspect existing `AGENTS.md`, repository layout, manifests, task runners, docs, ADR/product/design artifacts, CI configuration, and obvious optional specialist capabilities. Do not exhaustively inventory the repository when a pointer is enough.
-4. For greenfield projects, create only minimum navigation/context. Leave undecided architecture explicitly undecided.
-5. For existing projects, preserve established conventions and human-authored instructions. Manage only the marked block in `AGENTS.md` when one is created.
-6. Keep `AGENTS.md` thin; point to canonical context instead of copying large instructions.
-7. Record the workflow schema and suite-major compatibility in project context when this project adopts the suite.
+2. Detect workspace capabilities before using them. Determine whether the folder is a Git repository; treat Git as optional rather than assuming it exists.
+3. Classify the project as greenfield or existing based on meaningful project content. Installed agent-skill directories and skill lockfiles are tooling context, not application source.
+4. Inspect existing `AGENTS.md`, project layout, manifests, task runners, docs, ADR/product/design artifacts, CI configuration, and obvious optional specialist capabilities. Do not exhaustively inventory the workspace when a pointer is enough.
+5. Use capability-aware probes: an empty search/no-match is normal evidence, not a workflow failure. Avoid bundling expected no-match or unavailable-tool probes into commands whose non-zero exit obscures successful inspection.
+6. For greenfield projects, create only minimum navigation/context. Leave undecided architecture explicitly undecided.
+7. For existing projects, preserve established conventions and human-authored instructions. Manage only the marked block in `AGENTS.md` when one is created.
+8. Keep `AGENTS.md` thin; point to canonical context instead of copying large instructions.
+9. Record the workflow schema and suite-major compatibility in project context when this project adopts the suite.
 
 ## Outputs
 
 Normally:
 - a thin `AGENTS.md` managed block;
-- `docs/agents/project.md` or the repository's established equivalent;
+- `docs/agents/project.md` or the project's established equivalent;
 - an ADR directory/convention only when one does not exist and architecture decisions are expected.
 
-Do not create fake product, design, or architecture decisions just to populate files.
+Do not initialize Git/source control unless requested or already established. Do not create fake product, design, or architecture decisions just to populate files.
 
 ## Stop
 

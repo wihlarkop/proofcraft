@@ -32,8 +32,15 @@
     {
       "id": "edge",
       "prompt": "Use setup in a repository with unrelated uncommitted user changes.",
-      "expected_output": "The unrelated changes are preserved and the workflow does not reset or overwrite them.",
+      "expected_output": "The unrelated changes are preserved and never reset or overwritten.",
       "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "greenfield-non-git-workspace",
+      "prompt": "Set up an empty ordinary folder that only contains .agents/ and skills-lock.json. It is not a Git repository. Do not choose architecture or initialize source control.",
+      "expected_output": "Setup recognizes a greenfield non-Git workspace, treats skill-install artifacts as tooling context, avoids Git-specific failures and expected no-match errors, creates only minimal agent/project context, and leaves source control/architecture/technology undecided.",
+      "force_skill_invocation": false,
       "should_trigger": true
     }
   ]
