@@ -5,6 +5,7 @@ All notable changes to Proofcraft are documented here.
 ## [Unreleased]
 
 ### Fixed
+- `setup` now places project-local-context and optional-Git bootstrap guards in the managed `AGENTS.md` guidance so they apply before task-specific skills load.
 - `plan` now explicitly loads selected material domain skill contracts instead of treating broad skill-tree discovery as composition.
 - `plan` now starts from project-local durable context, treats non-Git workspaces normally, refuses to invent unresolved product policy merely to complete a plan, and handles direct stale-context contradictions against accepted artifacts.
 - `architect` and the shared reality-check now keep project-local context authoritative, avoid Git probes in non-Git workspaces, reconcile stale orientation after durable decisions, and preserve required architectural properties without prematurely freezing incidental encodings such as UUID.

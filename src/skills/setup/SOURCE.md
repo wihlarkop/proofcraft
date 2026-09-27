@@ -11,7 +11,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.1"
+  skill-version: "0.1.2"
 ---
 
 
@@ -28,14 +28,15 @@ Do not use for normal feature work.
 ## Workflow
 
 1. Read the relevant shared constitution and run a focused reality check.
-2. Detect workspace capabilities before using them. Determine whether the folder is a Git repository; treat Git as optional rather than assuming it exists.
+2. Detect workspace capabilities before using them. Determine whether the folder is a Git repository from project-local evidence before running Git commands; treat Git as optional rather than assuming it exists.
 3. Classify the project as greenfield or existing based on meaningful project content. Installed agent-skill directories and skill lockfiles are tooling context, not application source.
 4. Inspect existing `AGENTS.md`, project layout, manifests, task runners, docs, ADR/product/design artifacts, CI configuration, and obvious optional specialist capabilities. Do not exhaustively inventory the workspace when a pointer is enough.
 5. Use capability-aware probes: an empty search/no-match is normal evidence, not a workflow failure. Avoid bundling expected no-match or unavailable-tool probes into commands whose non-zero exit obscures successful inspection.
 6. For greenfield projects, create only minimum navigation/context. Leave undecided architecture explicitly undecided.
 7. For existing projects, preserve established conventions and human-authored instructions. Manage only the marked block in `AGENTS.md` when one is created.
-8. Keep `AGENTS.md` thin; point to canonical context instead of copying large instructions.
+8. Keep `AGENTS.md` thin, but ensure its managed block contains the bootstrap guards from the shared AGENTS guidance: project-local context is authoritative before task-specific skill loading; unrelated global/harness memory is not project authority; Git is optional and must not be probed until repository presence is established; unrelated work must be preserved.
 9. Record the workflow schema and suite-major compatibility in project context when this project adopts the suite.
+10. When setup is explicitly rerun after Proofcraft guidance changes, reconcile only the managed AGENTS block and stale project orientation needed to adopt compatible bootstrap rules; do not mutate application/product/architecture artifacts merely because the suite changed.
 
 ## Outputs
 
@@ -48,4 +49,4 @@ Do not initialize Git/source control unless requested or already established. Do
 
 ## Stop
 
-Stop when the project is navigable, human content is preserved, canonical sources are discoverable, and no invented decision has been introduced.
+Stop when the project is navigable, bootstrap context guards are durable, human content is preserved, canonical sources are discoverable, and no invented decision has been introduced.
