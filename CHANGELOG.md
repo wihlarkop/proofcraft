@@ -21,6 +21,7 @@ All notable changes to Proofcraft are documented here.
 - `setup` now treats an empty non-Git folder as a first-class greenfield workspace, detects Git before Git-specific probes, and treats expected no-match searches as normal evidence rather than failed setup steps.
 
 ### Added
+- Representative security/privacy dogfood evidence is recorded under `docs/dogfood/`, including the privacy-readiness regression that produced `privacy-engineering` 0.1.1.
 - Mame v0.1 dogfood evidence is recorded under `docs/dogfood/` so release audits can distinguish materially exercised workflows from synthetic eval-only coverage.
 - Proofcraft repository identity and initial public project structure.
 - Canonical shared methodology layer and generated self-contained distribution model.

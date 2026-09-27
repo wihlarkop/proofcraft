@@ -38,7 +38,7 @@ Material domain evidence from the Mame cycle is narrower than the full 13-skill 
 - `migration-engineering`: materially exercised through a read-only hypothetical SQLite schema-evolution plan and a subsequent evidence-based review.
 - `async-work`: touched during future multi-device sync shaping as a relevant concern, but not materially exercised through implementation/runtime behavior.
 
-The remaining domain skills should not be described as materially dogfooded by Mame solely because synthetic eval fixtures exist. In particular, security/privacy, platform, reliability, performance, AI, and external integration/API contracts still need representative real-work exercise when release confidence depends on those claims.
+The remaining domain skills should not be described as materially dogfooded by Mame solely because synthetic eval fixtures exist. Security and privacy were later exercised separately in `docs/dogfood/security-privacy-v0.1.md`. Platform, reliability, performance, AI, and external integration/API contracts still need representative real-work exercise when release confidence depends on those claims.
 
 ## Dogfood-derived fixes
 
