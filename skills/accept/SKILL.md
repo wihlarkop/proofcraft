@@ -44,6 +44,7 @@ Stop when every required criterion has an evidence-backed verdict, the boundary 
 
 Load only the references needed for the current task:
 
+- [tdd](references/tdd.md)
 - [principles](references/_shared/constitution/principles.md)
 - [reality check](references/_shared/orchestration/reality-check.md)
 - [concerns](references/_shared/orchestration/concerns.md)
