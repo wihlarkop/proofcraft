@@ -42,7 +42,6 @@ The spec states WHAT must be true: behavior, invariants, lifecycle/failure seman
 ## Stop
 
 Stop when the work is clear enough to plan. If a genuine human decision remains and guessing would create meaningful product/architecture risk, ask it or record it explicitly as open rather than silently resolving it.
-
 ## Reference Guide
 
 Load only the references needed for the current task:
