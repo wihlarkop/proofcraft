@@ -2,7 +2,9 @@
 
 ## Authoring and distribution
 
-Canonical methodology lives under `src/`. Build tooling produces self-contained skills under `skills/` so an installer can install one skill without requiring a sibling repository-level `shared/` directory.
+Canonical methodology lives under `src/`. Canonical skill instructions use `src/skills/<name>/SOURCE.md`, deliberately avoiding the reserved discoverable filename `SKILL.md`.
+
+Build tooling emits self-contained skills under `skills/<name>/SKILL.md`. This gives the repository exactly one discoverable Agent Skill path per skill name while still keeping authoring sources separate from generated distribution.
 
 Shared references are copied only into skills that declare them. This keeps authoring DRY while preserving portable distribution and progressive disclosure.
 

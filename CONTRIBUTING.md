@@ -1,6 +1,8 @@
 # Contributing
 
-Edit canonical files under `src/`; never edit generated files under `skills/` directly.
+Edit canonical skill instructions under `src/skills/<name>/SOURCE.md` and shared references under `src/shared/`; never edit generated files under `skills/` directly.
+
+`SOURCE.md` is deliberately not named `SKILL.md`. Only `skills/<name>/SKILL.md` is distributable/discoverable. This prevents installers from seeing duplicate paths for the same skill.
 
 Before submitting a change:
 

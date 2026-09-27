@@ -5,6 +5,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / "skills"
+SRC_SKILLS = ROOT / "src" / "skills"
+SOURCE_SKILL_FILE = "SOURCE.md"
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 LINK_RE = re.compile(r"\]\(([^)]+)\)")
 
@@ -50,6 +52,21 @@ def validate_skill(skill: Path):
 def main():
     if not SKILLS.exists(): raise SystemExit("skills/ missing; run scripts/build.py")
     failures=[]
+
+    # Authoring sources must not be discoverable as Agent Skills. Having both
+    # src/skills/<name>/SKILL.md and skills/<name>/SKILL.md makes installers
+    # see duplicate paths for the same skill name and breaks safe updates.
+    leaked = sorted((ROOT / "src").rglob("SKILL.md"))
+    if leaked:
+        failures.append(("source-layout", [
+            "discoverable SKILL.md leaked under src/: " + ", ".join(str(p.relative_to(ROOT)) for p in leaked)
+        ]))
+
+    source_dirs = sorted(p for p in SRC_SKILLS.iterdir() if p.is_dir())
+    for source_dir in source_dirs:
+        if not (source_dir / SOURCE_SKILL_FILE).exists():
+            failures.append((source_dir.name, [f"missing canonical {SOURCE_SKILL_FILE}"]))
+
     generated = sorted(p for p in SKILLS.iterdir() if p.is_dir())
     for skill in generated:
         errs=validate_skill(skill)
@@ -66,10 +83,14 @@ def main():
                 errs.append(f"invalid eval JSON: {e}")
         if errs: failures.append((skill.name,errs))
 
+    source_names={p.name for p in source_dirs}
+    actual={p.name for p in generated}
+    if source_names != actual:
+        failures.append(("source-layout", [f"source skills {sorted(source_names)} != generated skills {sorted(actual)}"]))
+
     try:
         suite=json.loads((ROOT/"suite.yaml").read_text(encoding="utf-8"))
         implemented=set(suite.get("implemented", []))
-        actual={p.name for p in generated}
         if implemented != actual:
             failures.append(("suite.yaml", [f"implemented list {sorted(implemented)} != generated skills {sorted(actual)}"]))
     except Exception as e:
@@ -79,6 +100,7 @@ def main():
         for name,errs in failures:
             for e in errs: print(f"ERROR {name}: {e}")
         raise SystemExit(1)
-    print(f"Validated {len(generated)} generated skills, eval sets, and suite manifest")
+    print(f"Validated {len(generated)} generated skills, canonical sources, eval sets, and suite manifest")
+
 
 if __name__=='__main__': main()

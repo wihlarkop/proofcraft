@@ -6,6 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SRC_SKILLS = ROOT / "src" / "skills"
 SHARED = ROOT / "src" / "shared"
+SOURCE_SKILL_FILE = "SOURCE.md"
 
 
 def load_json_yaml(path: Path):
@@ -16,11 +17,14 @@ def build(output: Path):
     if output.exists():
         shutil.rmtree(output)
     output.mkdir(parents=True)
-    for skill_dir in sorted(p for p in SRC_SKILLS.iterdir() if p.is_dir() and (p / "SKILL.md").exists()):
+    for skill_dir in sorted(
+        p for p in SRC_SKILLS.iterdir()
+        if p.is_dir() and (p / SOURCE_SKILL_FILE).exists()
+    ):
         dest = output / skill_dir.name
         dest.mkdir(parents=True)
         for child in skill_dir.iterdir():
-            if child.name in {"build.yaml", "SKILL.md"}:
+            if child.name in {"build.yaml", SOURCE_SKILL_FILE}:
                 continue
             target = dest / child.name
             if child.is_dir():
@@ -37,9 +41,9 @@ def build(output: Path):
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(src, target)
 
-        # Make every distributable skill self-contained and ensure the copied
-        # shared methodology is explicitly reachable through progressive disclosure.
-        skill_text = (skill_dir / "SKILL.md").read_text(encoding="utf-8").rstrip()
+        # SOURCE.md is deliberately non-discoverable by Agent Skills installers.
+        # The distributable skill is emitted only under skills/<name>/SKILL.md.
+        skill_text = (skill_dir / SOURCE_SKILL_FILE).read_text(encoding="utf-8").rstrip()
         refs = []
         local_refs = skill_dir / "references"
         if local_refs.exists():
@@ -62,6 +66,7 @@ def main():
     args = ap.parse_args()
     build(args.output.resolve())
     print(f"Built skills into {args.output.resolve()}")
+
 
 if __name__ == "__main__":
     main()
