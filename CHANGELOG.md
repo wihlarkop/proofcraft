@@ -5,6 +5,7 @@ All notable changes to Proofcraft are documented here.
 ## [Unreleased]
 
 ### Fixed
+- `debug` now stays the single core workflow owner, composes only material domain skills, respects investigation-only requests, distinguishes current facts/reproducers from hypotheses and not-yet-possible future states, and bounds runtime evidence collection instead of inventing a root cause.
 - `shape` now closes only the human decisions actually answered, preserving adjacent unresolved product questions instead of silently collapsing related field scope, conflict, deletion, account-linking, or lifecycle policy.
 - `finish` now remains the single core workflow owner, composes only material domain skills, reuses sufficient acceptance evidence instead of replaying earlier workflows, and keeps final evidence/blockers owned by handoff/readiness rather than duplicated across plan/context artifacts.
 - `accept` now composes material domain verification skills, stays read-only unless repair is explicitly requested, distinguishes host evidence from device/runtime evidence, and prevents aggregate PASS wording when required criteria remain blocked or not run.

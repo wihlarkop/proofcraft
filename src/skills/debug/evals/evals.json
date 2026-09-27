@@ -35,6 +35,34 @@
       "expected_output": "Unrelated changes are preserved and never reset or overwritten.",
       "force_skill_invocation": true,
       "should_trigger": true
+    },
+    {
+      "id": "investigation-only",
+      "prompt": "Investigate this startup failure, but do not modify files or implement a fix.",
+      "expected_output": "debug gathers evidence and stops before remediation, reporting reproduction status, evidence, uncertainty, and the regression evidence a later fix would require.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "future-state-not-reproducible",
+      "prompt": "Hypothetical report: an app sometimes fails while upgrading from schema v1 to v2. The current repository only implements schema v1 and no v2 migration. Investigate without assuming the future migration plan has been implemented.",
+      "expected_output": "debug states that the reported v1-to-v2 failure cannot currently be reproduced or occur from the present implementation, distinguishes any plausible current legacy-state hypotheses from root cause, and does not invent a v2 defect.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "single-core-owner",
+      "prompt": "Debug a database startup issue using repository evidence and relevant specialist guidance.",
+      "expected_output": "debug remains the sole core workflow owner and may load material domain skills such as database-engineering, but does not invoke accept/review/implement as sibling workflows merely to collect evidence.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "bounded-runtime-evidence",
+      "prompt": "A targeted runtime verification command hangs while debugging an otherwise source-localized issue.",
+      "expected_output": "debug bounds the wait/retry, records the command as incomplete evidence, and does not treat the hang as proof of the reported defect or keep retrying indefinitely.",
+      "force_skill_invocation": false,
+      "should_trigger": true
     }
   ]
 }
