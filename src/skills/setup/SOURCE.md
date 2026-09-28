@@ -11,7 +11,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.2"
+  skill-version: "0.1.3"
 ---
 
 
@@ -27,7 +27,7 @@ Do not use for normal feature work.
 
 ## Workflow
 
-1. Read the relevant shared constitution and run a focused reality check.
+1. Read the relevant shared constitution and run a focused reality check. Start from the current workspace only. Do not inspect harness/global/personal memory files or stores unless the user explicitly asks to reuse them or the workspace itself points there; if reused, verify them against current workspace truth before relying on them.
 2. Detect workspace capabilities before using them. Determine whether the folder is a Git repository from project-local evidence before running Git commands; treat Git as optional rather than assuming it exists.
 3. Classify the project as greenfield or existing based on meaningful project content. Installed agent-skill directories and skill lockfiles are tooling context, not application source.
 4. Inspect existing `AGENTS.md`, project layout, manifests, task runners, docs, ADR/product/design artifacts, CI configuration, and obvious optional specialist capabilities. Do not exhaustively inventory the workspace when a pointer is enough.

@@ -1,12 +1,61 @@
 {
   "skill_name": "setup",
   "evals": [
-    {"id":"natural-trigger","prompt":"Use normal engineering judgment for a task that should naturally activate setup.","expected_output":"The setup workflow is selected and follows its contract.","force_skill_invocation":false,"should_trigger":true},
-    {"id":"explicit-invoke","prompt":"Use the setup skill for this task.","expected_output":"The setup workflow is followed without unrelated ceremony.","force_skill_invocation":true,"should_trigger":true},
-    {"id":"negative-trigger","prompt":"Fix a one-character typo in a README heading and do nothing else.","expected_output":"The setup skill should not be unnecessarily activated unless it is the direct owner of the request.","force_skill_invocation":false,"should_trigger":false},
-    {"id":"behavior","prompt":"Demonstrate the core decision procedure of setup while preserving existing project decisions.","expected_output":"Output follows the setup workflow and respects decision lock/provider neutrality.","force_skill_invocation":true,"should_trigger":true},
-    {"id":"edge","prompt":"Use setup in a repository with unrelated uncommitted user changes.","expected_output":"The unrelated changes are preserved and never reset or overwritten.","force_skill_invocation":true,"should_trigger":true},
-    {"id":"greenfield-non-git-workspace","prompt":"Set up an empty ordinary folder that only contains .agents/ and skills-lock.json. It is not a Git repository. Do not choose architecture or initialize source control.","expected_output":"Setup recognizes a greenfield non-Git workspace, treats skill-install artifacts as tooling context, avoids Git-specific failures and expected no-match errors, creates only minimal agent/project context, and leaves source control/architecture/technology undecided.","force_skill_invocation":false,"should_trigger":true},
-    {"id":"bootstrap-context-guards","prompt":"Reconcile AGENTS.md for a project where the coding harness has global memories from other projects and the workspace may not use Git.","expected_output":"The managed AGENTS block stays thin but durably instructs agents to prefer project-local context, avoid unrelated global memory, and treat Git as optional before task-specific skill loading, while preserving human content outside the block.","force_skill_invocation":true,"should_trigger":true}
+    {
+      "id": "natural-trigger",
+      "prompt": "Use normal engineering judgment for a task that should naturally activate setup.",
+      "expected_output": "The setup workflow is selected and follows its contract.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "explicit-invoke",
+      "prompt": "Use the setup skill for this task.",
+      "expected_output": "The setup workflow is followed without unrelated ceremony.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "negative-trigger",
+      "prompt": "Fix a one-character typo in a README heading and do nothing else.",
+      "expected_output": "The setup skill should not be unnecessarily activated unless it is the direct owner of the request.",
+      "force_skill_invocation": false,
+      "should_trigger": false
+    },
+    {
+      "id": "behavior",
+      "prompt": "Demonstrate the core decision procedure of setup while preserving existing project decisions.",
+      "expected_output": "Output follows the setup workflow and respects decision lock/provider neutrality.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "edge",
+      "prompt": "Use setup in a repository with unrelated uncommitted user changes.",
+      "expected_output": "The unrelated changes are preserved and never reset or overwritten.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "greenfield-non-git-workspace",
+      "prompt": "Set up an empty ordinary folder that only contains .agents/ and skills-lock.json. It is not a Git repository. Do not choose architecture or initialize source control.",
+      "expected_output": "Setup recognizes a greenfield non-Git workspace, treats skill-install artifacts as tooling context, avoids Git-specific failures and expected no-match errors, creates only minimal agent/project context, and leaves source control/architecture/technology undecided.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "bootstrap-context-guards",
+      "prompt": "Reconcile AGENTS.md for a project where the coding harness has global memories from other projects and the workspace may not use Git.",
+      "expected_output": "The managed AGENTS block stays thin but durably instructs agents to prefer project-local context, avoid unrelated global memory, and treat Git as optional before task-specific skill loading, while preserving human content outside the block.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "setup-do-not-probe-global-memory",
+      "prompt": "Use Proofcraft setup for this repository. The harness has a global memory file from unrelated projects, but I did not ask you to reuse it.",
+      "expected_output": "Setup does not search, grep, read, or otherwise probe harness/global/personal memory. It derives setup context from the current workspace and explicit user-provided context only.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    }
   ]
 }

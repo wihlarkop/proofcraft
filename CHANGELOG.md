@@ -4,6 +4,9 @@ All notable changes to Proofcraft are documented here.
 
 ## [Unreleased]
 
+### Fixed
+- `setup` now forbids probing harness/global/personal memory during onboarding unless the user explicitly requests reuse or the workspace itself points there; project-local setup context must come from the workspace and explicit conversation context.
+
 ### Added
 - Opt-in `shape:discover` mode for conversation-first product discovery with explicit decision/hypothesis boundaries, non-mandatory activation, and readiness outcomes before durable shaping.
 - Shared `shape` questioning strategies: adaptive by default, explicit single-question pacing, and bounded batch decision frontiers for faster discovery/shaping without turning clarification into a broad questionnaire.
