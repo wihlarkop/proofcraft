@@ -5,6 +5,7 @@ All notable changes to Proofcraft are documented here.
 ## [Unreleased]
 
 ### Fixed
+- `architect` now has an explicit greenfield technical-stack selection method: derive capabilities from product forces, compare stack shapes before brands, weigh current plus accepted near-term trajectory, and separate durable architecture from upgradeable baselines and reversible tooling.
 - `plan` now distinguishes reversible implementation details from consequential stack/dependency choices and refuses to silently own hard-to-reverse framework, database-product, identity, runtime, or provider decisions that still require architecture ownership.
 - `shape` now distinguishes product readiness from implementation readiness: when consequential architecture remains undecided, it routes to `architect` instead of prematurely suggesting `plan`.
 - `shape` questioning now separates pacing from presentation: users can keep adaptive/single/batch strategy while independently choosing adaptive, interactive, or plain-text question delivery.

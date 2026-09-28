@@ -7,7 +7,9 @@
     "artifacts/artifact-model.md",
     "architecture/boundaries.md",
     "architecture/tradeoffs.md",
+    "architecture/technical-stack-selection.md",
     "architecture/pattern-selection.md",
+    "engineering/dependency-selection.md",
     "engineering/provider-neutrality.md",
     "verification/evidence.md"
   ]

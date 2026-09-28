@@ -56,6 +56,27 @@
       "expected_output": "Architect records the ADR and minimally reconciles the now-false project-context statement with a pointer/summary instead of leaving contradictory durable artifacts.",
       "force_skill_invocation": false,
       "should_trigger": true
+    },
+    {
+      "id": "greenfield-stack-follows-product-trajectory",
+      "prompt": "Architect the technical stack for a new household inventory web product. The first slice is CRUD-heavy, but accepted near-term product direction includes highly interactive planning, shared-state feedback, editable make/do definitions, shortage reasoning, and assisted completion. No framework is selected yet.",
+      "expected_output": "Architect derives required capabilities from the accepted product trajectory, compares a small credible set of stack shapes before framework brands, and does not optimize solely for the easiest CRUD first slice. It distinguishes Now, Next, and speculative Later needs before selecting durable stack boundaries.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "stack-not-based-on-familiarity",
+      "prompt": "Choose the stack for a greenfield product. The user happens to know Python, FastAPI, SvelteKit, Go, and Rust, but has said familiarity should not drive the decision.",
+      "expected_output": "Architect selects or recommends technologies from product and architecture fit, lifecycle, complexity, operational consequences, and evolution cost. It does not prefer a technology merely because the user or agent already knows it.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "stack-distinguishes-durable-baseline-tooling",
+      "prompt": "Review a proposed stack containing a web framework, PostgreSQL, Python 3.12, and uv.",
+      "expected_output": "Architect distinguishes durable architecture choices such as application boundaries/framework/database from upgradeable version baselines and reversible tooling such as uv, avoiding unnecessary ADR ceremony for tooling.",
+      "force_skill_invocation": true,
+      "should_trigger": true
     }
   ]
 }
