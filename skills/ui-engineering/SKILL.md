@@ -55,6 +55,12 @@ Stop when the requested UI behavior is implemented or specified, relevant surfac
 
 Load only the references needed for the current task:
 
+- [interaction accessibility](references/interaction-accessibility.md)
+- [impeccable](references/providers/impeccable.md)
+- [responsive adaptive](references/responsive-adaptive.md)
+- [surface awareness](references/surface-awareness.md)
+- [visual craft](references/visual-craft.md)
+- [webview hybrid](references/webview-hybrid.md)
 - [principles](references/_shared/constitution/principles.md)
 - [decision lock](references/_shared/constitution/decision-lock.md)
 - [concerns](references/_shared/orchestration/concerns.md)
