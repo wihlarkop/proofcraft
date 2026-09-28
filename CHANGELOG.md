@@ -5,6 +5,7 @@ All notable changes to Proofcraft are documented here.
 ## [Unreleased]
 
 ### Fixed
+- Shared dependency/toolchain selection now treats modern tools such as `uv`, Bun, and Deno as first-class candidates, verifies current stable/support status from primary sources when material, prefers supported compatible stable baselines, and escalates tooling choices that implicitly lock runtime/deployment architecture.
 - `architect` and `ui-engineering` now distinguish architecture-level UI component/styling strategy from design truth and reversible package details, and compare custom, headless, styled-library, and hybrid approaches from product/accessibility/design needs rather than defaulting to popular CSS/component stacks.
 - `architect` now has an explicit greenfield technical-stack selection method: derive capabilities from product forces, compare stack shapes before brands, weigh current plus accepted near-term trajectory, and separate durable architecture from upgradeable baselines and reversible tooling.
 - `plan` now distinguishes reversible implementation details from consequential stack/dependency choices and refuses to silently own hard-to-reverse framework, database-product, identity, runtime, or provider decisions that still require architecture ownership.

@@ -84,6 +84,13 @@
       "expected_output": "Architect treats a pervasive component/styling foundation as a durable architecture concern, uses ui-engineering evidence, compares strategy shapes from product/design needs, and leaves incidental CSS/package details outside the ADR.",
       "force_skill_invocation": true,
       "should_trigger": true
+    },
+    {
+      "id": "modern-toolchain-currentness",
+      "prompt": "Architect a greenfield application and consider current tools such as uv, Bun, or Deno where relevant. The user wants modern stable technology but does not want novelty for its own sake.",
+      "expected_output": "Architect verifies current stable/support status from primary sources when material, treats modern toolchains as first-class candidates, distinguishes reversible tooling from runtime/deployment-coupled architecture choices, and prefers a supported compatible stable baseline rather than blindly choosing either older familiar tooling or the numerically newest release.",
+      "force_skill_invocation": true,
+      "should_trigger": true
     }
   ]
 }
