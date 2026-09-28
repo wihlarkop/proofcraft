@@ -29,6 +29,9 @@
       "privacy-engineering",
       "performance-engineering",
       "ai-engineering"
+    ],
+    "utility": [
+      "artifact-export"
     ]
   },
   "implemented": [
@@ -54,7 +57,8 @@
     "security-engineering",
     "privacy-engineering",
     "performance-engineering",
-    "ai-engineering"
+    "ai-engineering",
+    "artifact-export"
   ],
   "aliases": {
     "spec": {
@@ -88,6 +92,10 @@
     "discover": {
       "skill": "shape",
       "mode": "discover"
+    },
+    "export": {
+      "skill": "artifact-export",
+      "mode": "export"
     }
   }
 }

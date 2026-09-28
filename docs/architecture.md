@@ -17,6 +17,8 @@ Shared references are copied only into skills that declare them. This keeps auth
 
 Domain skills do not take over orchestration and do not recursively invoke each other. They may report an additional concern to the active workflow owner.
 
+Utility skills are explicit, bounded transformations outside the engineering lifecycle. They consume canonical artifacts without becoming their owner. For example, `artifact-export` may emit an OpenSpec representation of settled Proofcraft knowledge while leaving Proofcraft project truth unchanged.
+
 ## Runtime philosophy
 
 The suite classifies work by work class, depth, and concerns. Depth is adaptive: direct, bounded, substantial, or high-assurance. Verification depth follows risk rather than a mandatory process.
@@ -30,5 +32,6 @@ The suite classifies work by work class, depth, and concerns. Depth is adaptive:
 - Code: implement
 - Acceptance evidence: accept
 - Closure/reconciliation/handoff: finish
+- External collaboration representations: artifact-export (derived by default; never the canonical owner unless the project explicitly adopts the target format)
 
 Durable facts should have one canonical owner.

@@ -10,7 +10,7 @@ The suite follows the portable Agent Skills shape (`SKILL.md` plus on-demand ref
 
 Proofcraft is in early development (`v0.x`). The first public release is `v0.1.0`; the workflow contract will continue to evolve before `v1.0.0`.
 
-Release `v0.1.0` implements the full planned v0.1 surface: **10 core orchestration skills + 13 domain skills = 23 distributable skills**.
+Release `v0.1.0` implements the full planned v0.1 surface: **10 core orchestration skills + 13 domain skills = 23 distributable skills**. Unreleased development adds opt-in product discovery and an artifact-export utility without changing the v0.1 release tag.
 
 ## Core workflow
 
@@ -27,7 +27,7 @@ setup -> shape/architect -> plan -> implement/debug -> accept/review -> finish
 | Skill | Purpose |
 | --- | --- |
 | `setup` | Initialize or reconcile thin repository context and `AGENTS.md` guidance. |
-| `shape` | Resolve product ambiguity, decisions, specs, and wayfinding when needed. |
+| `shape` | Resolve product ambiguity, decisions, specs, opt-in product discovery, and wayfinding when needed. |
 | `architect` | Make consequential architecture decisions and record tradeoffs. |
 | `plan` | Produce implementation contracts with depth proportional to the work. |
 | `implement` | Execute coherent feature slices implementation-first. |
@@ -56,6 +56,14 @@ setup -> shape/architect -> plan -> implement/debug -> accept/review -> finish
 | `ai-engineering` | Provider-neutral LLM/AI contracts, structured outputs, tools, RAG, fallback, evals, and AI observability. |
 
 Domain skills are normally composed by a core workflow from detected concerns; users do not need to invoke every specialist manually.
+
+### Utility skills
+
+| Skill | Purpose |
+| --- | --- |
+| `artifact-export` | Transform settled Proofcraft artifacts into external collaboration formats such as OpenSpec without changing canonical project truth or inventing missing decisions. |
+
+Human-facing aliases include `discover` → `shape:discover` and `export` → `artifact-export:export`. Discovery remains opt-in; export runs only when explicitly requested.
 
 ## Principles
 

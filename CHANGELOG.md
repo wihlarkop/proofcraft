@@ -4,6 +4,10 @@ All notable changes to Proofcraft are documented here.
 
 ## [Unreleased]
 
+### Added
+- Opt-in `shape:discover` mode for conversation-first product discovery with one material question at a time, explicit decision/hypothesis boundaries, non-mandatory activation, and readiness outcomes before durable shaping.
+- `artifact-export` utility with an initial OpenSpec `spec-driven` v1 adapter, allowing settled Proofcraft artifacts to be transformed for collaboration without replacing canonical project truth or inventing missing design/tasks.
+
 ## [0.1.0] - 2026-09-28
 
 ### Fixed
