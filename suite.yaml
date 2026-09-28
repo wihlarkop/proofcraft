@@ -57,12 +57,37 @@
     "ai-engineering"
   ],
   "aliases": {
-    "spec": {"skill": "shape", "mode": "spec"},
-    "wayfind": {"skill": "shape", "mode": "wayfind"},
-    "test": {"skill": "accept", "mode": "test"},
-    "release": {"skill": "finish", "mode": "release"},
-    "ui-refine": {"skill": "ui-engineering", "mode": "refine"},
-    "ui-finish": {"skill": "ui-engineering", "mode": "finish"},
-    "db-change": {"skill": "database-engineering", "mode": "change"}
+    "spec": {
+      "skill": "shape",
+      "mode": "spec"
+    },
+    "wayfind": {
+      "skill": "shape",
+      "mode": "wayfind"
+    },
+    "test": {
+      "skill": "accept",
+      "mode": "test"
+    },
+    "release": {
+      "skill": "finish",
+      "mode": "release"
+    },
+    "ui-refine": {
+      "skill": "ui-engineering",
+      "mode": "refine"
+    },
+    "ui-finish": {
+      "skill": "ui-engineering",
+      "mode": "finish"
+    },
+    "db-change": {
+      "skill": "database-engineering",
+      "mode": "change"
+    },
+    "discover": {
+      "skill": "shape",
+      "mode": "discover"
+    }
   }
 }

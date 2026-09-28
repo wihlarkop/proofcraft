@@ -70,6 +70,27 @@
       "expected_output": "Shape asks one focused product decision and does not silently answer or remove the remaining decision frontier.",
       "force_skill_invocation": false,
       "should_trigger": true
+    },
+    {
+      "id": "discover-opt-in-product-idea",
+      "prompt": "I have an idea for a household inventory product, but I am still deciding what the product should be. Use Proofcraft discover mode. Do not create files or code yet; ask me the single most important product question.",
+      "expected_output": "Shape enters opt-in discover mode, stays conversational, creates no durable artifact or code, and asks one material product question rather than choosing technology or producing a plan.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "discover-not-default-for-clear-greenfield",
+      "prompt": "Create a small CLI that renames FLAC files from embedded metadata. It is local-only, must preview changes before apply, and the requirements are already decided.",
+      "expected_output": "Discover is not activated merely because this is greenfield work. The request may proceed through normal shaping/planning/implementation with only necessary clarification.",
+      "force_skill_invocation": false,
+      "should_trigger": false
+    },
+    {
+      "id": "discover-readiness-outcomes",
+      "prompt": "Use discover for a product idea whose core user and value are still uncertain. Keep hypotheses separate from decisions, challenge assumptions, and stop when you can classify readiness.",
+      "expected_output": "The conversation distinguishes DECIDED, HYPOTHESIS, OPEN, and DEFERRED, avoids implementation choices, and ends at an appropriate READY_TO_SHAPE, NEEDS_MORE_DISCOVERY, NEEDS_RESEARCH, or PARK checkpoint without inventing artifacts.",
+      "force_skill_invocation": true,
+      "should_trigger": true
     }
   ]
 }
