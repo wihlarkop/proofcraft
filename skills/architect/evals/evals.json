@@ -77,6 +77,13 @@
       "expected_output": "Architect distinguishes durable architecture choices such as application boundaries/framework/database from upgradeable version baselines and reversible tooling such as uv, avoiding unnecessary ADR ceremony for tooling.",
       "force_skill_invocation": true,
       "should_trigger": true
+    },
+    {
+      "id": "architecture-owns-pervasive-ui-strategy",
+      "prompt": "Architect a greenfield web product whose frontend stack is selected but whose UI strategy is not. Decide whether to adopt a broad styled component system, headless primitives plus custom styling, or project-owned components. Do not choose exact minor packages unnecessarily.",
+      "expected_output": "Architect treats a pervasive component/styling foundation as a durable architecture concern, uses ui-engineering evidence, compares strategy shapes from product/design needs, and leaves incidental CSS/package details outside the ADR.",
+      "force_skill_invocation": true,
+      "should_trigger": true
     }
   ]
 }

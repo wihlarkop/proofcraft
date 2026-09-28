@@ -9,6 +9,7 @@
     "architecture/tradeoffs.md",
     "architecture/technical-stack-selection.md",
     "architecture/pattern-selection.md",
+    "ui/component-styling-strategy.md",
     "engineering/dependency-selection.md",
     "engineering/provider-neutrality.md",
     "verification/evidence.md"

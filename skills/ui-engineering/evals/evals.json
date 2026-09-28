@@ -42,6 +42,27 @@
       "expected_output": "ui-engineering treats keyboard accessibility as product behavior and verifies the relevant interaction.",
       "force_skill_invocation": false,
       "should_trigger": true
+    },
+    {
+      "id": "greenfield-component-strategy",
+      "prompt": "Use ui-engineering for a new responsive web product with no component library or CSS strategy selected yet. It needs custom visual identity, dark mode, dialogs, menus, forms, keyboard accessibility, and touch support.",
+      "expected_output": "ui-engineering compares custom, headless-primitives, styled-library, and hybrid strategies against the product's design/accessibility needs instead of defaulting to a popular library. It distinguishes any pervasive architecture-level choice from reversible package details.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "do-not-default-tailwind-shadcn",
+      "prompt": "Build the UI foundation for a new app. Tailwind and a shadcn-style library are popular but the project has not selected them.",
+      "expected_output": "ui-engineering does not adopt Tailwind or a component library by popularity/default. It derives component and styling strategy from product/design requirements and existing DESIGN.md truth.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "accessible-primitives-when-justified",
+      "prompt": "The product needs custom visual styling but several complex dialogs, menus, popovers, and comboboxes with strong keyboard and screen-reader behavior.",
+      "expected_output": "ui-engineering seriously considers maintained headless/accessibility primitives to reduce interaction risk while keeping the visual language project-owned; it does not insist on hand-rolling all primitives or importing a full styled system.",
+      "force_skill_invocation": false,
+      "should_trigger": true
     }
   ]
 }
