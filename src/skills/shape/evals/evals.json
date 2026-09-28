@@ -119,6 +119,13 @@
       "expected_output": "Shape uses adaptive pacing: it may start or remain single while dependencies are high, then switches to a bounded batch once the remaining material frontier is mostly independent, without broadening scope or inventing questions.",
       "force_skill_invocation": true,
       "should_trigger": true
+    },
+    {
+      "id": "greenfield-shape-routes-to-architect",
+      "prompt": "Shape a greenfield household application whose product behavior is now settled, but no platform, data authority, runtime boundaries, storage architecture, or other durable system decisions have been made yet.",
+      "expected_output": "Shape may complete the product/spec artifacts, but its next-workflow guidance routes to architect rather than directly to plan because consequential architecture remains undecided. It must not choose the architecture itself.",
+      "force_skill_invocation": true,
+      "should_trigger": true
     }
   ]
 }

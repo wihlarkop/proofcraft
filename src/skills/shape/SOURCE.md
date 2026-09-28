@@ -10,7 +10,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.4"
+  skill-version: "0.1.5"
 ---
 
 
@@ -50,4 +50,4 @@ The spec states WHAT must be true: behavior, invariants, lifecycle/failure seman
 
 ## Stop
 
-Stop when the work is clear enough to plan. If a genuine human decision remains and guessing would create meaningful product/architecture risk, ask it or record it explicitly as open rather than silently resolving it.
+Stop when product behavior is clear enough to hand off. If consequential architecture is still materially undecided — for example a greenfield product still lacks platform shape, data authority, runtime boundaries, or other hard-to-reverse system choices — route next to `architect` rather than implying the work is ready for `plan`. Route directly to `plan` only when accepted architecture is already sufficient for a fresh agent to implement without reopening durable system decisions. If a genuine human decision remains and guessing would create meaningful product/architecture risk, ask it or record it explicitly as open rather than silently resolving it.
