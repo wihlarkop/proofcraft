@@ -98,6 +98,27 @@
       "expected_output": "Discover inspects only the current workspace and explicitly supplied context. It does not search or rely on global/personal harness memory unless the user requests reuse or the workspace points there.",
       "force_skill_invocation": true,
       "should_trigger": true
+    },
+    {
+      "id": "discover-explicit-batch-questioning",
+      "prompt": "Use Proofcraft discover in batch mode. We have already settled the product's core user, value, inventory semantics, and collaboration model. Give me the remaining material product questions in one pass so I can answer them together. Do not create files or ask implementation questions.",
+      "expected_output": "Discover honors explicit batch questioning, does not repeat settled decisions, presents a bounded remaining material frontier, distinguishes blocking/deferred/conditional questions when useful, avoids implementation choices, and creates no durable artifact.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "shape-explicit-batch-questioning",
+      "prompt": "Use Proofcraft shape in batch mode for this feature. Several independent behavior decisions remain and I want to answer them in one response.",
+      "expected_output": "Shape presents one bounded batch of material unresolved behavior decisions, excludes project-discoverable facts and implementation trivia, preserves dependencies as conditional, and does not silently resolve unanswered decisions.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "adaptive-questioning-transition",
+      "prompt": "Continue shaping this product using the default questioning strategy. Early decisions were strongly dependent, but the major direction is now stable and I want less back-and-forth.",
+      "expected_output": "Shape uses adaptive pacing: it may start or remain single while dependencies are high, then switches to a bounded batch once the remaining material frontier is mostly independent, without broadening scope or inventing questions.",
+      "force_skill_invocation": true,
+      "should_trigger": true
     }
   ]
 }

@@ -63,7 +63,7 @@ Domain skills are normally composed by a core workflow from detected concerns; u
 | --- | --- |
 | `artifact-export` | Transform settled Proofcraft artifacts into external collaboration formats such as OpenSpec without changing canonical project truth or inventing missing decisions. |
 
-Human-facing aliases include `discover` → `shape:discover` and `export` → `artifact-export:export`. Discovery remains opt-in; export runs only when explicitly requested.
+Human-facing aliases include `discover` → `shape:discover` and `export` → `artifact-export:export`. Discovery remains opt-in; export runs only when explicitly requested. When discovery or shaping needs human decisions, questioning is adaptive by default, with explicit `single` and `batch` strategies available to trade conversational depth for speed.
 
 ## Principles
 
