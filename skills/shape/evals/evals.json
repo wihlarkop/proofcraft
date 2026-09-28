@@ -91,6 +91,13 @@
       "expected_output": "The conversation distinguishes DECIDED, HYPOTHESIS, OPEN, and DEFERRED, avoids implementation choices, and ends at an appropriate READY_TO_SHAPE, NEEDS_MORE_DISCOVERY, NEEDS_RESEARCH, or PARK checkpoint without inventing artifacts.",
       "force_skill_invocation": true,
       "should_trigger": true
+    },
+    {
+      "id": "discover-project-local-context-only",
+      "prompt": "Use discover for this new product. The repository contains the local Proofcraft skills and a README. The coding harness also has unrelated global/personal memory from other projects. I did not ask you to reuse that memory.",
+      "expected_output": "Discover inspects only the current workspace and explicitly supplied context. It does not search or rely on global/personal harness memory unless the user requests reuse or the workspace points there.",
+      "force_skill_invocation": true,
+      "should_trigger": true
     }
   ]
 }
