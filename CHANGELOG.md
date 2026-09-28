@@ -6,6 +6,7 @@ All notable changes to Proofcraft are documented here.
 
 ### Fixed
 - `shape` now distinguishes product readiness from implementation readiness: when consequential architecture remains undecided, it routes to `architect` instead of prematurely suggesting `plan`.
+- `shape` questioning now separates pacing from presentation: users can keep adaptive/single/batch strategy while independently choosing adaptive, interactive, or plain-text question delivery.
 - `setup` now forbids probing harness/global/personal memory during onboarding unless the user explicitly requests reuse or the workspace itself points there; project-local setup context must come from the workspace and explicit conversation context.
 
 ### Added

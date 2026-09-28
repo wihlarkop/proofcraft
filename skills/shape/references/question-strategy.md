@@ -72,3 +72,24 @@ After single or batch answers:
 5. Declare readiness only when blockers are actually resolved.
 
 Question strategy never authorizes creating durable artifacts in discover mode, guessing missing policy, or extending the scope beyond the active workflow.
+
+## Presentation preference
+
+Question strategy and question presentation are separate.
+
+Supported presentation preferences:
+
+- **adaptive** — default. Use the harness interaction that best fits the current situation.
+- **interactive** — use structured/interactive question controls when the harness supports them.
+- **plain** — render the questions as ordinary copyable text.
+
+An explicit presentation request overrides the adaptive default. Examples include `discover batch interactive`, `discover batch plain`, `shape single interactive`, or natural-language equivalents.
+
+Presentation must not change the decision frontier, wording substance, number of blockers, or readiness semantics. It only changes how the questions are delivered.
+
+For adaptive presentation:
+
+- prefer interactive controls when they reduce friction and the user is answering in place;
+- prefer plain text when the user asks to copy, share, review elsewhere, or when structured controls are unavailable;
+- never assume plain text is inherently better for batch questioning;
+- never require interactive controls when the harness does not provide them.

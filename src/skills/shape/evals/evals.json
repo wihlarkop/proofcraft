@@ -126,6 +126,20 @@
       "expected_output": "Shape may complete the product/spec artifacts, but its next-workflow guidance routes to architect rather than directly to plan because consequential architecture remains undecided. It must not choose the architecture itself.",
       "force_skill_invocation": true,
       "should_trigger": true
+    },
+    {
+      "id": "batch-interactive-presentation",
+      "prompt": "Use Proofcraft shape in batch interactive mode. Several independent product decisions remain. If the harness supports structured questions, let me answer them interactively.",
+      "expected_output": "Shape uses batch strategy and interactive presentation when supported, without changing or expanding the material decision frontier.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "batch-plain-presentation",
+      "prompt": "Use Proofcraft shape in batch plain mode because I need to copy the questions elsewhere.",
+      "expected_output": "Shape uses batch strategy but renders the bounded material question set as ordinary copyable text instead of requiring interactive controls.",
+      "force_skill_invocation": true,
+      "should_trigger": true
     }
   ]
 }

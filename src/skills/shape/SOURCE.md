@@ -10,7 +10,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.5"
+  skill-version: "0.1.6"
 ---
 
 
@@ -38,7 +38,7 @@ Convert ambiguous intent into behavior and decisions clear enough for planning.
 
 ## Question strategy
 
-When clarification is needed, follow `references/question-strategy.md`. `adaptive` is the default; `single` and `batch` are explicit user-selectable strategies. Question strategy controls pacing only: it does not broaden the decision frontier, authorize implementation questions, or allow unresolved decisions to be guessed.
+When clarification is needed, follow `references/question-strategy.md`. `adaptive` is the default; `single` and `batch` are explicit user-selectable strategies. Question presentation is independently selectable as `adaptive`, `interactive`, or `plain`. Strategy controls pacing and presentation controls delivery only; neither may broaden the decision frontier, authorize implementation questions, or allow unresolved decisions to be guessed.
 
 ## Discover mode
 
