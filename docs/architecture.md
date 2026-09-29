@@ -29,7 +29,7 @@ The suite classifies work by work class, depth, and concerns. Depth is adaptive:
 - Product truth/specification: shape
 - Architecture decisions: architect/ADR helper
 - Implementation plan: plan
-- Code: implement
+- Code: implement for new behavior; improve for behavior-preserving quality changes; debug for evidenced repairs
 - Acceptance evidence: accept
 - Closure/reconciliation/handoff: finish
 - External collaboration representations: artifact-export (derived by default; never the canonical owner unless the project explicitly adopts the target format)

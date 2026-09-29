@@ -10,14 +10,14 @@ The suite follows the portable Agent Skills shape (`SKILL.md` plus on-demand ref
 
 Proofcraft is in early development (`v0.x`). The first public release is `v0.1.0`; the workflow contract will continue to evolve before `v1.0.0`.
 
-Release `v0.1.0` implements the full planned v0.1 surface: **10 core orchestration skills + 13 domain skills = 23 distributable skills**. Unreleased development adds opt-in product discovery and an artifact-export utility without changing the v0.1 release tag.
+Release `v0.1.0` implements the full planned v0.1 surface: **10 core orchestration skills + 13 domain skills = 23 distributable skills**. Unreleased development adds opt-in product discovery, an `improve` core workflow, and an artifact-export utility without changing the v0.1 release tag.
 
 ## Core workflow
 
 The human-facing workflow stays intentionally small:
 
 ```text
-setup -> shape/architect -> plan -> implement/debug -> accept/review -> finish
+setup -> shape/architect -> plan -> implement/debug/improve -> accept/review -> finish
 ```
 
 `continue` reconstructs repository reality and resumes from the correct stage. This is not a mandatory waterfall: direct work can skip stages, while high-risk work gets deeper evidence.
@@ -33,6 +33,7 @@ setup -> shape/architect -> plan -> implement/debug -> accept/review -> finish
 | `implement` | Execute coherent feature slices implementation-first. |
 | `accept` | Prove observable behavior with risk-appropriate evidence. |
 | `debug` | Reproduce, isolate root cause, fix, and protect against regression. |
+| `improve` | Make bounded behavior-preserving code-quality improvements without pattern shopping. |
 | `review` | Review the intended change with evidence-backed findings. |
 | `finish` | Verify, reconcile, check diff hygiene, and produce closure/handoff evidence. |
 | `continue` | Reconstruct current truth and resume the first eligible work. |
@@ -63,7 +64,7 @@ Domain skills are normally composed by a core workflow from detected concerns; u
 | --- | --- |
 | `artifact-export` | Transform settled Proofcraft artifacts into external collaboration formats such as OpenSpec without changing canonical project truth or inventing missing decisions. |
 
-Human-facing aliases include `discover` → `shape:discover` and `export` → `artifact-export:export`. Discovery remains opt-in; export runs only when explicitly requested. When discovery or shaping needs human decisions, questioning is adaptive by default, with explicit `single` and `batch` strategies available to trade conversational depth for speed.
+Human-facing aliases include `discover` → `shape:discover`, `refactor` → `improve:refactor`, and `export` → `artifact-export:export`. Discovery remains opt-in; export runs only when explicitly requested. When discovery or shaping needs human decisions, questioning is adaptive by default, with explicit `single` and `batch` strategies available to trade conversational depth for speed.
 
 ## Principles
 
