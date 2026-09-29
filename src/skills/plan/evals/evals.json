@@ -77,6 +77,13 @@
       "expected_output": "Plan may compare or recommend implementation mechanisms, but it does not silently mark a foundational framework/database/provider choice as settled architecture if that choice is consequential or hard to reverse. It routes that durable decision through architect or leaves the plan blocked until accepted, while freely selecting genuinely reversible details.",
       "force_skill_invocation": true,
       "should_trigger": true
+    },
+    {
+      "id": "version-sensitive-usage",
+      "prompt": "Plan a feature on an already accepted framework/runtime where the relevant configuration pattern changed materially between versions.",
+      "expected_output": "Plan preserves the accepted stack and specifies the current supported convention needed for execution using version-appropriate primary guidance, without reopening architecture or adding generic best-practice ceremony.",
+      "force_skill_invocation": false,
+      "should_trigger": true
     }
   ]
 }

@@ -11,7 +11,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.1"
+  skill-version: "0.1.2"
 ---
 
 
@@ -29,9 +29,9 @@ Use when a plan is ready or a bounded task is sufficiently clear to implement di
 2. For substantial work, verify prerequisites with a lightweight gate.
 3. Classify the material implementation concerns, then load each relevant domain skill contract before making that part of the change. Typical examples include UI, mobile lifecycle/offline behavior, and database persistence. Do not treat broad skill-tree discovery as composition, and do not load incidental specialists.
 4. Preserve settled decisions and preserve explicitly open decisions. Reversible implementation mechanisms may be chosen when needed to realize accepted behavior, but do not promote them into new product policy or architecture truth.
-5. Implement one coherent behavior slice at a time. Prefer existing patterns and dependencies. When a new dependency is justified, follow the dependency-selection contract and record the reason proportionally.
+5. Implement one coherent behavior slice at a time. Prefer existing supported project patterns and dependencies. When a selected language/framework/library/tool has version-sensitive or unestablished usage, follow the current-technology-usage contract and consult current primary guidance only for the capability being used. When a new dependency is justified, follow the dependency-selection contract and record the reason proportionally.
 6. Keep business/domain intent separate from vendor/framework plumbing where the project architecture already does so.
-7. Run the cheapest useful static/build evidence after meaningful slices, then add targeted regression/integration coverage appropriate to risk. Do not force red-green-refactor unless TDD was explicitly selected.
+7. Run the cheapest useful static/build evidence after meaningful slices, then add targeted regression/integration coverage appropriate to risk. Verification is required, but unit tests and coverage targets are not mandatory by default. Add focused unit tests when they are the cheapest strong evidence for meaningful logic/invariants or when the project/user requires them. Do not force red-green-refactor unless TDD was explicitly selected.
 8. Exercise the strongest relevant runnable surface that is actually available. If a required device/toolchain is unavailable, record that verification as blocked rather than substituting an irrelevant platform or claiming equivalent evidence.
 9. Avoid unrelated cleanup and refactors unless required for correctness or explicitly accepted. Expected no-match cleanup searches are normal evidence; run them so a no-match does not masquerade as a failed implementation step.
 10. Keep this workflow as the core owner. Do not preload or execute accept, review, or finish merely to make implementation feel complete; hand off when their workflow is actually requested or becomes the next phase.
@@ -50,5 +50,6 @@ Load only the references needed for the current task:
 - [gate](references/_shared/orchestration/gate.md)
 - [diff discipline](references/_shared/engineering/diff-discipline.md)
 - [dependency selection](references/_shared/engineering/dependency-selection.md)
+- [technology usage](references/_shared/engineering/technology-usage.md)
 - [risk depth](references/_shared/verification/risk-depth.md)
 - [regression scope](references/_shared/verification/regression-scope.md)

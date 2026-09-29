@@ -11,6 +11,7 @@
       "implement",
       "accept",
       "debug",
+      "improve",
       "review",
       "finish",
       "continue"
@@ -42,6 +43,7 @@
     "implement",
     "accept",
     "debug",
+    "improve",
     "review",
     "finish",
     "continue",
@@ -96,6 +98,10 @@
     "export": {
       "skill": "artifact-export",
       "mode": "export"
+    },
+    "refactor": {
+      "skill": "improve",
+      "mode": "refactor"
     }
   }
 }

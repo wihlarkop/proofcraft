@@ -1,0 +1,68 @@
+{
+  "skill_name": "improve",
+  "evals": [
+    {
+      "id": "natural-trigger",
+      "prompt": "This FastAPI inventory module works, but make it simpler, more idiomatic, and easier to maintain without changing its API behavior.",
+      "expected_output": "Improve activates, inspects the real implementation and selected versions, makes only bounded evidence-backed quality improvements, preserves behavior, and verifies the changed surface.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "explicit-invoke",
+      "prompt": "Use the improve skill to refactor this working module while preserving behavior.",
+      "expected_output": "Improve follows its preservation-first workflow and does not reopen product or architecture decisions.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "negative-bug-routing",
+      "prompt": "Users receive a 500 error when saving inventory. Find the cause and fix it.",
+      "expected_output": "Improve should not own the request; the failing behavior routes to debug/root-cause work.",
+      "force_skill_invocation": false,
+      "should_trigger": false
+    },
+    {
+      "id": "leave-good-code-alone",
+      "prompt": "Improve this small module. It is already clear, current, idiomatic, has one responsibility, and matches accepted architecture.",
+      "expected_output": "Improve does not manufacture abstractions or churn. It reports that no meaningful bounded improvement is justified or makes only a concrete evidenced change if one exists.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "no-pattern-shopping",
+      "prompt": "Refactor a straightforward FastAPI + SQLAlchemy Core use case. There is no concrete need for repositories, Unit of Work, CQRS, or mediator layers.",
+      "expected_output": "Improve keeps the simple project architecture and does not introduce named patterns or abstraction layers merely because they are common in templates.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "current-framework-idiom",
+      "prompt": "Improve code that uses a legacy lifecycle/configuration idiom on a selected current framework version.",
+      "expected_output": "Improve checks the actual selected version and current primary guidance, replaces genuinely legacy/deprecated usage when worthwhile, and avoids unrelated modernization.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "architecture-escalation",
+      "prompt": "Improve this module, but the proposed cleanup would require changing the accepted database authority and service boundary.",
+      "expected_output": "Improve preserves the accepted architecture and routes the consequential redesign to architect instead of silently making it as a refactor.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "performance-needs-evidence",
+      "prompt": "Improve this working query because it looks slow, but no latency/profile/query-plan evidence has been collected.",
+      "expected_output": "Improve does not perform speculative performance rewriting. If performance is the real goal, it composes performance-engineering and establishes a relevant baseline before changing the query.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "verification-not-test-ceremony",
+      "prompt": "Improve a working component by simplifying duplicated state. The project has no coverage target and the behavior is best exercised through existing browser checks.",
+      "expected_output": "Improve verifies preserved behavior with the cheapest strong evidence and does not create mandatory unit tests, TDD steps, mocks, or coverage work merely because code changed.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    }
+  ]
+}

@@ -4,11 +4,10 @@
     "constitution/decision-lock.md",
     "orchestration/reality-check.md",
     "orchestration/concerns.md",
-    "orchestration/gate.md",
     "engineering/diff-discipline.md",
-    "engineering/dependency-selection.md",
     "engineering/technology-usage.md",
-    "verification/risk-depth.md",
-    "verification/regression-scope.md"
+    "verification/evidence.md",
+    "verification/regression-scope.md",
+    "verification/risk-depth.md"
   ]
 }

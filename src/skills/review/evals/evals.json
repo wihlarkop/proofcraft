@@ -35,6 +35,13 @@
       "expected_output": "Unrelated changes are preserved and never reset or overwritten.",
       "force_skill_invocation": true,
       "should_trigger": true
+    },
+    {
+      "id": "current-idiom-not-style-preference",
+      "prompt": "Review a change using a current framework version. A suspicious pattern may be legacy, but the code is otherwise working.",
+      "expected_output": "Review validates whether the pattern is actually deprecated/unsupported/non-idiomatic for the selected version before reporting it and does not elevate personal style preference into a finding.",
+      "force_skill_invocation": false,
+      "should_trigger": true
     }
   ]
 }
