@@ -27,7 +27,7 @@ setup -> shape/architect -> plan -> implement/debug/improve -> accept/review -> 
 | Skill | Purpose |
 | --- | --- |
 | `setup` | Initialize or reconcile thin repository context and `AGENTS.md` guidance. |
-| `shape` | Resolve product ambiguity, decisions, specs, opt-in product discovery, and wayfinding when needed. |
+| `shape` | Resolve product ambiguity, decisions, specs, opt-in discovery, next product opportunities, and wayfinding when needed. |
 | `architect` | Make consequential architecture decisions and record tradeoffs. |
 | `plan` | Produce implementation contracts with depth proportional to the work. |
 | `implement` | Execute coherent feature slices implementation-first. |
@@ -64,7 +64,9 @@ Domain skills are normally composed by a core workflow from detected concerns; u
 | --- | --- |
 | `artifact-export` | Transform settled Proofcraft artifacts into external collaboration formats such as OpenSpec without changing canonical project truth or inventing missing decisions. |
 
-Human-facing aliases include `discover` → `shape:discover`, `refactor` → `improve:refactor`, and `export` → `artifact-export:export`. Discovery remains opt-in; export runs only when explicitly requested. When discovery or shaping needs human decisions, questioning is adaptive by default, with explicit `single` and `batch` strategies available to trade conversational depth for speed.
+Human-facing aliases include `discover` → `shape:discover`, `recommend` → `shape:recommend`, `refactor` → `improve:refactor`, and `export` → `artifact-export:export`. Discovery remains opt-in; export runs only when explicitly requested. When discovery or shaping needs human decisions, questioning is adaptive by default, with explicit `single` and `batch` strategies available to trade conversational depth for speed.
+
+Use `recommend` to choose what to shape next after a product has an accepted direction and implemented baseline. It inspects current product docs, behavior, implementation, architecture constraints, and deferrals, then offers a small evidence-grounded set of opportunities. Advice distinguishes supported opportunities, hypotheses, and deferred work; it creates no product/spec artifacts or plan. Human selection moves the chosen opportunity into normal shaping. A request to clarify an already selected feature remains normal shape/spec.
 
 ## Principles
 

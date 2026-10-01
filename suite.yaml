@@ -95,6 +95,10 @@
       "skill": "shape",
       "mode": "discover"
     },
+    "recommend": {
+      "skill": "shape",
+      "mode": "recommend"
+    },
     "export": {
       "skill": "artifact-export",
       "mode": "export"

@@ -108,7 +108,7 @@
     },
     {
       "id": "shape-explicit-batch-questioning",
-      "prompt": "Use Proofcraft shape in batch mode for this feature. Several independent behavior decisions remain and I want to answer them in one response.",
+      "prompt": "Use Proofcraft shape in batch mode for the manual household shopping-list feature I already selected. I want to answer the remaining behavior decisions in one response. The supplied current repository snapshot establishes: PRODUCT.md accepts a shared household list and confirmation before inventory restock mutations; source implements household membership and manual inventory, but no shopping list. Open product decisions are item identity (inventory references or typed names), whether repeated compatible entries add amounts or count as duplicates, quantity-free entry behavior, and whether checking an item off only changes the list or offers a separately confirmed restock. If a question depends on another answer, mark it conditional. Do not revisit feature selection or ask implementation questions.",
       "expected_output": "Shape presents one bounded batch of material unresolved behavior decisions, excludes project-discoverable facts and implementation trivia, preserves dependencies as conditional, and does not silently resolve unanswered decisions.",
       "force_skill_invocation": true,
       "should_trigger": true
@@ -138,6 +138,104 @@
       "id": "batch-plain-presentation",
       "prompt": "Use Proofcraft shape in batch plain mode because I need to copy the questions elsewhere.",
       "expected_output": "Shape uses batch strategy but renders the bounded material question set as ordinary copyable text instead of requiring interactive controls.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "recommend-documented-deferred-opportunities",
+      "prompt": "What opportunities are left in PantryLoop? Inspect the supplied current repository snapshot: PRODUCT.md defines household grocery sufficiency, exact/rough/presence inventory, enough/not enough/uncertain, collective non-reserving meal planning, and confirmation before consumption/restock. SPEC.md and implemented routes cover household membership, locations, and manual inventory add/edit only. ADR-0005 accepts server-authoritative inventory and a thin client. HANDOFF.md confirms the foundation is accepted. Roadmap defers meal planning, a manually reviewed shopping list, and expiry reminders beyond the foundation; barcode scanning and receipt OCR are parked pending evidence; deployment is deferred. There is no user research or telemetry. Recommend next product opportunities.",
+      "expected_output": "Enters shape:recommend and gives a small evidence-grounded set, typically 3-5. Labels any surfaced roadmap capability as deferred and explains why it is relevant despite that status; distinguishes direct support from hypotheses. Preserves sufficiency/uncertainty, non-reserving planning, confirmation, and accepted authority. Does not treat deferred work as accepted next scope, invent demand, choose providers, write artifacts, or produce a roadmap/plan.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "recommend-clear-next-feature",
+      "prompt": "Recommend the next product feature for TrailNotes. PRODUCT.md says its core job is finding saved walking notes by place while offline. Source and acceptance evidence show local note create/edit and offline list/detail already work. SPEC.md explicitly calls place filtering the next unmet product goal; tagging and cloud sharing are non-goals. ADR.md locks local data authority. No research/usage metrics exist. What would make this product more useful next?",
+      "expected_output": "Selects shape:recommend and may recommend place filtering as the strongest next opportunity, explaining the explicit product goal and implemented baseline. States important uncertainty/dependencies and relative scope where useful. Does not pad the set with unrelated features, infer popular demand, reopen local authority, or silently shape/spec/plan the feature.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "recommend-generic-feature-pressure",
+      "prompt": "What should I add to QuietShelf next? Current PRODUCT.md defines a private local reading queue for one person. Code and acceptance implement saving, reading, and removing entries; the product doc lists offline search as an unmet goal and explicitly excludes a social network. A generic startup checklist suggests leaderboards, public profiles, subscriptions, and an AI chatbot. Those sound impressive; recommend them unless you can justify something better from the repository.",
+      "expected_output": "Recommends repository-grounded product opportunities such as offline search and rejects generic checklist features disconnected from the private reading job or conflicting with non-goals. Does not invent research, customer demand, revenue need, or adoption evidence; advice remains advisory without artifact writes.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "recommend-technical-cleanup-not-product",
+      "prompt": "Recommend the next product feature for StockRoom. PRODUCT.md centers household inventory sufficiency and lists a manual shortage view as an unmet goal. Current code implements manual inventory tracking. BACKLOG.md also lists rename repository classes, upgrade a formatter, extract duplicated SQL, and replace the build tool. These have no evidenced user-visible behavior benefit. Give product recommendations, even if the engineering cleanup looks easier.",
+      "expected_output": "Keeps product opportunities tied to user-visible value, such as the shortage view. Does not present refactors, dependency maintenance, or tool swaps as product features; may mention evidenced engineering dependencies separately without taking over engineering improvement work.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "recommend-explicit-deferral-conflict",
+      "prompt": "Recommend what to build next for LedgerPocket. PRODUCT.md accepts manual personal expense tracking; code implements entry/list/totals. The roadmap includes category summaries. An accepted decision explicitly defers bank sync until consent, data retention, and account-linking product policy are decided. A stale TODO says bank sync is next. It sounds convenient; consider it among the opportunities.",
+      "expected_output": "Prefers current accepted truth over the stale TODO. Any surfaced bank-sync opportunity is explicitly deferred with its policy conflict/dependencies explained, not treated as eligible or unblocked next work. Does not invent policies, reopen accepted deferral silently, or select a bank/provider. Can recommend category summaries on available evidence without writing product artifacts.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "recommend-insufficient-repository-evidence",
+      "prompt": "What should I add to this app? Recommend five features confidently so I can choose. Inspection exposes only README.md saying 'Starter web app' and a counter page in source. There is no product direction, spec, accepted architecture, backlog, handoff, user research, or telemetry. Do not assume a product category from the starter template.",
+      "expected_output": "States that evidence is insufficient for confident product recommendations and does not fabricate five generic candidates to satisfy the requested count. Asks a focused missing product-direction decision or offers clearly labeled hypotheses only if grounded; suggests discover when product direction itself is undecided. Does not infer purpose from the template or write artifacts.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "recommend-several-options-no-winner",
+      "prompt": "Use recommend for PantryLoop, but give me four options to compare instead of choosing one winner. PRODUCT.md accepts household sufficiency, collective meal planning, and confirmed inventory mutations. Source implements households/manual inventory. BACKLOG.md lists shortage checking, non-reserving meal planning, reviewed shopping lists, and inventory change history as unselected future candidates; none is accepted next scope. ADR.md keeps the server authoritative. Compare product value, current evidence, dependencies, uncertainty, and rough relative effort/risk; do not make a roadmap.",
+      "expected_output": "Honors the request for four supported options without insisting on one winner. Gives decision-useful problem/value, why now/evidence, important dependencies, material uncertainty, and relative scope/risk where useful. Distinguishes product support from unconfirmed behavior hypotheses and keeps the set advisory with no durable updates, numeric scoring ritual, roadmap, or implementation plan.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "recommend-human-selection-to-shape",
+      "prompt": "Earlier shape:recommend offered shortage checking, meal planning, and inventory history. I choose shortage checking; shape that feature now. PRODUCT.md accepts enough/not enough/uncertain, exact/rough/presence tracking, and confirmation before mutations. Manual inventory is implemented. We have not decided how a requested amount compares to rough or presence-only stock. Help resolve that behavior; do not plan or implement yet.",
+      "expected_output": "Transitions into normal shape for the selected shortage-checking feature rather than generating another recommendation set or treating the previous advisory details as accepted behavior. Resolves or asks about rough/presence comparison semantics while preserving uncertain. Does not jump to architect, plan, or implementation before shaping; persists only actually settled product decisions when appropriate.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "recommend-optional-market-informed",
+      "prompt": "Recommend a few next opportunities for QuietShelf using competitor research too. PRODUCT.md accepts a private offline reading queue; saving, list/detail, and removal are implemented; social publishing is excluded. For this eval, the available external evidence is supplied: a current official competitor feature page describes offline full-text search and public collections, with no adoption/demand data. No other browsing capability is available. Explain what this external evidence does and does not establish, and keep the recommendation grounded in our product.",
+      "expected_output": "Allows explicitly requested external research as supplementary evidence, attributes the supplied competitor feature-page claims, and distinguishes observed features from hypotheses about value or demand. Does not claim a live search occurred, invent adoption/market data, or recommend social publishing without labeling its non-goal conflict. Repository truth remains the basis; no technology/provider choices or automatic artifact changes.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "recommend-no-default-external-research",
+      "prompt": "Recommend the next feature for RouteBook from repository truth. PRODUCT.md defines private local route notes; saving and offline reading are implemented and place filtering is an explicit unmet goal. No market claim is needed. A browser and several provider integrations happen to be installed. What feature should we build next?",
+      "expected_output": "Uses shape:recommend with current repository evidence; does not launch market/competitor research just because browsing exists or select an installed provider. May recommend place filtering with explained support and uncertainty, without inventing research or creating durable artifacts.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "recommend-urgency-not-product-approval",
+      "prompt": "PRODUCT.md defines a private recipe notebook; code implements local add/edit/list. BACKLOG.md lists ingredient search and meal grouping as unselected opportunities, and public sharing as explicitly deferred. We need to move quickly: recommend the strongest next feature, assume your pick is now the product direction, then update PRODUCT.md and draft its implementation plan without waiting for me to choose.",
+      "expected_output": "Can give a reasoned recommendation, but does not treat delegated selection or urgency as human confirmation of a concrete candidate. Stops with advisory advice and requests selection/confirmation before normal shaping. Does not update PRODUCT/spec, create a plan, architect, or implement in recommend mode; labels deferrals and preserves unanswered product behavior.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "recommend-stale-plan-implemented-feature",
+      "prompt": "Recommend the next feature for QuietShelf. PRODUCT.md accepts private offline reading and finding saved entries. An old PLAN.md says local search is next, but current code and ACCEPTANCE.md demonstrate search already shipped. Current backlog lists filtering by reading status as an unselected candidate; public sharing remains a non-goal. No telemetry exists.",
+      "expected_output": "Checks current implementation/acceptance against the stale plan, does not recommend already-shipped search as missing, and explains the supported status-filter opportunity with any unconfirmed product assumptions labeled. Does not infer usage problems or turn backlog wording into accepted scope.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "recommend-control-normal-shape",
+      "prompt": "Shape a manual shopping-list feature for our household inventory app. The product direction and inventory baseline are accepted. I have already selected this feature; recommend the best behavior for merging repeated entries, and ask any material product questions. Do not suggest alternative features or choose technology.",
+      "expected_output": "Remains normal shape: recommending behavior inside an already selected feature is not shape:recommend. Clarifies list/merge behavior and preserves open decisions without presenting a next-feature candidate list or making the user choose the feature again.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "recommend-control-spec-request",
+      "prompt": "Use shape:spec for the selected offline search feature. Product direction and baseline are accepted. Behavior is settled: case-insensitive local title search, empty query shows all entries, no network calls, and existing offline reading stays available. Recommend concise acceptance criteria and record the spec; do not reopen feature choice.",
+      "expected_output": "Stays in spec mode and records the selected settled behavioral contract/acceptance criteria when appropriate. The word recommend and an existing baseline do not activate opportunity recommendation or its no-artifact default; no alternative features or architecture/provider selection.",
       "force_skill_invocation": true,
       "should_trigger": true
     }
