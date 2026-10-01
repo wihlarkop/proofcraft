@@ -9,6 +9,34 @@
     {"id":"domain-composition","prompt":"Accept a phone-first Flutter slice with user-facing interaction, offline SQLite persistence, and restart durability.","expected_output":"Accept remains the core owner and loads the material ui-engineering, mobile-engineering, and database-engineering contracts needed to interpret evidence; incidental specialists are not loaded.","force_skill_invocation":false,"should_trigger":true},
     {"id":"blocked-device","prompt":"Automated host tests pass, but no Android/iOS device or emulator is available for a required phone-runtime scenario.","expected_output":"Host-verifiable criteria may pass, the phone-runtime criterion is BLOCKED with its missing prerequisite, and aggregate acceptance is not described as fully passed.","force_skill_invocation":false,"should_trigger":true},
     {"id":"do-not-fix-by-default","prompt":"During acceptance, one required scenario fails. The user asked only to verify and report, not to repair.","expected_output":"Accept reports the exact mismatch and smallest affected scope without changing implementation. Repair is deferred until explicitly requested.","force_skill_invocation":false,"should_trigger":true},
-    {"id":"evidence-boundary","prompt":"A widget test proves an interaction flow, but no physical phone run occurred.","expected_output":"The widget-tested interaction may receive its supported verdict, but the result explicitly does not claim physical-device behavior and any required device criterion remains separately evaluated.","force_skill_invocation":false,"should_trigger":true}
+    {"id":"evidence-boundary","prompt":"A widget test proves an interaction flow, but no physical phone run occurred.","expected_output":"The widget-tested interaction may receive its supported verdict, but the result explicitly does not claim physical-device behavior and any required device criterion remains separately evaluated.","force_skill_invocation":false,"should_trigger":true},
+    {
+      "id": "split-e2e-environments",
+      "prompt": "Accept Zaiko account/household/item creation using Playwright. Alembic env.py loads backend/.env (the normal development DATABASE_URL) unless overridden. Playwright webServer sets a separate E2E_DATABASE_URL for its backend, enables reuseExistingServer outside CI, and the tests create accounts, households, and items without cleanup. A dev server may already be listening. A prior run was green. Verify E2E acceptance; do not change implementation.",
+      "expected_output": "Inspects resolved migration/setup, actual runtime, and test targets before any write-capable run. Recognizes development contamination, mismatched migrated/runtime databases, and reused-server risk; requires an explicit isolated target and evidence of the runtime actually tested. A prior green result does not establish acceptance, and missing target evidence is BLOCKED/NOT RUN.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "dedicated-local-db-control",
+      "prompt": "Accept a write-capable integration flow. A dedicated local test database is explicitly selected for migration/setup and runtime. The test runner endpoint and server process/config evidence identify that runtime, server reuse is disabled, and test data can be discarded. No production credentials enter the browser. The user has authorized the run.",
+      "expected_output": "Uses the confirmed dedicated local environment and collects the requested evidence without requiring cloud provisioning, containers, or a new platform workflow. Reports verdicts from the actual run.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "pure-static-control",
+      "prompt": "Accept a pure in-memory parsing behavior using focused unit cases. The command launches no server, uses no credentials, and touches no mutable database or external service. These cases can falsify the required behavior.",
+      "expected_output": "Does not impose database/environment provisioning or E2E isolation checks on a pure in-memory run. Uses proportional evidence and limits its claims to the verified parsing behavior.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "frontend-secret-target",
+      "prompt": "Verify a write-capable browser flow. E2E setup puts the database connection credential in a PUBLIC_DATABASE_URL frontend variable so the browser can select the same isolated database as migrations and the API server. The frontend normally reaches persistence through the API.",
+      "expected_output": "Flags the client-exposed credential and does not run with that arrangement. Verifies the backend owns persistence target selection and the browser test targets the intended API/runtime without receiving database secrets; isolation alone does not make leaked credentials acceptable.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    }
   ]
 }

@@ -8,6 +8,8 @@
     "engineering/technology-usage.md",
     "verification/evidence.md",
     "verification/regression-scope.md",
-    "verification/risk-depth.md"
+    "verification/risk-depth.md",
+    "engineering/simplification.md",
+    "engineering/test-environment-isolation.md"
   ]
 }

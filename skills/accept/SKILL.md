@@ -12,7 +12,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.1"
+  skill-version: "0.1.2"
 ---
 
 
@@ -25,10 +25,10 @@ Prove product behavior rather than merely running a test command.
 1. Start from project-local product/spec/ADR/plan/acceptance artifacts and the implemented behavior being claimed.
 2. Convert each material criterion into an observable pass/fail condition.
 3. Identify material verification concerns and load the relevant domain skill contracts before choosing evidence. For example, mobile runtime claims may need mobile-engineering, rendered interaction claims may need ui-engineering, and persistence/restart claims may need database-engineering. Do not load incidental specialists.
-4. Choose evidence by risk: unit, integration, contract, E2E, rendered UI, manual/device interaction, exploratory testing, or a combination.
+4. Choose evidence by risk: unit, integration, contract, E2E, rendered UI, manual/device interaction, exploratory testing, or a combination. Before setup or verification can mutate external state, load `references/_shared/engineering/test-environment-isolation.md` and confirm setup/migration, actual application runtime, and test targets identify the intended isolated environment. Unconfirmed targets block the write-capable run and its acceptance claim.
 5. Collect evidence directly when the environment exposes it. Distinguish what host tests prove from what requires a real device, browser, external system, or other runtime surface.
 6. Report each required criterion as PASS, FAIL, BLOCKED, or NOT RUN. Missing evidence is not PASS.
-7. Keep acceptance read-only by default. If a criterion fails, record the exact observed mismatch and the smallest affected scope before changing code. Only fix during the same workflow when the user explicitly asks for repair; after an authorized fix, rerun the failed scenario and affected regression subset.
+7. Keep implementation read-only by default. If a criterion fails, record the exact observed mismatch and the smallest affected scope before changing code. Only fix during the same workflow when the user explicitly asks for repair; after an authorized fix, rerun the failed scenario and affected regression subset.
 8. Give an aggregate status without hiding incomplete evidence. If any required criterion is BLOCKED or NOT RUN, do not describe the whole acceptance as fully passed; summarize the counts and name the remaining gate.
 
 ## Test strategy
@@ -53,3 +53,4 @@ Load only the references needed for the current task:
 - [verdicts](references/_shared/verification/verdicts.md)
 - [risk depth](references/_shared/verification/risk-depth.md)
 - [regression scope](references/_shared/verification/regression-scope.md)
+- [test environment isolation](references/_shared/engineering/test-environment-isolation.md)

@@ -11,7 +11,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.0"
+  skill-version: "0.1.1"
 ---
 
 
@@ -35,16 +35,16 @@ Use when the implementation already works or mostly works and the requested outc
    - **OPTIONAL** — subjective style, speculative abstractions, or tiny cleanup with weak payoff.
    - **OUT OF SCOPE** — product behavior changes, durable architecture redesign, unrelated subsystems, or performance rewrites without evidence.
 6. Route rather than blur ownership when the primary problem changes. An actual failing behavior belongs to debug; a consequential architecture change belongs to architect; unresolved user-visible behavior belongs to shape. If performance/resource efficiency is the real target, compose performance-engineering and establish a relevant baseline before changing code.
-7. Select only the MUST and worthwhile bounded changes that justify their churn. Prefer deleting, simplifying, co-locating, or using the selected technology correctly over adding generic layers.
-8. Implement the improvement without pattern shopping. Do not add Repository, Unit of Work, Clean/Hexagonal layers, factories, DI frameworks, event buses, wrappers, caches, or similar machinery merely because a template or generic best-practice list recommends them.
-9. Verify the preservation boundary and the changed concern with proportional evidence. Verification is required; unit tests, TDD, and coverage targets are not mandatory. Add a focused test only when it is the cheapest strong evidence for a meaningful invariant/regression or when required by the project/user.
+7. Select only the MUST and worthwhile bounded changes that justify their churn. Prefer **delete -> consolidate -> use language/framework-native mechanisms -> rehome responsibility into an existing owner -> only then introduce a new abstraction**. This is a preference order, not an absolute rule.
+8. Before accepting a new abstraction, require an evidenced benefit that outweighs the concept added. Apply the net complexity check in `references/_shared/engineering/simplification.md` before and after the change; fewer lines or a replacement wrapper alone do not establish improvement. Do not add named architecture patterns or generic layers merely because a template recommends them.
+9. Before setup or verification can mutate external state, load `references/_shared/engineering/test-environment-isolation.md` and confirm isolated setup, actual runtime, and test targets; otherwise block the write-capable run. Verify the preservation boundary and the changed concern with proportional evidence. Verification is required; unit tests, TDD, and coverage targets are not mandatory. Add a focused test only when it is the cheapest strong evidence for a meaningful invariant/regression or when required by the project/user.
 
 If inspection shows the code is already clear, supported, idiomatic, and proportionate, say so and leave it unchanged.
 
 ## Outputs
 
-Report the bounded improvements made, the behavior/contract intentionally preserved, the strongest verification evidence, and any deferred item that genuinely belongs to debug, architect, shape, or measured performance work.
+Report the bounded improvements and relevant net complexity change, preserved contract, verification evidence, and any deferred item requiring another workflow decision.
 
 ## Stop
 
-Stop when the requested target is materially improved and remaining items are cosmetic, speculative, unrelated, require a different workflow decision, or have diminishing value. Do not turn improve into an endless repository cleanup campaign.
+Before stopping, check whether in-scope wrappers, ownership splits, composition hops, or intermediate artifacts can still be removed. Stop when the target is materially improved and remaining changes have weak payoff or require another workflow decision; leave already-proportionate code alone.

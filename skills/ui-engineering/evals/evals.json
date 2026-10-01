@@ -63,6 +63,41 @@
       "expected_output": "ui-engineering seriously considers maintained headless/accessibility primitives to reduce interaction risk while keeping the visual language project-owned; it does not insist on hand-rolling all primitives or importing a full styled system.",
       "force_skill_invocation": false,
       "should_trigger": true
+    },
+    {
+      "id": "native-post-before-hydration",
+      "prompt": "Verify login/register interaction in Zaiko: Svelte SSR renders enabled forms with method=POST. The route uses a client handler to submit to FastAPI, with no native POST action on the frontend route. Svelte type checks and the build pass. A browser can delay JavaScript and inspect the first rendered form. Assess the interaction claim.",
+      "expected_output": "Directly inspects and exercises the rendered pre-hydration surface, including native submission and handler activation. Detects the POST risk before the client handler is active and does not accept static build/type success as interaction proof. Reports the observed mismatch and needed fix; verifies initial and hydrated states after repair only when authorized.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "editable-draft-on-focus-refresh",
+      "prompt": "Verify an inventory editor. The parent refreshes server data on window focus. The child initializes its editable quantity and revision from props once. A second tab changes the item before focus returns; the backend rejects stale revisions correctly. Static checks pass. Evaluate what the user sees and submits without inventing a draft-discard policy.",
+      "expected_output": "Exercises focus refresh with an existing draft, inspecting rendered quantity and submitted revision. Identifies stale child state despite server conflict protection; preserves unresolved draft/reconciliation choices for the workflow owner and does not silently overwrite user edits or claim correctness from static checks.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "consumer-ui-hierarchy",
+      "prompt": "Refine the rendered household inventory page for quick everyday checks on phone and desktop. Almost every section is a similar bordered card, repeated eyebrow labels precede each heading, explanatory paragraphs compete with item rows, and invite/settings/add-item actions have equal emphasis. CSS validation passes and DESIGN.md has no universal card prohibition. Inspect the available rendered page.",
+      "expected_output": "Uses rendered inspection and product purpose to critique hierarchy, competing actions, repetitive card/meta treatment, copy, and mobile behavior. Makes proportionate refinements that improve the household task; does not treat CSS validity as visual quality or impose a universal anti-card aesthetic.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "non-ssr-ui-control",
+      "prompt": "Verify a client-only desktop settings editor with no SSR/hydration. The rendered window and keyboard interaction are available. Checks include save feedback and resizing; static checks pass.",
+      "expected_output": "Verifies actual rendered save feedback, keyboard behavior, and relevant window sizes. Does not add hydration analysis to a client-only surface or rely solely on static checks.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "rendering-unavailable-gap",
+      "prompt": "Refine a UI layout while the environment exposes source, type checking, and build commands but cannot launch or inspect a browser/device/rendered surface. Report what can be verified here.",
+      "expected_output": "Uses available static evidence for its supported claims and explicitly leaves visual/runtime interaction verification incomplete. Does not fabricate rendered inspection or mark interaction correctness proved.",
+      "force_skill_invocation": false,
+      "should_trigger": true
     }
   ]
 }

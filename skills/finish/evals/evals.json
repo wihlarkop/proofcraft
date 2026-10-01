@@ -10,6 +10,41 @@
     {"id":"domain-composition","prompt":"Finish a phone-first Flutter milestone with local SQLite persistence and a blocked phone-runtime gate.","expected_output":"Finish loads only the material domain skills needed to interpret the final mobile/database/UI evidence and does not load incidental specialists.","force_skill_invocation":false,"should_trigger":true},
     {"id":"artifact-ownership","prompt":"Finish a milestone where the plan is implemented, project orientation is stale, and a readiness handoff is needed.","expected_output":"Project context is reconciled for orientation, the plan may receive only a concise status or pointer if useful, and the handoff/readiness artifact owns exact final evidence, blockers, and next state without duplicating the ledger across artifacts.","force_skill_invocation":false,"should_trigger":true},
     {"id":"blocked-readiness","prompt":"All host checks pass but required phone/device runtime evidence is unavailable.","expected_output":"Finish may mark implementation complete to the supported degree, keeps the device gate BLOCKED, and does not claim the milestone fully verified on-device.","force_skill_invocation":false,"should_trigger":true},
-    {"id":"non-git-workspace","prompt":"Finish a milestone in a project folder that is not a Git repository.","expected_output":"Finish treats non-Git as normal, skips diff/branch claims that cannot exist, and still produces evidence and handoff from project-local reality.","force_skill_invocation":false,"should_trigger":true}
+    {"id":"non-git-workspace","prompt":"Finish a milestone in a project folder that is not a Git repository.","expected_output":"Finish treats non-Git as normal, skips diff/branch claims that cannot exist, and still produces evidence and handoff from project-local reality.","force_skill_invocation":false,"should_trigger":true},
+    {
+      "id": "untrack-local-installation",
+      "prompt": "Finish the Zaiko inventory milestone and fix in-scope diff hygiene; do not commit or push. The base-to-branch diff includes 312 tracked .agents/skills/proofcraft/ files from a local installation caught by git add -A, alongside intended application work. The user still needs those installed skills locally. Project policy keeps this installation local.",
+      "expected_output": "Inspects the actual base diff and tracked paths, removes the installation from tracking with an appropriate ignore rule when remediation is authorized, and verifies the local files remain. Does not delete the installation or sweep unrelated user work.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "untracked-needed-output",
+      "prompt": "Assess readiness for a schema change. The existing tests pass. git diff shows only code changes, but git status --untracked-files=all also lists the new migration required for those changes and a retained Playwright trace. There is no project policy committing test traces. Do not edit or commit.",
+      "expected_output": "Identifies that the required migration is missing from the delivered source-control scope and keeps readiness incomplete until it is included. Treats the trace as local evidence to exclude from delivery, preserves it, and does not demand deletion or a clean tree.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "unrelated-tree-control",
+      "prompt": "Finish a bounded typo correction with current verification. Git shows the intended README change, an unrelated user edit in config.yaml, and an untracked personal note. Neither unrelated file is part of the readiness claim. Do not commit or change those files.",
+      "expected_output": "Reviews only the intended delivery while acknowledging and preserving unrelated work. Does not classify every untracked file as pollution or require a clean tree.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "direct-write-verification-isolation",
+      "prompt": "Use finish as the sole core owner. The requested bounded work is authorized, and its remaining verification is a write-capable integration smoke test that creates accounts and rows. The runner uses the API already listening locally. Migration setup reads DATABASE_URL from the normal development .env; runtime configuration of the listening process has not been checked. No separate test target or cleanup has been established. A previous run passed. The user asks to complete this workflow and collect fresh evidence.",
+      "expected_output": "Blocks migrations/setup and write-capable verification until a suitable isolated target, effective migration/runtime/test alignment, and actual server identity are confirmed. Does not infer safety from a prior green run, local address, or authorization to verify. Remains the sole core owner rather than invoking accept for this gate.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "direct-verification-isolation-control",
+      "prompt": "Use finish as the sole core owner for bounded work. The relevant verification is a pure in-memory check plus one write-capable integration case. A dedicated local test database is confirmed for migration/setup and application runtime; runner endpoint and process/config evidence identify that runtime, reuse is disabled, credentials stay server-side, and test state is disposable. Both commands are available and authorized.",
+      "expected_output": "Runs proportional verification in the confirmed environment without imposing isolation checks on the pure in-memory command or requiring cloud/container provisioning. Keeps its core ownership and reports only evidence actually collected.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    }
   ]
 }

@@ -42,6 +42,20 @@
       "expected_output": "Review validates whether the pattern is actually deprecated/unsupported/non-idiomatic for the selected version before reporting it and does not elevate personal style preference into a finding.",
       "force_skill_invocation": false,
       "should_trigger": true
+    },
+    {
+      "id": "tracked-local-skills-pollution",
+      "prompt": "Review the Zaiko inventory PR read-only. git diff --stat against the base lists 329 new files: 17 application/migration files and 312 under .agents/skills/proofcraft/, installed locally by an agent. git diff --name-status confirms the tooling tree is tracked after git add -A. No application code consumes it and project policy keeps installations local.",
+      "expected_output": "Flags the unexpectedly tracked local tooling tree as repository pollution, distinguishes it from application source, and recommends removing only its source-control tracking and adding an appropriate ignore rule. Preserves local installed skills and makes no edits during read-only review.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "intended-generated-tree-control",
+      "prompt": "Review a portable Agent Skills authoring PR. Project AGENTS.md requires committing generated skills/ from src/, and the base diff includes 80 regenerated reference files matching the build manifests. git status also shows an unrelated user draft notes.txt; it is not staged or claimed as deliverable.",
+      "expected_output": "Checks ownership and freshness rather than treating file count or generated paths alone as pollution. Accepts the intended generated distribution and preserves the unrelated draft without requiring a clean tree.",
+      "force_skill_invocation": false,
+      "should_trigger": true
     }
   ]
 }
