@@ -11,7 +11,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.1"
+  skill-version: "0.1.3"
 ---
 
 
@@ -30,10 +30,10 @@ Do not trigger for routine helper extraction, local naming, styling, or an imple
 1. Reality-check the current project architecture and accepted decisions. Explicit user technology choices and accepted ADRs are locked inputs unless new evidence, a blocker, changed requirements, or an explicit revisit justifies reopening them.
 2. Frame the decision: desired outcome, constraints, reversibility, affected systems, and evidence gaps.
 3. Express material qualities as observable scenarios rather than vague adjectives.
-4. Compare candidate boundaries/approaches against the same drivers.
+4. Compare candidate boundaries/approaches against the same drivers. When selecting a foundational technical stack, follow `references/_shared/architecture/technical-stack-selection.md`: derive capabilities from accepted product forces, compare credible stack shapes before brands, and evaluate both the current product and its accepted near-term trajectory rather than optimizing only for the first slice. If the frontend has no settled component/styling strategy and a proposed choice would pervasively shape the surface, also follow `references/_shared/ui/component-styling-strategy.md`; architecture owns only the durable strategy boundary, not incidental CSS or package details.
 5. Make data authority, runtime behavior, consistency, failure/recovery, and operational consequences explicit when relevant.
 6. Record the property the architecture requires without prematurely freezing an incidental mechanism. For example, if future independent devices require stable collision-resistant identity, record that requirement; choose UUID/ULID/package/encoding only when interoperability, storage, external contracts, or another real constraint requires it now.
-7. Select patterns only after the concrete problem is named; prefer existing project patterns.
+7. Select patterns only after the concrete problem is named; prefer existing project patterns. For greenfield stack selection, developer/agent familiarity and popularity are not primary decision criteria unless team capability is an explicit project constraint.
 8. Record a durable ADR when the decision is consequential and likely to matter beyond the current task.
 9. Re-read project orientation and related durable artifacts after the ADR. If an existing summary is now directly false, reconcile it minimally by replacing the stale statement with a pointer/brief current-state summary; do not duplicate the ADR.
 

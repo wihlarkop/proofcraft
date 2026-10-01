@@ -4,8 +4,11 @@
     "constitution/decision-lock.md",
     "orchestration/concerns.md",
     "artifacts/design.md",
+    "ui/component-styling-strategy.md",
+    "engineering/dependency-selection.md",
     "engineering/provider-neutrality.md",
     "verification/evidence.md",
-    "verification/risk-depth.md"
+    "verification/risk-depth.md",
+    "ui/runtime-verification.md"
   ]
 }

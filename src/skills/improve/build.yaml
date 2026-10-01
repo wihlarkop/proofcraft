@@ -1,0 +1,15 @@
+{
+  "shared": [
+    "constitution/principles.md",
+    "constitution/decision-lock.md",
+    "orchestration/reality-check.md",
+    "orchestration/concerns.md",
+    "engineering/diff-discipline.md",
+    "engineering/technology-usage.md",
+    "verification/evidence.md",
+    "verification/regression-scope.md",
+    "verification/risk-depth.md",
+    "engineering/simplification.md",
+    "engineering/test-environment-isolation.md"
+  ]
+}

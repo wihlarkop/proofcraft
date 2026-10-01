@@ -11,6 +11,7 @@
       "implement",
       "accept",
       "debug",
+      "improve",
       "review",
       "finish",
       "continue"
@@ -29,6 +30,9 @@
       "privacy-engineering",
       "performance-engineering",
       "ai-engineering"
+    ],
+    "utility": [
+      "artifact-export"
     ]
   },
   "implemented": [
@@ -39,6 +43,7 @@
     "implement",
     "accept",
     "debug",
+    "improve",
     "review",
     "finish",
     "continue",
@@ -54,15 +59,49 @@
     "security-engineering",
     "privacy-engineering",
     "performance-engineering",
-    "ai-engineering"
+    "ai-engineering",
+    "artifact-export"
   ],
   "aliases": {
-    "spec": {"skill": "shape", "mode": "spec"},
-    "wayfind": {"skill": "shape", "mode": "wayfind"},
-    "test": {"skill": "accept", "mode": "test"},
-    "release": {"skill": "finish", "mode": "release"},
-    "ui-refine": {"skill": "ui-engineering", "mode": "refine"},
-    "ui-finish": {"skill": "ui-engineering", "mode": "finish"},
-    "db-change": {"skill": "database-engineering", "mode": "change"}
+    "spec": {
+      "skill": "shape",
+      "mode": "spec"
+    },
+    "wayfind": {
+      "skill": "shape",
+      "mode": "wayfind"
+    },
+    "test": {
+      "skill": "accept",
+      "mode": "test"
+    },
+    "release": {
+      "skill": "finish",
+      "mode": "release"
+    },
+    "ui-refine": {
+      "skill": "ui-engineering",
+      "mode": "refine"
+    },
+    "ui-finish": {
+      "skill": "ui-engineering",
+      "mode": "finish"
+    },
+    "db-change": {
+      "skill": "database-engineering",
+      "mode": "change"
+    },
+    "discover": {
+      "skill": "shape",
+      "mode": "discover"
+    },
+    "export": {
+      "skill": "artifact-export",
+      "mode": "export"
+    },
+    "refactor": {
+      "skill": "improve",
+      "mode": "refactor"
+    }
   }
 }

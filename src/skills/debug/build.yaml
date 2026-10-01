@@ -8,6 +8,7 @@
     "verification/evidence.md",
     "verification/verdicts.md",
     "verification/regression-scope.md",
-    "verification/risk-depth.md"
+    "verification/risk-depth.md",
+    "engineering/test-environment-isolation.md"
   ]
 }

@@ -7,7 +7,9 @@
     "orchestration/gate.md",
     "engineering/diff-discipline.md",
     "engineering/dependency-selection.md",
+    "engineering/technology-usage.md",
     "verification/risk-depth.md",
-    "verification/regression-scope.md"
+    "verification/regression-scope.md",
+    "engineering/test-environment-isolation.md"
   ]
 }

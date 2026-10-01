@@ -1,0 +1,47 @@
+{
+  "skill_name": "artifact-export",
+  "evals": [
+    {
+      "id": "natural-trigger-openspec",
+      "prompt": "Export the settled Proofcraft spec for low-stock behavior to OpenSpec format for a teammate. Do not change the Proofcraft source artifacts.",
+      "expected_output": "Artifact export activates, maps only settled source behavior into OpenSpec-compatible output, leaves canonical Proofcraft artifacts unchanged, and reports validation status.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "explicit-export",
+      "prompt": "Use artifact-export. Export the current feature specification as an OpenSpec change.",
+      "expected_output": "The utility follows the OpenSpec adapter, inspects existing target structure, and creates or previews a truthful mapping without rerunning shaping.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "negative-normal-engineering",
+      "prompt": "Implement the already-planned low-stock feature and run its targeted tests.",
+      "expected_output": "Artifact export does not trigger merely because a spec exists; normal implementation owns the work.",
+      "force_skill_invocation": false,
+      "should_trigger": false
+    },
+    {
+      "id": "missing-design-plan-no-invention",
+      "prompt": "The project has a settled behavioral spec but no ADR, design, or implementation plan. Export it to OpenSpec.",
+      "expected_output": "The export may produce truthful proposal/spec material when supported, but does not invent design.md or tasks.md; missing source material is reported explicitly.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "reuse-existing-capability-path",
+      "prompt": "This repo already has OpenSpec capability openspec/specs/inventory/spec.md. Export a Proofcraft change that modifies inventory quantity behavior.",
+      "expected_output": "The adapter inspects and reuses the exact existing inventory capability path rather than creating a near-duplicate capability.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "cli-optional",
+      "prompt": "Export this spec to OpenSpec in a workspace where the OpenSpec CLI is not installed. Do not install new tools.",
+      "expected_output": "The adapter can write structurally mapped output without installing OpenSpec and clearly reports that native OpenSpec validation was not run.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    }
+  ]
+}

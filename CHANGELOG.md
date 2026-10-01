@@ -4,6 +4,23 @@ All notable changes to Proofcraft are documented here.
 
 ## [Unreleased]
 
+### Fixed
+- `implement`, `plan`, and `review` now distinguish current supported technology idioms from generic best-practice cargo cult: version-sensitive usage follows project-selected versions and primary guidance without forcing unnecessary patterns, unit-test ceremony, or broad rewrites.
+- Shared dependency/toolchain selection now treats modern tools such as `uv`, Bun, and Deno as first-class candidates, verifies current stable/support status from primary sources when material, prefers supported compatible stable baselines, and escalates tooling choices that implicitly lock runtime/deployment architecture.
+- `architect` and `ui-engineering` now distinguish architecture-level UI component/styling strategy from design truth and reversible package details, and compare custom, headless, styled-library, and hybrid approaches from product/accessibility/design needs rather than defaulting to popular CSS/component stacks.
+- `architect` now has an explicit greenfield technical-stack selection method: derive capabilities from product forces, compare stack shapes before brands, weigh current plus accepted near-term trajectory, and separate durable architecture from upgradeable baselines and reversible tooling.
+- `plan` now distinguishes reversible implementation details from consequential stack/dependency choices and refuses to silently own hard-to-reverse framework, database-product, identity, runtime, or provider decisions that still require architecture ownership.
+- `shape` now distinguishes product readiness from implementation readiness: when consequential architecture remains undecided, it routes to `architect` instead of prematurely suggesting `plan`.
+- `shape` questioning now separates pacing from presentation: users can keep adaptive/single/batch strategy while independently choosing adaptive, interactive, or plain-text question delivery.
+- `setup` now forbids probing harness/global/personal memory during onboarding unless the user explicitly requests reuse or the workspace itself points there; project-local setup context must come from the workspace and explicit conversation context.
+
+### Added
+- `improve` core workflow (with `refactor` alias) for bounded behavior-preserving refactoring, idiomatic modernization, simplification, and maintainability work; it leaves already-good code alone and routes bugs, architecture changes, product changes, and speculative performance work to the appropriate evidence path.
+- Shared current-technology-usage guidance for supported version-specific APIs/configuration, project-local conventions, explicit pre-stable-tool exceptions, and anti-cargo-cult implementation discipline.
+- Opt-in `shape:discover` mode for conversation-first product discovery with explicit decision/hypothesis boundaries, non-mandatory activation, and readiness outcomes before durable shaping.
+- Shared `shape` questioning strategies: adaptive by default, explicit single-question pacing, and bounded batch decision frontiers for faster discovery/shaping without turning clarification into a broad questionnaire.
+- `artifact-export` utility with an initial OpenSpec `spec-driven` v1 adapter, allowing settled Proofcraft artifacts to be transformed for collaboration without replacing canonical project truth or inventing missing design/tasks.
+
 ## [0.1.0] - 2026-09-28
 
 ### Fixed

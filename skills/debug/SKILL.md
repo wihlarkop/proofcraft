@@ -11,7 +11,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.1"
+  skill-version: "0.1.2"
 ---
 
 
@@ -23,10 +23,10 @@ Find the failure mechanism before committing to a fix.
 
 1. Reality-check current code, errors, recent relevant changes, environment/config differences, accepted project artifacts, and working-tree state. Treat a reported symptom as a claim to investigate, not an established fact.
 2. Classify the material concerns touched by the failure and load only the relevant domain skill contracts. Debug remains the sole core workflow owner: do not invoke `accept`, `review`, `implement`, or another sibling core workflow merely to gather evidence or close the investigation.
-3. Reproduce consistently when possible. Choose the smallest experiment that can falsify the report or current hypothesis. Do not run broad or expensive verification merely because it exists; bound retries/waits, and record hung or incomplete commands as missing evidence rather than pass/fail evidence.
+3. For observable/runtime failures, inspect retained traces, DOM/snapshots, logs, network evidence, stacks, generated failure context, or reproduction state before changing implementation. Before setup or verification can mutate external state, load `references/_shared/engineering/test-environment-isolation.md` and confirm isolated setup, actual runtime, and test targets; otherwise block the write-capable run. Then choose the smallest discriminating reproduction/experiment. Bound retries/waits; hung or incomplete commands are missing evidence.
 4. Distinguish observed facts, reproducible failure, plausible but unproven hypotheses, and states that cannot occur in the current implementation. If the report depends on a future/unimplemented schema, feature, deployment state, or configuration, say so explicitly rather than inventing a current root cause.
 5. Trace data/state across the smallest relevant boundaries. In multi-component systems, instrument boundary inputs/outputs only when needed to isolate where reality diverges.
-6. Form a concrete root-cause hypothesis only when current evidence supports one, then seek evidence that could disprove it. A plausible mechanism without a reproducer or repository evidence remains a hypothesis, not a root cause.
+6. Use discriminating evidence to distinguish a stale test assumption, timing/runtime race, product defect, and environment defect. A failing locator does not establish a stale test; a plausible application bug does not establish production behavior. Seek evidence that could disprove the supported hypothesis before treating it as root cause.
 7. Respect the requested remediation boundary. If the user asked for investigation only or explicitly prohibited edits, stop before changing files and report the strongest evidence plus the regression evidence a future fix would need.
 8. When repair is authorized and a real mechanism is evidenced, implement the smallest correct fix that addresses the mechanism rather than the symptom.
 9. Add or update focused regression evidence and rerun only the affected scope needed to show the fix removed the failure without introducing relevant regressions.
@@ -53,3 +53,4 @@ Load only the references needed for the current task:
 - [verdicts](references/_shared/verification/verdicts.md)
 - [regression scope](references/_shared/verification/regression-scope.md)
 - [risk depth](references/_shared/verification/risk-depth.md)
+- [test environment isolation](references/_shared/engineering/test-environment-isolation.md)

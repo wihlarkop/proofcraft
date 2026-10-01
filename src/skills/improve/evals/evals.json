@@ -1,0 +1,124 @@
+{
+  "skill_name": "improve",
+  "evals": [
+    {
+      "id": "natural-trigger",
+      "prompt": "This FastAPI inventory module works, but make it simpler, more idiomatic, and easier to maintain without changing its API behavior.",
+      "expected_output": "Improve activates, inspects the real implementation and selected versions, makes only bounded evidence-backed quality improvements, preserves behavior, and verifies the changed surface.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "explicit-invoke",
+      "prompt": "Use the improve skill to refactor this working module while preserving behavior.",
+      "expected_output": "Improve follows its preservation-first workflow and does not reopen product or architecture decisions.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "negative-bug-routing",
+      "prompt": "Users receive a 500 error when saving inventory. Find the cause and fix it.",
+      "expected_output": "Improve should not own the request; the failing behavior routes to debug/root-cause work.",
+      "force_skill_invocation": false,
+      "should_trigger": false
+    },
+    {
+      "id": "leave-good-code-alone",
+      "prompt": "Improve this small module. It is already clear, current, idiomatic, has one responsibility, and matches accepted architecture.",
+      "expected_output": "Improve does not manufacture abstractions or churn. It reports that no meaningful bounded improvement is justified or makes only a concrete evidenced change if one exists.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "no-pattern-shopping",
+      "prompt": "Refactor a straightforward FastAPI + SQLAlchemy Core use case. There is no concrete need for repositories, Unit of Work, CQRS, or mediator layers.",
+      "expected_output": "Improve keeps the simple project architecture and does not introduce named patterns or abstraction layers merely because they are common in templates.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "current-framework-idiom",
+      "prompt": "Improve code that uses a legacy lifecycle/configuration idiom on a selected current framework version.",
+      "expected_output": "Improve checks the actual selected version and current primary guidance, replaces genuinely legacy/deprecated usage when worthwhile, and avoids unrelated modernization.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "architecture-escalation",
+      "prompt": "Improve this module, but the proposed cleanup would require changing the accepted database authority and service boundary.",
+      "expected_output": "Improve preserves the accepted architecture and routes the consequential redesign to architect instead of silently making it as a refactor.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "performance-needs-evidence",
+      "prompt": "Improve this working query because it looks slow, but no latency/profile/query-plan evidence has been collected.",
+      "expected_output": "Improve does not perform speculative performance rewriting. If performance is the real goal, it composes performance-engineering and establishes a relevant baseline before changing the query.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "verification-not-test-ceremony",
+      "prompt": "Improve a working component by simplifying duplicated state. The project has no coverage target and the behavior is best exercised through existing browser checks.",
+      "expected_output": "Improve verifies preserved behavior with the cheapest strong evidence and does not create mandatory unit tests, TDD steps, mocks, or coverage work merely because code changed.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "two-settings-owners",
+      "prompt": "Simplify the working Zaiko backend without changing behavior. A recent cleanup introduced RuntimeSettings and DatabaseSettings, two Pydantic models independently reading the same .env, with overlapping DATABASE_URL/defaults alongside cookie policy and API origins. Only the composition root consumes them; one canonical settings owner can supply all of these values. Evaluate and implement the smallest justified cleanup.",
+      "expected_output": "Consolidates configuration into one canonical owner unless inspection establishes a real independent boundary. Compares configuration sources and ownership before/after; fewer lines or nicer class names do not justify two settings owners.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "unconsumed-openapi-snapshot",
+      "prompt": "Improve the frontend API generation path in a FastAPI app. The script imports the app, writes contracts/openapi.json, reads it immediately to generate TypeScript, and commits both outputs. It can pass app.openapi() directly to the generator. Search finds no CI, documentation, published contract, or other consumer of the JSON snapshot. Preserve generated frontend types and API behavior.",
+      "expected_output": "Questions and removes the unconsumed persistent intermediate snapshot in favor of direct consumption, updating the affected generation path and verifying equivalent output. Does not replace it with another persisted representation or generic artifact wrapper.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "forwarding-composition-root",
+      "prompt": "Simplify this working backend entry point while preserving uvicorn main:app. main.py imports app from app.py. app.py only constructs FastAPI, installs the same routers/lifespan, and exports app; there are no independent consumers or lifecycle boundaries. A proposal replaces app.py with a one-caller ApplicationFactory module.",
+      "expected_output": "Removes the unnecessary composition/execution hop using the existing composition owner, rather than replacing a forwarding module with a factory/wrapper. Verifies startup and preserved routing/lifecycle behavior proportionally.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "native-proportionate-control",
+      "prompt": "Improve a small working inventory service if there is a meaningful benefit. Inspection shows one Settings owner, framework-native lifespan and dependencies, direct SQLAlchemy Core transactions, one composition root, and direct OpenAPI consumption by the sole frontend generator. No duplication, unsupported usage, or evidenced ownership problem is found.",
+      "expected_output": "Leaves already-good code unchanged and explains that no material bounded simplification is justified. Does not add repositories, factories, settings splits, or persisted snapshots to manufacture work.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "required-boundary-control",
+      "prompt": "Improve a working service that duplicates retry/error mapping in two real callers of an external payment provider. The provider contract must remain isolated from domain rules, and a narrow shared adapter would remove both duplicated mappings. Preserve behavior and accepted architecture.",
+      "expected_output": "May introduce a narrow abstraction with concrete callers and a required external boundary. Compares the concept added with duplication and ownership removed, verifies preserved behavior, and treats the simplification order as a preference rather than an absolute ban.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "snapshot-consumer-control",
+      "prompt": "Simplify API generation. The generated OpenAPI JSON is read by the frontend generator, published as a versioned SDK contract, and compared by CI for compatibility. These consumers are confirmed in the repository. The frontend generator could instead consume app.openapi() directly.",
+      "expected_output": "Keeps the snapshot while its real consumers require it, or preserves their contract through an evidenced alternative. Does not delete every generated intermediate artifact just because direct generation is possible.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "direct-write-verification-isolation",
+      "prompt": "Use improve as the sole core owner. The requested bounded work is authorized, and its remaining verification is a write-capable integration smoke test that creates accounts and rows. The runner uses the API already listening locally. Migration setup reads DATABASE_URL from the normal development .env; runtime configuration of the listening process has not been checked. No separate test target or cleanup has been established. A previous run passed. The user asks to complete this workflow and collect fresh evidence.",
+      "expected_output": "Blocks migrations/setup and write-capable verification until a suitable isolated target, effective migration/runtime/test alignment, and actual server identity are confirmed. Does not infer safety from a prior green run, local address, or authorization to verify. Remains the sole core owner rather than invoking accept for this gate.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "direct-verification-isolation-control",
+      "prompt": "Use improve as the sole core owner for bounded work. The relevant verification is a pure in-memory check plus one write-capable integration case. A dedicated local test database is confirmed for migration/setup and application runtime; runner endpoint and process/config evidence identify that runtime, reuse is disabled, credentials stay server-side, and test state is disposable. Both commands are available and authorized.",
+      "expected_output": "Runs proportional verification in the confirmed environment without imposing isolation checks on the pure in-memory command or requiring cloud/container provisioning. Keeps its core ownership and reports only evidence actually collected.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    }
+  ]
+}

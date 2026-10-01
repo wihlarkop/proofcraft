@@ -1,15 +1,96 @@
 {
   "skill_name": "implement",
   "evals": [
-    {"id":"natural-trigger","prompt":"Use normal engineering judgment for a task that should naturally activate implement.","expected_output":"The implement workflow is selected and follows its contract.","force_skill_invocation":false,"should_trigger":true},
-    {"id":"explicit-invoke","prompt":"Use the implement skill for this task.","expected_output":"The implement workflow is followed without unrelated ceremony.","force_skill_invocation":true,"should_trigger":true},
-    {"id":"negative-trigger","prompt":"Fix a one-character typo in a README heading and do nothing else.","expected_output":"The implement skill should not be unnecessarily activated unless it is the direct owner of the request.","force_skill_invocation":false,"should_trigger":false},
-    {"id":"behavior","prompt":"Implement an approved bounded feature while preserving existing product and architecture decisions.","expected_output":"Implementation proceeds in coherent feature slices, preserves settled and explicitly open decisions, and gathers proportional evidence after or alongside implementation.","force_skill_invocation":true,"should_trigger":true},
-    {"id":"edge","prompt":"Use implement in a repository with unrelated uncommitted user changes.","expected_output":"The unrelated changes are preserved and the workflow does not reset or overwrite them.","force_skill_invocation":true,"should_trigger":true},
-    {"id":"domain-composition","prompt":"Implement an approved phone-first Flutter slice with user-facing screens, offline SQLite persistence, and restart durability.","expected_output":"Implement remains the core owner and loads the material ui-engineering, mobile-engineering, and database-engineering skill contracts before implementing those concerns; incidental skills are not loaded.","force_skill_invocation":false,"should_trigger":true},
-    {"id":"preserve-open-decisions","prompt":"Implement a Flutter phone slice where platform support, URL syntax policy, and collection ordering are explicitly still open. The accepted plan only requires local save/list/detail behavior.","expected_output":"Implementation does not convert the open product decisions into durable policy. It may choose reversible mechanisms needed for implementation without updating product/architecture truth or claiming the open decision is settled.","force_skill_invocation":false,"should_trigger":true},
-    {"id":"blocked-runtime-evidence","prompt":"Implement a mobile slice on a machine where static analysis and tests work but the required Android SDK/device is unavailable.","expected_output":"Implement uses the strongest available evidence, reports APK/device runtime verification as blocked, and does not substitute desktop/browser behavior as equivalent mobile acceptance.","force_skill_invocation":false,"should_trigger":true},
-    {"id":"no-core-overcomposition","prompt":"Implement an approved feature and stop when it is ready for acceptance. Review, acceptance, and release are separate later phases.","expected_output":"Implement does not preload or execute accept, review, or finish as sibling workflow owners merely to close the implementation turn.","force_skill_invocation":false,"should_trigger":true},
-    {"id":"expected-no-match-cleanup","prompt":"After implementing a feature, search for leftover template strings. Finding none is the desired result.","expected_output":"A zero-match cleanup search is treated as successful evidence and is not bundled in a way that surfaces the implementation step as a failure.","force_skill_invocation":false,"should_trigger":true}
+    {
+      "id": "natural-trigger",
+      "prompt": "Use normal engineering judgment for a task that should naturally activate implement.",
+      "expected_output": "The implement workflow is selected and follows its contract.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "explicit-invoke",
+      "prompt": "Use the implement skill for this task.",
+      "expected_output": "The implement workflow is followed without unrelated ceremony.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "negative-trigger",
+      "prompt": "Fix a one-character typo in a README heading and do nothing else.",
+      "expected_output": "The implement skill should not be unnecessarily activated unless it is the direct owner of the request.",
+      "force_skill_invocation": false,
+      "should_trigger": false
+    },
+    {
+      "id": "behavior",
+      "prompt": "Implement an approved bounded feature while preserving existing product and architecture decisions.",
+      "expected_output": "Implementation proceeds in coherent feature slices, preserves settled and explicitly open decisions, and gathers proportional evidence after or alongside implementation.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "edge",
+      "prompt": "Use implement in a repository with unrelated uncommitted user changes.",
+      "expected_output": "The unrelated changes are preserved and the workflow does not reset or overwrite them.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "domain-composition",
+      "prompt": "Implement an approved phone-first Flutter slice with user-facing screens, offline SQLite persistence, and restart durability.",
+      "expected_output": "Implement remains the core owner and loads the material ui-engineering, mobile-engineering, and database-engineering skill contracts before implementing those concerns; incidental skills are not loaded.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "preserve-open-decisions",
+      "prompt": "Implement a Flutter phone slice where platform support, URL syntax policy, and collection ordering are explicitly still open. The accepted plan only requires local save/list/detail behavior.",
+      "expected_output": "Implementation does not convert the open product decisions into durable policy. It may choose reversible mechanisms needed for implementation without updating product/architecture truth or claiming the open decision is settled.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "blocked-runtime-evidence",
+      "prompt": "Implement a mobile slice on a machine where static analysis and tests work but the required Android SDK/device is unavailable.",
+      "expected_output": "Implement uses the strongest available evidence, reports APK/device runtime verification as blocked, and does not substitute desktop/browser behavior as equivalent mobile acceptance.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "no-core-overcomposition",
+      "prompt": "Implement an approved feature and stop when it is ready for acceptance. Review, acceptance, and release are separate later phases.",
+      "expected_output": "Implement does not preload or execute accept, review, or finish as sibling workflow owners merely to close the implementation turn.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "expected-no-match-cleanup",
+      "prompt": "After implementing a feature, search for leftover template strings. Finding none is the desired result.",
+      "expected_output": "A zero-match cleanup search is treated as successful evidence and is not bundled in a way that surfaces the implementation step as a failure.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "current-technology-idiom",
+      "prompt": "Implement a bounded feature using a selected current framework version whose recommended lifecycle/configuration pattern changed from older releases.",
+      "expected_output": "Implement inspects the project's selected version and current primary guidance for the material capability, uses the current supported idiom instead of a remembered legacy pattern, and does not expand into a broad best-practice rewrite.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "direct-write-verification-isolation",
+      "prompt": "Use implement as the sole core owner. The requested bounded work is authorized, and its remaining verification is a write-capable integration smoke test that creates accounts and rows. The runner uses the API already listening locally. Migration setup reads DATABASE_URL from the normal development .env; runtime configuration of the listening process has not been checked. No separate test target or cleanup has been established. A previous run passed. The user asks to complete this workflow and collect fresh evidence.",
+      "expected_output": "Blocks migrations/setup and write-capable verification until a suitable isolated target, effective migration/runtime/test alignment, and actual server identity are confirmed. Does not infer safety from a prior green run, local address, or authorization to verify. Remains the sole core owner rather than invoking accept for this gate.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "direct-verification-isolation-control",
+      "prompt": "Use implement as the sole core owner for bounded work. The relevant verification is a pure in-memory check plus one write-capable integration case. A dedicated local test database is confirmed for migration/setup and application runtime; runner endpoint and process/config evidence identify that runtime, reuse is disabled, credentials stay server-side, and test state is disposable. Both commands are available and authorized.",
+      "expected_output": "Runs proportional verification in the confirmed environment without imposing isolation checks on the pure in-memory command or requiring cloud/container provisioning. Keeps its core ownership and reports only evidence actually collected.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    }
   ]
 }

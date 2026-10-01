@@ -10,7 +10,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.0"
+  skill-version: "0.1.2"
 ---
 
 
@@ -24,9 +24,9 @@ Default to read-only review. Modify code only when the user explicitly asks for 
 
 ## Workflow
 
-1. Understand intended behavior from the request/spec/plan and inspect the actual diff.
+1. Understand intended behavior from the request/spec/plan and inspect the actual diff. When Git exists, check newly tracked paths and file-count/path anomalies; inspect untracked files when they affect the review claim. Use `references/_shared/engineering/diff-discipline.md` for repository hygiene, preserving unrelated work.
 2. Determine which risk domains the diff truly touches. Compose only those specialist concerns.
-3. Check correctness, compatibility, failure behavior, tests/evidence, and repository conventions at the affected boundaries.
+3. Check correctness, compatibility, failure behavior, tests/evidence, repository conventions, and materially relevant current technology usage at the affected boundaries. Validate deprecated, legacy, unsupported, or non-idiomatic usage against the selected version and primary guidance when version sensitivity matters; do not turn personal style preference into a finding.
 4. Validate suspicious findings in surrounding code or direct evidence before reporting them.
 5. Prioritize material, actionable findings. Distinguish blockers from improvements and avoid style churn already covered by automated tooling.
 

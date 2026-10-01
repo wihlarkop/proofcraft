@@ -11,7 +11,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.0"
+  skill-version: "0.1.2"
 ---
 
 
@@ -30,11 +30,16 @@ Do not trigger for mobile lifecycle/background/offline behavior without a UI con
 1. Inspect current product behavior, existing components/tokens, DESIGN.md, platform targets, and the actual surface before inventing a new visual language.
 2. Classify the surface: web, desktop, mobile, or hybrid/WebView. A task may span more than one.
 3. Identify the primary UI concern: structure/layout, typography, color, interaction, input modality, motion, accessibility, responsive/adaptive behavior, UX copy, or visual polish.
-4. Preserve established design/system patterns unless the task intentionally changes them.
+4. Preserve established design/system patterns unless the task intentionally changes them. When the project has no settled component/styling strategy or the task intentionally revisits it, follow `references/_shared/ui/component-styling-strategy.md` and compare credible strategy shapes from product/design forces before selecting packages.
 5. Make behavior work across relevant viewport/window sizes and input modes rather than optimizing a single screenshot.
 6. Use motion sparingly and purposefully; respect reduced-motion and accessibility needs.
 7. When a specialist visual-design provider is available, route only the matching concern to it and keep project DESIGN.md authoritative.
-8. Verify rendered behavior directly when the environment can render it; otherwise use build/static evidence and disclose the visual-verification gap.
+8. For interactive claims, use `references/_shared/ui/runtime-verification.md` to verify the rendered surface and relevant interactions, viewport/input modes, and state transitions. Type checks, lint, and builds prove static properties, not runtime interaction correctness. Consider SSR/hydration only where present and material. For verification-only requests, report mismatches and the smallest needed fix; change implementation only when repair is explicitly authorized.
+9. For visual refinement, inspect the actual rendered surface when available and apply the reference's product-specific visual self-critique. If rendering/runtime access is unavailable, disclose the evidence gap and limit completion claims.
+
+## Component and styling decisions
+
+UI implementation strategy is not automatically an implementation detail. If a component-system, headless-primitives foundation, or styling convention would pervasively structure the frontend and be costly to reverse, report an architecture concern so `architect` can own the durable decision. Otherwise select the smallest suitable strategy here and leave exact reversible tooling to planning/implementation as appropriate.
 
 ## Durable design
 
@@ -46,7 +51,7 @@ Mobile-specific lifecycle, offline/local-first, backgrounding, device capabiliti
 
 ## Stop
 
-Stop when the requested UI behavior is implemented or specified, relevant surfaces and input modes are covered, accessibility concerns are handled proportionally, and available visual evidence is sufficient.
+Stop when the requested behavior or specification has sufficient evidence for its claim across relevant surfaces/input modes, with accessibility handled proportionally. Report unavailable rendered/runtime evidence as a remaining gap.
 ## Reference Guide
 
 Load only the references needed for the current task:
@@ -61,6 +66,9 @@ Load only the references needed for the current task:
 - [decision lock](references/_shared/constitution/decision-lock.md)
 - [concerns](references/_shared/orchestration/concerns.md)
 - [design](references/_shared/artifacts/design.md)
+- [component styling strategy](references/_shared/ui/component-styling-strategy.md)
+- [dependency selection](references/_shared/engineering/dependency-selection.md)
 - [provider neutrality](references/_shared/engineering/provider-neutrality.md)
 - [evidence](references/_shared/verification/evidence.md)
 - [risk depth](references/_shared/verification/risk-depth.md)
+- [runtime verification](references/_shared/ui/runtime-verification.md)
