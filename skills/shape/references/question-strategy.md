@@ -71,7 +71,7 @@ After single or batch answers:
 4. Recompute the remaining decision frontier.
 5. Declare readiness only when blockers are actually resolved.
 
-Question strategy never authorizes creating durable artifacts in discover mode, guessing missing policy, or extending the scope beyond the active workflow.
+Question strategy never authorizes creating durable artifacts in discover or recommend mode, guessing missing policy, or extending the scope beyond the active workflow.
 
 ## Presentation preference
 

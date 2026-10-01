@@ -3,8 +3,9 @@ name: shape
 description: >-
   Shape software work into clear product behavior and decisions. Use when a feature/request is
   ambiguous, has unresolved human decisions, needs a behavioral specification, or is too uncertain
-  for implementation planning. Supports opt-in product discovery, normal shaping, spec mode, and wayfinding for large fog-
-  of-war work. Inspect the project for facts instead of asking the user to relay them.
+  for implementation planning; also use when asked what product feature/opportunity to build next
+  for an existing product. Supports opt-in discovery, recommend, normal shaping, spec, and wayfinding.
+  Inspect the project for facts instead of asking the user to relay them.
 license: MIT
 compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
@@ -16,16 +17,19 @@ metadata:
 
 # Shape
 
-Convert ambiguous intent into behavior and decisions clear enough for planning.
+Help choose what to shape next, or convert selected intent into behavior and decisions clear enough for planning.
 
 ## Modes
 
 - **discover** — opt-in conversational product discovery when the user is still deciding what product or major product direction should exist. Greenfield work or ordinary ambiguity alone does not activate this mode.
+- **recommend** — advisory next product opportunities for an existing product with an accepted direction and implemented baseline, when the user asks what to build/add next. `recommend` aliases `shape:recommend`; recommendations about behavior within an already selected feature remain normal shape/spec.
 - **shape** — normal product/behavior clarification.
 - **spec** — user already knows the desired behavior; produce or update the behavioral contract directly.
 - **wayfind** — large uncertain work where bounded research/prototypes are needed before a stable plan exists.
 
 ## Workflow
+
+Discover and recommend use their mode-specific references below. The following workflow applies to normal shape, spec, and wayfind.
 
 1. Run a focused reality check and read relevant durable product/architecture decisions from the current project workspace first. Treat harness/global/personal memory as non-authoritative project context unless the user explicitly asks to reuse prior context or the workspace itself points to it; verify any reused memory against current workspace truth before making durable changes.
 2. Separate project facts from human decisions. Discover facts yourself when tools/environment expose them.
@@ -44,11 +48,17 @@ When clarification is needed, follow `references/question-strategy.md`. `adaptiv
 
 When discover mode is active, follow `references/discover.md`. Discovery is conversation-first and creates no durable artifact or code by default. Transition into normal shaping only when the product direction is sufficiently clear or the user explicitly asks to capture settled conclusions.
 
+## Recommend mode
+
+When asked to recommend next product opportunities, follow [recommend mode](references/recommend.md). Inspect current product and implementation truth, give a small advisory set, and stop before shaping or durable updates. When the human selects or confirms a concrete candidate, transition to normal shape; the recommendation does not settle its behavior.
+
 ## Specification boundary
 
 The spec states WHAT must be true: behavior, invariants, lifecycle/failure semantics, compatibility expectations, acceptance criteria, and explicit non-goals. Implementation details belong in the plan.
 
 ## Stop
+
+Recommend stops at advice and human selection, not at planning readiness. Do not silently shape, architect, plan, or implement a recommendation.
 
 Stop when product behavior is clear enough to hand off. If consequential architecture is still materially undecided — for example a greenfield product still lacks platform shape, data authority, runtime boundaries, or other hard-to-reverse system choices — route next to `architect` rather than implying the work is ready for `plan`. Route directly to `plan` only when accepted architecture is already sufficient for a fresh agent to implement without reopening durable system decisions. If a genuine human decision remains and guessing would create meaningful product/architecture risk, ask it or record it explicitly as open rather than silently resolving it.
 ## Reference Guide
@@ -57,6 +67,7 @@ Load only the references needed for the current task:
 
 - [discover](references/discover.md)
 - [question strategy](references/question-strategy.md)
+- [recommend](references/recommend.md)
 - [spec mode](references/spec-mode.md)
 - [wayfinding](references/wayfinding.md)
 - [principles](references/_shared/constitution/principles.md)
