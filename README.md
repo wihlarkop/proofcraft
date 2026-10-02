@@ -120,6 +120,16 @@ python scripts/check_generated.py
 
 The source manifests use JSON syntax stored in `.yaml` files. JSON is a YAML subset, which keeps the authoring toolchain Python-stdlib-only.
 
+Optional model behavioral checks use pinned Promptfoo/Codex tooling:
+
+```text
+python scripts/eval.py shape
+python scripts/eval.py improve
+python scripts/eval.py --all
+```
+
+See [behavioral evals](docs/behavioral-evals.md) for Node requirements, Codex login reuse, isolated fixtures, subsets, baseline comparison and the native viewer. Static build/validation and distributed skills do not require this tooling.
+
 ## Design boundaries
 
 Proofcraft separates four layers:
