@@ -119,6 +119,13 @@
       "expected_output": "Runs proportional verification in the confirmed environment without imposing isolation checks on the pure in-memory command or requiring cloud/container provisioning. Keeps its core ownership and reports only evidence actually collected.",
       "force_skill_invocation": false,
       "should_trigger": true
+    },
+    {
+      "id": "repository-wide-audit-discovery",
+      "prompt": "Use the improve skill to scan this existing repository and identify what should be improved. Do not change files yet. Preserve product behavior and accepted architecture; prioritize only evidence-backed improvements.",
+      "expected_output": "Improve enters read-only repository-wide discovery, inspects project orientation, technology/configuration, ownership boundaries, verification surfaces, and representative or high-risk implementation paths rather than mechanically rewriting files. It returns a prioritized MUST / WORTHWHILE / OPTIONAL / OUT OF SCOPE improvement frontier (or explicitly reports no material item), recommends a bounded next target, and makes no code changes.",
+      "force_skill_invocation": true,
+      "should_trigger": true
     }
   ]
 }
