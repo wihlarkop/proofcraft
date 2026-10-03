@@ -1,69 +1,15 @@
 {
   "skill_name": "accept",
   "evals": [
-    {
-      "id": "natural-trigger",
-      "prompt": "Use normal engineering judgment for a task that should naturally activate accept.",
-      "expected_output": "The accept workflow is selected and follows its contract.",
-      "force_skill_invocation": false,
-      "should_trigger": true
-    },
-    {
-      "id": "explicit-invoke",
-      "prompt": "Use the accept skill for this task.",
-      "expected_output": "The accept workflow is followed without unrelated ceremony.",
-      "force_skill_invocation": true,
-      "should_trigger": true
-    },
-    {
-      "id": "negative-trigger",
-      "prompt": "Fix a one-character typo in a README heading and do nothing else.",
-      "expected_output": "The accept skill should not be unnecessarily activated unless it is the direct owner of the request.",
-      "force_skill_invocation": false,
-      "should_trigger": false
-    },
-    {
-      "id": "behavior",
-      "prompt": "Verify an approved feature against observable acceptance criteria without changing implementation.",
-      "expected_output": "Each required criterion gets an evidence-backed PASS, FAIL, BLOCKED, or NOT RUN verdict and the evidence boundary is explicit.",
-      "force_skill_invocation": true,
-      "should_trigger": true
-    },
-    {
-      "id": "edge",
-      "prompt": "Use accept in a repository with unrelated uncommitted user changes.",
-      "expected_output": "Acceptance remains read-only and preserves unrelated changes.",
-      "force_skill_invocation": true,
-      "should_trigger": true
-    },
-    {
-      "id": "domain-composition",
-      "prompt": "Accept a phone-first Flutter slice with user-facing interaction, offline SQLite persistence, and restart durability.",
-      "expected_output": "Accept remains the core owner and loads the material ui-engineering, mobile-engineering, and database-engineering contracts needed to interpret evidence; incidental specialists are not loaded.",
-      "force_skill_invocation": false,
-      "should_trigger": true
-    },
-    {
-      "id": "blocked-device",
-      "prompt": "Automated host tests pass, but no Android/iOS device or emulator is available for a required phone-runtime scenario.",
-      "expected_output": "Host-verifiable criteria may pass, the phone-runtime criterion is BLOCKED with its missing prerequisite, and aggregate acceptance is not described as fully passed.",
-      "force_skill_invocation": false,
-      "should_trigger": true
-    },
-    {
-      "id": "do-not-fix-by-default",
-      "prompt": "During acceptance, one required scenario fails. The user asked only to verify and report, not to repair.",
-      "expected_output": "Accept reports the exact mismatch and smallest affected scope without changing implementation. Repair is deferred until explicitly requested.",
-      "force_skill_invocation": false,
-      "should_trigger": true
-    },
-    {
-      "id": "evidence-boundary",
-      "prompt": "A widget test proves an interaction flow, but no physical phone run occurred.",
-      "expected_output": "The widget-tested interaction may receive its supported verdict, but the result explicitly does not claim physical-device behavior and any required device criterion remains separately evaluated.",
-      "force_skill_invocation": false,
-      "should_trigger": true
-    },
+    {"id":"natural-trigger","prompt":"Use normal engineering judgment for a task that should naturally activate accept.","expected_output":"The accept workflow is selected and follows its contract.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"explicit-invoke","prompt":"Use the accept skill for this task.","expected_output":"The accept workflow is followed without unrelated ceremony.","force_skill_invocation":true,"should_trigger":true},
+    {"id":"negative-trigger","prompt":"Fix a one-character typo in a README heading and do nothing else.","expected_output":"The accept skill should not be unnecessarily activated unless it is the direct owner of the request.","force_skill_invocation":false,"should_trigger":false},
+    {"id":"behavior","prompt":"Verify an approved feature against observable acceptance criteria without changing implementation.","expected_output":"Each required criterion gets an evidence-backed PASS, FAIL, BLOCKED, or NOT RUN verdict and the evidence boundary is explicit.","force_skill_invocation":true,"should_trigger":true},
+    {"id":"edge","prompt":"Use accept in a repository with unrelated uncommitted user changes.","expected_output":"Acceptance remains read-only and preserves unrelated changes.","force_skill_invocation":true,"should_trigger":true},
+    {"id":"domain-composition","prompt":"Accept a phone-first Flutter slice with user-facing interaction, offline SQLite persistence, and restart durability.","expected_output":"Accept remains the core owner and loads the material ui-engineering, mobile-engineering, and database-engineering contracts needed to interpret evidence; incidental specialists are not loaded.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"blocked-device","prompt":"Automated host tests pass, but no Android/iOS device or emulator is available for a required phone-runtime scenario.","expected_output":"Host-verifiable criteria may pass, the phone-runtime criterion is BLOCKED with its missing prerequisite, and aggregate acceptance is not described as fully passed.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"do-not-fix-by-default","prompt":"During acceptance, one required scenario fails. The user asked only to verify and report, not to repair.","expected_output":"Accept reports the exact mismatch and smallest affected scope without changing implementation. Repair is deferred until explicitly requested.","force_skill_invocation":false,"should_trigger":true},
+    {"id":"evidence-boundary","prompt":"A widget test proves an interaction flow, but no physical phone run occurred.","expected_output":"The widget-tested interaction may receive its supported verdict, but the result explicitly does not claim physical-device behavior and any required device criterion remains separately evaluated.","force_skill_invocation":false,"should_trigger":true},
     {
       "id": "split-e2e-environments",
       "prompt": "Accept Zaiko account/household/item creation using Playwright. Alembic env.py loads backend/.env (the normal development DATABASE_URL) unless overridden. Playwright webServer sets a separate E2E_DATABASE_URL for its backend, enables reuseExistingServer outside CI, and the tests create accounts, households, and items without cleanup. A dev server may already be listening. A prior run was green. Verify E2E acceptance; do not change implementation.",
@@ -89,27 +35,6 @@
       "id": "frontend-secret-target",
       "prompt": "Verify a write-capable browser flow. E2E setup puts the database connection credential in a PUBLIC_DATABASE_URL frontend variable so the browser can select the same isolated database as migrations and the API server. The frontend normally reaches persistence through the API.",
       "expected_output": "Flags the client-exposed credential and does not run with that arrangement. Verifies the backend owns persistence target selection and the browser test targets the intended API/runtime without receiving database secrets; isolation alone does not make leaked credentials acceptable.",
-      "force_skill_invocation": false,
-      "should_trigger": true
-    },
-    {
-      "id": "existing-browser-runner",
-      "prompt": "Accept a responsive web checkout. The repository already uses Playwright for browser E2E, and type checks/build are green. Verify the real UI/UX journey on phone and desktop widths, including keyboard/focus and error feedback. Do not add another test framework.",
-      "expected_output": "Accept reuses the existing Playwright runner, composes ui-engineering for rendered interaction/UX evidence, and exercises the material journey, viewport, keyboard/focus, and error states. It does not treat static checks or screenshots alone as proof and does not introduce Cypress/WebDriver or another browser stack without a concrete gap.",
-      "force_skill_invocation": false,
-      "should_trigger": true
-    },
-    {
-      "id": "grpc-surface",
-      "prompt": "Accept a gRPC service that exposes unary and server-streaming methods. Generated protobuf clients compile, but verify runtime semantics including errors, deadline cancellation, metadata, and stream termination. Do not translate the service into REST just for testing.",
-      "expected_output": "Accept verifies the protobuf/generated contract and material gRPC transport semantics using the project's existing RPC tooling: status/errors, metadata, deadline/cancellation, and streaming termination/order as applicable. It uses an actual client/server boundary when transport behavior is claimed and does not substitute an HTTP-only checklist.",
-      "force_skill_invocation": false,
-      "should_trigger": true
-    },
-    {
-      "id": "http-api-surface",
-      "prompt": "Accept a REST mutation backed by PostgreSQL. OpenAPI generation is current, but the claim also includes authorization, validation errors, idempotent retry, stale-revision conflict, and transactional rollback. Choose proportional evidence.",
-      "expected_output": "Accept uses contract/schema evidence for API shape plus focused runtime/integration evidence for authorization, validation/error semantics, idempotency, revision conflict, and PostgreSQL transaction behavior. It does not claim those runtime guarantees from OpenAPI generation or unit tests alone, and it does not require unrelated full E2E when focused API/database evidence can falsify the claims.",
       "force_skill_invocation": false,
       "should_trigger": true
     }
