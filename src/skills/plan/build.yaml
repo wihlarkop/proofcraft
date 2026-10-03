@@ -12,6 +12,7 @@
     "engineering/dependency-selection.md",
     "engineering/technology-usage.md",
     "verification/evidence.md",
-    "verification/risk-depth.md"
+    "verification/risk-depth.md",
+    "verification/verification-surfaces.md"
   ]
 }

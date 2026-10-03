@@ -12,7 +12,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.2"
+  skill-version: "0.1.3"
 ---
 
 
@@ -25,7 +25,7 @@ Prove product behavior rather than merely running a test command.
 1. Start from project-local product/spec/ADR/plan/acceptance artifacts and the implemented behavior being claimed.
 2. Convert each material criterion into an observable pass/fail condition.
 3. Identify material verification concerns and load the relevant domain skill contracts before choosing evidence. For example, mobile runtime claims may need mobile-engineering, rendered interaction claims may need ui-engineering, and persistence/restart claims may need database-engineering. Do not load incidental specialists.
-4. Choose evidence by risk: unit, integration, contract, E2E, rendered UI, manual/device interaction, exploratory testing, or a combination. Before setup or verification can mutate external state, load `references/_shared/engineering/test-environment-isolation.md` and confirm setup/migration, actual application runtime, and test targets identify the intended isolated environment. Unconfirmed targets block the write-capable run and its acceptance claim.
+4. Choose evidence by risk and by the actual interface where the claim can fail. Use `references/_shared/verification/verification-surfaces.md` for browser/UI, HTTP/GraphQL, RPC/gRPC, async/event, persistence, CLI, and device/runtime surfaces. Reuse the project's existing supported test runner and protocol tooling rather than introducing a parallel stack merely for acceptance. Before setup or verification can mutate external state, load `references/_shared/engineering/test-environment-isolation.md` and confirm setup/migration, actual application runtime, and test targets identify the intended isolated environment. Unconfirmed targets block the write-capable run and its acceptance claim.
 5. Collect evidence directly when the environment exposes it. Distinguish what host tests prove from what requires a real device, browser, external system, or other runtime surface.
 6. Report each required criterion as PASS, FAIL, BLOCKED, or NOT RUN. Missing evidence is not PASS.
 7. Keep implementation read-only by default. If a criterion fails, record the exact observed mismatch and the smallest affected scope before changing code. Only fix during the same workflow when the user explicitly asks for repair; after an authorized fix, rerun the failed scenario and affected regression subset.
@@ -33,7 +33,7 @@ Prove product behavior rather than merely running a test command.
 
 ## Test strategy
 
-Tests should protect behavior and failure modes at the level that can actually falsify the claim. Do not require every behavior to have every test level.
+Tests should protect behavior and failure modes at the level that can actually falsify the claim. Do not require every behavior to have every test level, a universal test pyramid, or a particular runner. Static success does not prove rendered interaction or transport/runtime semantics; conversely, full E2E is unnecessary when a narrower surface directly falsifies the claim.
 
 TDD may be used when explicitly requested, required by repository convention, or deliberately selected because test-first discovery helps the task. It is not implied by this skill.
 

@@ -11,7 +11,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.2"
+  skill-version: "0.1.3"
 ---
 
 

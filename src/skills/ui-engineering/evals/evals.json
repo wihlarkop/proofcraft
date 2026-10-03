@@ -98,6 +98,13 @@
       "expected_output": "Uses available static evidence for its supported claims and explicitly leaves visual/runtime interaction verification incomplete. Does not fabricate rendered inspection or mark interaction correctness proved.",
       "force_skill_invocation": false,
       "should_trigger": true
+    },
+    {
+      "id": "reuse-existing-playwright",
+      "prompt": "Verify a rendered responsive web flow in a project that already uses Playwright. The flow needs phone/desktop coverage, keyboard focus, a validation error, and a successful submit. Static checks pass. Should we add another browser test tool or visual snapshot framework?",
+      "expected_output": "ui-engineering reuses the existing Playwright/browser surface, exercises rendered interaction and relevant viewports/focus/error/success states, and uses screenshots/traces only as supporting evidence. It does not add a second browser runner or visual snapshot framework without a concrete unmet need.",
+      "force_skill_invocation": false,
+      "should_trigger": true
     }
   ]
 }

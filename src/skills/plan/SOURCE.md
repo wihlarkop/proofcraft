@@ -11,7 +11,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.4"
+  skill-version: "0.1.5"
 ---
 
 
@@ -42,7 +42,7 @@ Use the implementation contract pattern from the shared plan reference.
 
 ## Testing
 
-Verification is required. TDD is optional and should be selected only when the user asks for it, the project requires it, or it clearly improves this task. Do not make unit tests, test-first sequencing, or coverage targets universal plan requirements merely by convention.
+Verification is required. Plan evidence against the actual surfaces where behavior can fail; use `references/_shared/verification/verification-surfaces.md` when browser/UI, HTTP/GraphQL, RPC/gRPC, async/event, persistence, CLI, or device/runtime semantics are material. Prefer the project's existing supported runner/tooling and do not prescribe a second test stack without a concrete gap. TDD is optional and should be selected only when the user asks for it, the project requires it, or it clearly improves this task. Do not make unit tests, test-first sequencing, coverage targets, or full E2E universal plan requirements merely by convention.
 
 ## Stop
 
