@@ -3,24 +3,56 @@
     "scenario": "leave-good-code-alone",
     "fixture": "improve",
     "assert": [
-      {"type": "skill-used", "value": "improve"},
-      {"type": "not-skill-used", "value": "shape"}
+      {
+        "type": "skill-used",
+        "value": "improve"
+      },
+      {
+        "type": "not-skill-used",
+        "value": "shape"
+      }
     ]
   },
   {
     "scenario": "architecture-escalation",
     "fixture": "improve",
     "assert": [
-      {"type": "skill-used", "value": "improve"},
-      {"type": "icontains", "value": "architect"}
+      {
+        "type": "skill-used",
+        "value": "improve"
+      },
+      {
+        "type": "icontains",
+        "value": "architect"
+      }
     ]
   },
   {
     "scenario": "performance-needs-evidence",
     "fixture": "improve",
     "assert": [
-      {"type": "skill-used", "value": "improve"},
-      {"type": "regex", "value": "[Mm]easur|[Pp]rofil|[Bb]aseline|[Qq]uery.plan"}
+      {
+        "type": "skill-used",
+        "value": "improve"
+      },
+      {
+        "type": "regex",
+        "value": "[Mm]easur|[Pp]rofil|[Bb]aseline|[Qq]uery.plan"
+      }
+    ]
+  },
+  {
+    "scenario": "repository-wide-audit-discovery",
+    "fixture": "improve",
+    "assert": [
+      {
+        "type": "skill-used",
+        "value": "improve"
+      },
+      {
+        "type": "regex",
+        "value": "MUST|WORTHWHILE|OPTIONAL|OUT OF SCOPE|no material"
+      }
     ]
   }
 ]
