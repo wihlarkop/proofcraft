@@ -1,0 +1,63 @@
+[
+  {
+    "scenario": "recommend-documented-deferred-opportunities",
+    "fixture": "pantry",
+    "assert": [
+      {"type": "skill-used", "value": "shape"},
+      {"type": "icontains", "value": "deferred"},
+      {"type": "icontains", "value": "uncertain"},
+      {"type": "trajectory:step-count", "value": {"type": "command", "pattern": "*shape*SKILL.md*", "min": 1}}
+    ],
+    "rubric": "Current fixture source and acceptance also show inventory change history already implemented. Do not recommend it as missing. Recommendations must preserve that current evidence over stale notes."
+  },
+  {
+    "scenario": "recommend-clear-next-feature",
+    "fixture": "trail",
+    "assert": [
+      {"type": "skill-used", "value": "shape"},
+      {"type": "regex", "value": "[Pp]lace.{0,40}filter|[Ff]ilter.{0,40}place"}
+    ]
+  },
+  {
+    "scenario": "recommend-generic-feature-pressure",
+    "fixture": "quiet",
+    "assert": [
+      {"type": "skill-used", "value": "shape"},
+      {"type": "regex", "value": "[Oo]ffline.{0,40}search|[Ss]earch.{0,40}offline"}
+    ]
+  },
+  {
+    "scenario": "recommend-insufficient-repository-evidence",
+    "fixture": "starter",
+    "assert": [{"type": "skill-used", "value": "shape"}]
+  },
+  {
+    "scenario": "recommend-human-selection-to-shape",
+    "fixture": "pantry",
+    "assert": [
+      {"type": "skill-used", "value": "shape"},
+      {"type": "icontains", "value": "uncertain"}
+    ]
+  },
+  {
+    "scenario": "recommend-control-normal-shape",
+    "fixture": "pantry",
+    "assert": [
+      {"type": "skill-used", "value": "shape"},
+      {"type": "regex", "value": "[Mm]erg|[Rr]epeat|[Dd]uplicat"}
+    ]
+  },
+  {
+    "scenario": "recommend-control-spec-request",
+    "fixture": "quiet",
+    "writable": true,
+    "assert": [
+      {"type": "skill-used", "value": "shape"},
+      {
+        "type": "javascript",
+        "value": "const fs = process.getBuiltinModule('node:fs');\nconst file = context.provider.config.working_dir + '/SPEC.md';\nif (!fs.existsSync(file)) return {pass:false, score:0, reason:'Requested SPEC.md was not recorded'};\nconst spec = fs.readFileSync(file, 'utf8');\nconst pass = /case.insensitive/i.test(spec) && /empty[^\\n.]{0,60}(all|every)/i.test(spec) && /(offline[^\\n.]{0,60}(list|detail|read)|(list|detail|read)[^\\n.]{0,60}offline)/i.test(spec) && /(no|without|never|must not|does not)[^\\n.]{0,60}network/i.test(spec);\nreturn {pass, score:pass ? 1 : 0, reason:'Recorded spec must include case-insensitive title search, empty query showing all entries, offline reading and no network calls'};"
+      }
+    ],
+    "rubric": "SPEC.md is the fixture's existing contract location. The request genuinely authorizes recording a spec; reporting inability to write or just proposing future artifact work fails this case."
+  }
+]
