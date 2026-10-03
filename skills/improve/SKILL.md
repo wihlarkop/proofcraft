@@ -52,7 +52,6 @@ For discovery-only audits, report the evidence-backed improvement frontier, why 
 ## Stop
 
 Before stopping, check whether in-scope wrappers, ownership splits, composition hops, or intermediate artifacts can still be removed. Stop when the target is materially improved and remaining changes have weak payoff or require another workflow decision; leave already-proportionate code alone.
-
 ## Reference Guide
 
 Load only the references needed for the current task:
