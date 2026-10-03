@@ -62,6 +62,10 @@ Build that baseline from its own canonical source first using its `scripts/build
 
 Add bounded selections/assertions under `evals/behavioral/` and fixtures under its `fixtures/` directory. Keep prompts/expected outcomes in canonical skill-local eval files. Do not hand-edit generated config or weaken a canonical outcome to make a model pass.
 
+Behavioral cases are strongest when grounded in real historical failures, regressions, or difficult decisions. When a meaningful prior baseline exists, comparison can establish whether a scenario distinguishes the behavior it claims to protect. Baseline separation is evidence, not a target to game: do not weaken assertions or expected outcomes merely to make an older baseline fail.
+
+A baseline passing a case is not automatically wrong; a whole suite unable to distinguish protected behavior may indicate weak scenarios.
+
 ## Static and setup checks
 
 ```text
