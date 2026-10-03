@@ -51,3 +51,4 @@ Load only the references needed for the current task:
 - [technology usage](references/_shared/engineering/technology-usage.md)
 - [evidence](references/_shared/verification/evidence.md)
 - [risk depth](references/_shared/verification/risk-depth.md)
+- [verification surfaces](references/_shared/verification/verification-surfaces.md)

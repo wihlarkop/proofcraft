@@ -52,5 +52,6 @@ Load only the references needed for the current task:
 - [dependency selection](references/_shared/engineering/dependency-selection.md)
 - [technology usage](references/_shared/engineering/technology-usage.md)
 - [risk depth](references/_shared/verification/risk-depth.md)
+- [verification surfaces](references/_shared/verification/verification-surfaces.md)
 - [regression scope](references/_shared/verification/regression-scope.md)
 - [test environment isolation](references/_shared/engineering/test-environment-isolation.md)

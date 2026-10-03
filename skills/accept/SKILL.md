@@ -52,5 +52,6 @@ Load only the references needed for the current task:
 - [evidence](references/_shared/verification/evidence.md)
 - [verdicts](references/_shared/verification/verdicts.md)
 - [risk depth](references/_shared/verification/risk-depth.md)
+- [verification surfaces](references/_shared/verification/verification-surfaces.md)
 - [regression scope](references/_shared/verification/regression-scope.md)
 - [test environment isolation](references/_shared/engineering/test-environment-isolation.md)
