@@ -11,7 +11,10 @@ Compare only the dimensions relevant to the change, before and after; a short ex
 - concepts and ownership locations;
 - wrappers/adapters and execution/composition hops;
 - configuration sources and duplicated representations;
-- persistent intermediate artifacts and their real consumers.
+- persistent intermediate artifacts and their real consumers;
+- persistent context/runtime tax from instructions, schemas, hooks, processes, loaded context, compatibility surfaces, or other runtime work imposed on sessions/operations where the capability is not used.
+
+Prefer lazy/on-demand ownership over permanently loaded machinery when behavior does not require eager presence. Evaluate this ongoing cost alongside the other relevant dimensions, not just the cost when the capability is used.
 
 Question a cleanup when one wrapper merely becomes another, one settings owner becomes multiple configuration sources, or composition gains a forwarding module with no boundary reason. Check whether existing owners or native mechanisms can remove the indirection instead.
 
