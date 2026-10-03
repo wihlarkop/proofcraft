@@ -37,6 +37,27 @@
       "expected_output": "Flags the client-exposed credential and does not run with that arrangement. Verifies the backend owns persistence target selection and the browser test targets the intended API/runtime without receiving database secrets; isolation alone does not make leaked credentials acceptable.",
       "force_skill_invocation": false,
       "should_trigger": true
+    },
+    {
+      "id": "existing-browser-runner",
+      "prompt": "Accept a responsive web checkout. The repository already uses Playwright for browser E2E, and type checks/build are green. Verify the real UI/UX journey on phone and desktop widths, including keyboard/focus and error feedback. Do not add another test framework.",
+      "expected_output": "Accept reuses the existing Playwright runner, composes ui-engineering for rendered interaction/UX evidence, and exercises the material journey, viewport, keyboard/focus, and error states. It does not treat static checks or screenshots alone as proof and does not introduce Cypress/WebDriver or another browser stack without a concrete gap.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "grpc-surface",
+      "prompt": "Accept a gRPC service that exposes unary and server-streaming methods. Generated protobuf clients compile, but verify runtime semantics including errors, deadline cancellation, metadata, and stream termination. Do not translate the service into REST just for testing.",
+      "expected_output": "Accept verifies the protobuf/generated contract and material gRPC transport semantics using the project's existing RPC tooling: status/errors, metadata, deadline/cancellation, and streaming termination/order as applicable. It uses an actual client/server boundary when transport behavior is claimed and does not substitute an HTTP-only checklist.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "http-api-surface",
+      "prompt": "Accept a REST mutation backed by PostgreSQL. OpenAPI generation is current, but the claim also includes authorization, validation errors, idempotent retry, stale-revision conflict, and transactional rollback. Choose proportional evidence.",
+      "expected_output": "Accept uses contract/schema evidence for API shape plus focused runtime/integration evidence for authorization, validation/error semantics, idempotency, revision conflict, and PostgreSQL transaction behavior. It does not claim those runtime guarantees from OpenAPI generation or unit tests alone, and it does not require unrelated full E2E when focused API/database evidence can falsify the claims.",
+      "force_skill_invocation": false,
+      "should_trigger": true
     }
   ]
 }
