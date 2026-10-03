@@ -5,7 +5,7 @@ Use for interactive behavior claims or visual refinement. Choose evidence that c
 - **Static:** type checks, lint, and builds establish source/build properties.
 - **Runtime/rendered:** the actual surface, interaction, browser/device behavior, and relevant viewport/input mode establish what users see and can do. Use screenshots, traces, or DOM evidence where useful; a screenshot alone does not prove an interaction.
 
-Inspect and exercise the changed surface directly when available. For visual refinement, rendered inspection is required when the environment supports it. If it does not, report the visual/interaction evidence gap; static success cannot substitute for runtime correctness.
+Inspect and exercise the changed surface directly when available. When browser automation is warranted, prefer the project's existing supported runner (for example Playwright, Cypress, or WebDriver) and its native locators/traces/screenshots rather than introducing a second browser stack or a custom wrapper. For visual refinement, rendered inspection is required when the environment supports it. If it does not, report the visual/interaction evidence gap; static success cannot substitute for runtime correctness. Screenshot comparison can support visual evidence, but pixel/snapshot regression should be added only when the visual contract is deliberately stable enough to justify its maintenance.
 
 ## State transitions
 
