@@ -34,6 +34,7 @@ Protect trust boundaries with evidence, not generic fear lists.
 5. Validate/parsing/file/network boundaries according to the actual downstream capability and framework protections.
 6. For reviews, confirm whether the suspected issue is reachable/exploitable in context and account for existing framework/transport protections.
 7. Report residual risk and supporting privacy/reliability/platform concerns without taking over their ownership.
+8. For explicitly retained trusted audit observations, follow `references/_shared/artifacts/runtime-workspace.md`; it does not provide isolation for untrusted execution or artifact-promotion controls.
 
 ## Stop
 

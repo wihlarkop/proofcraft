@@ -6,6 +6,7 @@
     "orchestration/concerns.md",
     "state/authority.md",
     "verification/evidence.md",
-    "verification/risk-depth.md"
+    "verification/risk-depth.md",
+    "artifacts/runtime-workspace.md"
   ]
 }

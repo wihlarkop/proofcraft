@@ -30,6 +30,7 @@ Prove product behavior rather than merely running a test command.
 6. Report each required criterion as PASS, FAIL, BLOCKED, or NOT RUN. Missing evidence is not PASS.
 7. Keep implementation read-only by default. If a criterion fails, record the exact observed mismatch and the smallest affected scope before changing code. Only fix during the same workflow when the user explicitly asks for repair; after an authorized fix, rerun the failed scenario and affected regression subset.
 8. Give an aggregate status without hiding incomplete evidence. If any required criterion is BLOCKED or NOT RUN, do not describe the whole acceptance as fully passed; summarize the counts and name the remaining gate.
+9. When retaining run-scoped QA evidence is useful, follow `references/_shared/artifacts/runtime-workspace.md`. Reuse an existing project convention and do not edit `.gitignore` just to store ordinary acceptance output.
 
 ## Test strategy
 
@@ -49,6 +50,7 @@ Load only the references needed for the current task:
 - [reality check](references/_shared/orchestration/reality-check.md)
 - [concerns](references/_shared/orchestration/concerns.md)
 - [acceptance](references/_shared/artifacts/acceptance.md)
+- [runtime workspace](references/_shared/artifacts/runtime-workspace.md)
 - [evidence](references/_shared/verification/evidence.md)
 - [verdicts](references/_shared/verification/verdicts.md)
 - [risk depth](references/_shared/verification/risk-depth.md)

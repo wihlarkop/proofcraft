@@ -8,6 +8,7 @@
     "engineering/provider-neutrality.md",
     "verification/evidence.md",
     "verification/risk-depth.md",
-    "engineering/failure-handling.md"
+    "engineering/failure-handling.md",
+    "artifacts/runtime-workspace.md"
   ]
 }

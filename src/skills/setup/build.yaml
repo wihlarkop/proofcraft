@@ -4,6 +4,7 @@
     "constitution/decision-lock.md",
     "orchestration/reality-check.md",
     "artifacts/artifact-model.md",
+    "artifacts/runtime-workspace.md",
     "artifacts/agents-md.md",
     "artifacts/project-context.md",
     "engineering/provider-neutrality.md",

@@ -30,6 +30,7 @@ Find the failure mechanism before committing to a fix.
 7. Respect the requested remediation boundary. If the user asked for investigation only or explicitly prohibited edits, stop before changing files and report the strongest evidence plus the regression evidence a future fix would need.
 8. When repair is authorized and a real mechanism is evidenced, implement the smallest correct fix that addresses the mechanism rather than the symptom.
 9. Add or update focused regression evidence and rerun only the affected scope needed to show the fix removed the failure without introducing relevant regressions.
+10. When a reproduction, log, trace, or report must be retained, follow `references/_shared/artifacts/runtime-workspace.md`. Keep routine investigation read-only, reuse existing project conventions, and do not edit `.gitignore` just to store evidence.
 
 Do not ask the user to copy facts that logs, source, test output, or repository state can expose directly.
 

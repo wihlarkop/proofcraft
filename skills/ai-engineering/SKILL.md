@@ -28,7 +28,8 @@ Treat model behavior as an external nondeterministic capability with an explicit
 5. Define streaming/cancellation/context-limit behavior and what happens on provider rate limit, timeout, refusal, malformed output, or partial response.
 6. Build evals from representative tasks and known failure modes. Compare baseline vs candidate; repeat stochastic cases enough to detect instability.
 7. Instrument only the traces needed to debug/evaluate behavior and apply privacy/security constraints to stored prompts/tool data.
-8. Use OpenAI/Anthropic/Gemini/local/vLLM/LiteLLM/etc. adapters only when the project already selects them or technology selection is explicitly in scope.
+8. When retaining AI evaluation results or traces, follow `references/_shared/artifacts/runtime-workspace.md` and minimize sensitive prompt/output data.
+9. Use OpenAI/Anthropic/Gemini/local/vLLM/LiteLLM/etc. adapters only when the project already selects them or technology selection is explicitly in scope.
 
 ## Stop
 
@@ -45,4 +46,5 @@ Load only the references needed for the current task:
 - [concerns](references/_shared/orchestration/concerns.md)
 - [provider neutrality](references/_shared/engineering/provider-neutrality.md)
 - [evidence](references/_shared/verification/evidence.md)
+- [runtime workspace](references/_shared/artifacts/runtime-workspace.md)
 - [risk depth](references/_shared/verification/risk-depth.md)

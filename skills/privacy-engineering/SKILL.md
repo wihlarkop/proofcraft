@@ -30,6 +30,7 @@ Engineer the full data lifecycle from purpose through deletion.
 7. Report unresolved lifecycle policy to the active core workflow owner as an explicit gate. Distinguish architecture readiness from implementation-contract readiness: a provider-neutral boundary can be architecturally settled while a complete executable plan remains blocked if retention, deletion, consent/revocation, residency, or user-rights decisions materially change the data model, API, UI, or lifecycle.
 8. Convert settled privacy requirements into observable acceptance criteria and verify deletion/retention behavior rather than trusting documentation alone.
 9. Route encryption/authz/secrets implementation to security-engineering and storage mechanics to database/platform specialists.
+10. Treat runtime reports and AI traces as potentially sensitive; minimize retained data and use `references/_shared/artifacts/runtime-workspace.md` only where run-scoped retention is needed.
 
 ## Readiness
 
@@ -52,3 +53,4 @@ Load only the references needed for the current task:
 - [cache](references/_shared/state/cache.md)
 - [evidence](references/_shared/verification/evidence.md)
 - [risk depth](references/_shared/verification/risk-depth.md)
+- [runtime workspace](references/_shared/artifacts/runtime-workspace.md)

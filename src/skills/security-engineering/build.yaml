@@ -5,6 +5,7 @@
     "orchestration/concerns.md",
     "engineering/provider-neutrality.md",
     "verification/evidence.md",
-    "verification/risk-depth.md"
+    "verification/risk-depth.md",
+    "artifacts/runtime-workspace.md"
   ]
 }

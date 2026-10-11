@@ -30,6 +30,7 @@ Default to read-only review. Modify code only when the user explicitly asks for 
 4. Validate suspicious findings in surrounding code or direct evidence before reporting them.
    - For response/error changes, use shared failure-handling guidance and compose `api-design` where the consumer contract is affected. Check material transport/body status contradictions, lost stable identity, incorrect outcome certainty, translation/diagnostic leaks, and destructive background-failure handling. Existing coherent, materially safe conventions win; absence of Proofcraft's greenfield envelope is not a review finding or permission to restructure.
 5. Prioritize material, actionable findings. Distinguish blockers from improvements and avoid style churn already covered by automated tooling.
+6. Retain a review run only when it materially helps a substantial review; follow `references/_shared/artifacts/runtime-workspace.md` and preserve read-only review defaults.
 
 A green test suite is evidence, not proof that the implementation matches the intended contract.
 
@@ -49,6 +50,7 @@ Load only the references needed for the current task:
 - [reality check](references/_shared/orchestration/reality-check.md)
 - [concerns](references/_shared/orchestration/concerns.md)
 - [diff discipline](references/_shared/engineering/diff-discipline.md)
+- [runtime workspace](references/_shared/artifacts/runtime-workspace.md)
 - [technology usage](references/_shared/engineering/technology-usage.md)
 - [evidence](references/_shared/verification/evidence.md)
 - [risk depth](references/_shared/verification/risk-depth.md)

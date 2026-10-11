@@ -27,6 +27,7 @@ Measure first, change one meaningful bottleneck, then measure again.
 5. Re-measure under comparable conditions and check counter-metrics/correctness.
 6. If the problem is load/headroom rather than code-path efficiency, model demand, capacity units, scaling trigger, and cost without assuming a provider.
 7. Preserve readability/reliability unless the measured gain justifies the complexity.
+8. When retaining measurements or profiles, use the project's established convention or `references/_shared/artifacts/runtime-workspace.md`; keep reproducible cache separate from retained evidence.
 
 ## Stop
 
@@ -43,4 +44,5 @@ Load only the references needed for the current task:
 - [concerns](references/_shared/orchestration/concerns.md)
 - [provider neutrality](references/_shared/engineering/provider-neutrality.md)
 - [evidence](references/_shared/verification/evidence.md)
+- [runtime workspace](references/_shared/artifacts/runtime-workspace.md)
 - [risk depth](references/_shared/verification/risk-depth.md)
