@@ -7,6 +7,8 @@
     "artifacts/agents-md.md",
     "artifacts/project-context.md",
     "engineering/provider-neutrality.md",
-    "engineering/diff-discipline.md"
+    "engineering/diff-discipline.md",
+    "engineering/failure-handling.md",
+    "engineering/technology-usage.md"
   ]
 }

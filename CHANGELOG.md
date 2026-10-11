@@ -15,6 +15,7 @@ All notable changes to Proofcraft are documented here.
 - `setup` now forbids probing harness/global/personal memory during onboarding unless the user explicitly requests reuse or the workspace itself points there; project-local setup context must come from the workspace and explicit conversation context.
 
 ### Added
+- Automatic minimal response/error bootstrap for selected greenfield consumer backends, with an HTTP/JSON envelope default and protocol/language-native implementation guidance. Existing coherent conventions retain precedence; explicit response/error improvement uses bounded consolidation. Shared failure handling covers stable identity, unresolved mutations, diagnostic boundaries, and frontend state preservation. Fifteen semantic behavioral rehearsals cover the foundation and its preservation/over-triggering controls.
 - `improve` core workflow (with `refactor` alias) for bounded behavior-preserving refactoring, idiomatic modernization, simplification, and maintainability work; it leaves already-good code alone and routes bugs, architecture changes, product changes, and speculative performance work to the appropriate evidence path.
 - Shared current-technology-usage guidance for supported version-specific APIs/configuration, project-local conventions, explicit pre-stable-tool exceptions, and anti-cargo-cult implementation discipline.
 - Opt-in `shape:discover` mode for conversation-first product discovery with explicit decision/hypothesis boundaries, non-mandatory activation, and readiness outcomes before durable shaping.

@@ -12,7 +12,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.2"
+  skill-version: "0.1.3"
 ---
 
 
@@ -32,6 +32,7 @@ Use when the implementation already works or mostly works and the requested outc
    - For a repository-wide request to **scan**, **audit**, or **find what should be improved**, start in read-only discovery mode. Inspect project orientation, manifests/configuration, major ownership boundaries, verification surfaces, and representative or high-risk implementation paths. Follow evidence to deeper hotspots rather than mechanically reading every file. The output of a discovery-only request is a prioritized improvement frontier, not automatic churn.
    - If the user already authorized codebase-wide improvement rather than discovery only, use that frontier to select a bounded first change; do not turn broad permission into an unbounded rewrite.
 3. Classify material concerns and load only the relevant domain skill contracts. Improve remains the core workflow owner; specialists contribute evidence rather than taking over orchestration.
+   - Audit/consolidate response/error architecture only when the human explicitly targets that handling for improvement, centralization, simplification, standardization, or refactoring. Load shared failure-handling guidance and compose `api-design` when needed. Use the simplification order below and the selected technology's native owners; preserve existing contracts rather than automatically replacing them with the greenfield envelope.
 4. Inspect the actual implementation before proposing a pattern. Follow the current-technology-usage contract for the selected language, runtime, framework, library, database, build tool, and developer tooling. Consult current primary guidance only where usage is version-sensitive, unfamiliar, or materially changed.
 5. Build a bounded improvement frontier:
    - **MUST** — unsupported/deprecated usage, accepted-architecture violations, correctness-adjacent hazards, or severe maintainability problems directly in scope.

@@ -11,6 +11,7 @@
     "verification/risk-depth.md",
     "verification/verification-surfaces.md",
     "verification/regression-scope.md",
-    "engineering/test-environment-isolation.md"
+    "engineering/test-environment-isolation.md",
+    "engineering/failure-handling.md"
   ]
 }

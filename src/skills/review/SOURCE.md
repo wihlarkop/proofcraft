@@ -10,7 +10,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.3"
+  skill-version: "0.1.4"
 ---
 
 
@@ -28,6 +28,7 @@ Default to read-only review. Modify code only when the user explicitly asks for 
 2. Determine which risk domains the diff truly touches. Compose only those specialist concerns.
 3. Check correctness, compatibility, failure behavior, tests/evidence, repository conventions, and materially relevant current technology usage at the affected boundaries. When judging whether evidence is adequate for browser/UI, HTTP/GraphQL, RPC/gRPC, async/event, persistence, CLI, or device/runtime claims, use `references/_shared/verification/verification-surfaces.md`; a green test at the wrong surface does not prove the claim. Validate deprecated, legacy, unsupported, or non-idiomatic usage against the selected version and primary guidance when version sensitivity matters; do not turn personal style preference into a finding.
 4. Validate suspicious findings in surrounding code or direct evidence before reporting them.
+   - For response/error changes, use shared failure-handling guidance and compose `api-design` where the consumer contract is affected. Check material transport/body status contradictions, lost stable identity, incorrect outcome certainty, translation/diagnostic leaks, and destructive background-failure handling. Existing coherent, materially safe conventions win; absence of Proofcraft's greenfield envelope is not a review finding or permission to restructure.
 5. Prioritize material, actionable findings. Distinguish blockers from improvements and avoid style churn already covered by automated tooling.
 
 A green test suite is evidence, not proof that the implementation matches the intended contract.

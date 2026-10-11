@@ -1,0 +1,79 @@
+[
+  {
+    "scenario": "response-greenfield-fastapi",
+    "fixture": "response-greenfield",
+    "assert": [
+      {
+        "type": "skill-used",
+        "value": "setup"
+      }
+    ],
+    "rubric": "Score concrete behavior, not isolated syntax or declarations. In the reason, identify (1) who owns HTTP exception translation, (2) whether supplied protocol-significant metadata crosses a custom translation boundary, (3) how selected status becomes actual HTTP status and body status_code, and (4) the response-consuming frontend decoding/classification path. Preserve these distinctions: when native FastAPI/Starlette HTTPException handling remains authoritative for a path, explicit manual header copying is unnecessary; absence of a custom handler or headers= syntax is not metadata loss. When a custom handler, middleware, or translator intercepts that transport failure, it must preserve applicable supplied authentication challenges, retry hints, and equivalent meaningful framework metadata; silently dropping it fails. Custom application/domain failures need no transport headers that never existed. Infer ownership from the shown registrations and response paths; do not invent a custom interception or supplied metadata. Inspect status selection -> actual framework response -> serialized body in every shown constructor and its wiring. A helper that changes only body status while transport differs fails; equivalent native response/controller wiring may enforce consistency, but omitted route configuration must not be assumed to fix contradictory code. Require a registered request-validation boundary with safe normalization and an actual frontend decoder/classifier that consumes responses, meaningfully checks the selected top-level contract, exposes stable machine-readable outcomes/codes to features, and safely classifies obviously invalid/non-contract top-level responses as boundary failures. Human-message parsing, a blind cast of arbitrary input, types-only decoding, or an imported-but-unwired validation handler fails. Typed nested data may be trusted according to the project static/generated contract; exhaustive nested runtime validation, a schema library, or a particular function/model/exception/file name is not required. Cite implemented relationships rather than rewarding or penalizing headers=, HTTPException, JSONResponse, ApiResponse<T>, or package names. Equivalent FastAPI/Starlette-native implementations are valid. This is a read-only source rehearsal, not runtime acceptance; do not demand fixture edits, demo endpoints, or a full application. MANDATORY DECISION GATE: separately establish the four checks above, then gate the verdict on actual HTTP transport status == envelope.status_code whenever that body field is present. Inspect all shown success and failure return paths, including helpers exposing non-default status choices. Setting only a body field, accepting a parameter named status_code, types, naming, comments, or intended future use is not transport evidence. Require demonstrated coupling through the actual framework response/return path, response injection, or an equivalent native mechanism; no particular syntax is required. If a shown helper permits a body status such as 201 while the actual/default framework transport remains 200, or exposes that status choice without demonstrated transport coupling, set pass=false. Do not assume an unshown caller or route configuration supplies the missing coupling. This violation alone is sufficient for FAIL regardless of other correct design, headers, validation, or frontend behavior. It cannot be a minor caveat or receive an overall PASS through weighted compensation. State the offending construction/return path and missing or contradictory transport link in the reason. Equivalent native implementations with demonstrated coupling remain valid without demo endpoints. MANDATORY TOP-LEVEL CLASSIFICATION GATE: separately inspect the decoder input guards and the branches that emit normal success or API rejection. Before exposing either as a contract result, values controlling classification must satisfy the selected contract: a boolean discriminant must be an accepted boolean, and a required machine-readable code must have an acceptable value/type in each branch that requires it. Field presence, a cast, a type declaration, or comparison to true followed by treating every other value as false does not establish this. Do not convert null/invalid code values into apparently valid stable identities by stringification or coercion. Trace an obviously malformed top-level envelope through the shown code; for example, success=\"invalid\" with code=null must not become an ordinary API rejection, and success=true with code=null must not become a normal success when that branch requires a machine-readable code. Equivalent contracts and native guards are valid; these examples are counterexamples, not required test syntax or fixed identifiers. Identify the actual guards, accepted values, and result branch in the reason. If a demonstrated malformed top-level response becomes a normal contract response, set pass=false: this alone is sufficient for FAIL, regardless of correct status coupling, header ownership, validation handling, or other design. It is not a caveat and cannot be offset by weighted compensation. This gate does not require exhaustive nested data validation, any schema library, particular function names, or runtime validation of every data field; typed nested data may remain trusted under the selected static/generated contract."
+  },
+  {
+    "scenario": "response-greenfield-go",
+    "fixture": "response-greenfield",
+    "assert": [
+      {
+        "type": "skill-used",
+        "value": "setup"
+      }
+    ],
+    "rubric": "Inspect all shown serialization/write paths and their callers. Concrete error handling must agree with response commitment; merely stating errors are handled while code discards them or emits a second response fails. Native error propagation or contextual diagnostics after commitment can suffice without prescribing a universal helper. Judge semantics rather than syntax/name presence, and do not demand fixture edits, full compilation, or demo endpoints in this read-only rehearsal."
+  },
+  {
+    "scenario": "response-greenfield-rust",
+    "fixture": "response-greenfield",
+    "assert": [
+      {
+        "type": "skill-used",
+        "value": "setup"
+      }
+    ],
+    "rubric": "Evaluate relationships, not token presence. In the reason, identify the concrete error-producing operation and its Result return, the caller that consumes it, how propagation/conversion preserves the discriminant, and where that same error is translated into HTTP status and stable consumer identity. All links must be implemented in the sketch; signatures, enums, variant lists, imports, or an unconnected HTTP conversion are insufficient. Normal match/combinator/return flow is as valid as question-mark propagation, and equivalent native HTTP integration is valid without a literal IntoResponse implementation. Opaque context is permitted only outside remaining classification needs; standard/manual/custom errors are valid without thiserror, anyhow, or any specific package. Do not demand an unused orchestration layer, registered demo routes, extra architecture, exact names, full compilation, or fixture edits. Fail early stringification/type erasure or client message parsing when it loses contract-relevant distinctions. This is one read-only connected source rehearsal, not runtime acceptance."
+  },
+  {
+    "scenario": "response-existing-onboarding",
+    "fixture": "response-existing",
+    "assert": [
+      {
+        "type": "skill-used",
+        "value": "setup"
+      }
+    ],
+    "rubric": "Judge the concrete proposed contract, native implementation, and recovery transitions, not keyword mentions. A response that names a principle but then sketches contradictory code/state fails. This fixture is a read-only rehearsal; do not grade it as runtime acceptance or demand file edits."
+  },
+  {
+    "scenario": "response-no-backend-control",
+    "fixture": "response-greenfield",
+    "assert": [
+      {
+        "type": "skill-used",
+        "value": "setup"
+      }
+    ],
+    "rubric": "Judge the concrete proposed contract, native implementation, and recovery transitions, not keyword mentions. A response that names a principle but then sketches contradictory code/state fails. This fixture is a read-only rehearsal; do not grade it as runtime acceptance or demand file edits."
+  },
+  {
+    "scenario": "response-undecided-stack-control",
+    "fixture": "response-greenfield",
+    "assert": [
+      {
+        "type": "skill-used",
+        "value": "setup"
+      }
+    ],
+    "rubric": "Judge the concrete proposed contract, native implementation, and recovery transitions, not keyword mentions. A response that names a principle but then sketches contradictory code/state fails. This fixture is a read-only rehearsal; do not grade it as runtime acceptance or demand file edits."
+  },
+  {
+    "scenario": "response-graphql-control",
+    "fixture": "response-greenfield",
+    "assert": [
+      {
+        "type": "skill-used",
+        "value": "setup"
+      }
+    ],
+    "rubric": "Judge the concrete proposed contract, native implementation, and recovery transitions, not keyword mentions. A response that names a principle but then sketches contradictory code/state fails. This fixture is a read-only rehearsal; do not grade it as runtime acceptance or demand file edits."
+  }
+]

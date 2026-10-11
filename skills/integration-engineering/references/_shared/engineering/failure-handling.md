@@ -1,0 +1,33 @@
+# Response and Failure Handling
+
+Centralize policy and translation, not every throw/catch. `api-design` owns the consumer contract; the selected technology supplies the implementation mechanisms.
+
+## Precedence before design
+
+1. **Existing project with an established convention:** inspect and follow it when coherent and materially safe during setup/onboarding, implementation, review, feature work, and maintenance. Do not introduce a preferred BaseResponse/error architecture, a second abstraction, or stylistic restructuring because Proofcraft has a greenfield default. Report or repair a material correctness/security problem only to the extent the current task justifies.
+2. **Explicit response/error improvement:** only a human request to improve, centralize, simplify, standardize, or refactor response/error handling opens an audit/consolidation path. Apply DELETE -> CONSOLIDATE/SIMPLIFY -> LANGUAGE/FRAMEWORK/NATIVE TOOL -> REHOME TO EXISTING OWNER -> ONLY THEN NEW ABSTRACTION. Adapt to existing architecture and preserve its consumer contract unless a change is authorized; do not automatically replace it with the greenfield default.
+3. **Greenfield/no established convention:** when a consumer-facing backend and protocol/stack are selected, establish a minimal response/failure foundation automatically during bootstrap. Compose `api-design` for the protocol-native contract and follow `technology-usage` for implementation. With no backend, do nothing; with undecided protocol/stack, leave the choice open. Absence of a convention in an existing application permits a proportional baseline for the authorized surface, not a project-wide rewrite.
+
+During ordinary feature work, this precedence governs the implementation plan as well as the wire contract. Change response/error handling only where the feature requires it. Do not opportunistically consolidate, standardize, rename, relocate, or modernize adjacent handling, even when stylistic duplication is obvious; do not include that cleanup in the proposal or plan unless needed for the requested feature's correctness. Optional consolidation belongs to an explicit improve/refactor request. Material correctness/security defects may still be surfaced or repaired proportionally to task authority.
+
+## Outcome before retry
+
+Keep three outcomes distinct: **SUCCESS**, **DEFINITIVELY REJECTED**, and **OUTCOME UNKNOWN / UNRESOLVED**. Retryable/permanent describes recovery policy; it does not prove whether an operation applied.
+
+A mutation whose response was lost may already have committed. Preserve its operation/idempotency identity and pending recovery state. A later retry failing authentication, validation, lookup, or a dependency does not prove the original mutation was unapplied. Resolve only from authoritative evidence tied to the original operation (receipt, status lookup, reconciliation, or an equivalent guarantee). Retry only under an established duplicate-safe contract; do not invent a new operation identity as a recovery shortcut. Never turn an unresolved mutation into a definitive rejection merely to simplify UI or error handling.
+
+## Backend ownership and propagation
+
+Prefer domain/use-case failure -> application semantics -> transport-boundary translation -> structured consumer response where the architecture has that seam. Use one clear owner for failure mapping and response policy. Do not leak framework transport errors into domain code unnecessarily, require new layers in a small coherent native implementation, or add BaseController/BaseService/repository hierarchies for symmetry.
+
+Preserve useful causes and operation context using native propagation/wrapping. Do not swallow unexpected failures or log-and-rethrow at every layer. Log at an ownership boundary where useful context exists; keep public messages separate from internal diagnostics. Redact secrets/PII and internal stack details from consumer responses and diagnostic logs as appropriate. Stable public codes/types should support recovery without revealing resource existence or other sensitive state contrary to authorization/resource-hiding policy.
+
+Serialization and transport writes can also fail. Handle those failures through a viable native owner rather than silently discarding them. **When adding or directly modifying a response boundary**, follow each fallible serialization/write result to its handling, propagation, or established justified native mechanism before treating the response path as complete. An intentional discard needs that established justification; correct API shape does not handle delivery failures. Use the project's existing handling mechanism where one exists, and keep this check within the authorized change rather than refactoring unrelated historical handlers. Before response commitment, a safe fallback may be possible; after headers/body have started, status replacement or a second error response may be impossible. Propagation, logging, or ending delivery must respect the selected runtime/framework's commitment and connection semantics.
+
+## Consumer decoding and feature presentation
+
+When a frontend exists, establish one appropriate API decoding/classification boundary using the selected framework's normal client/data mechanisms. Preserve transport status, stable application codes/types, structured details, and unresolved operation identity for features. Decode the project's actual contract, including intentionally successful transports with business rejection. Treat malformed payloads/network failures as boundary failures, not fabricated domain results. Never classify by parsing human-readable messages or HTTP status alone when recovery differs within a status.
+
+Types alone do not establish that boundary. Wire behavior that consumes responses, validates the contract shape as needed, and produces classified results/failures for feature callers, including malformed payload and transport failure paths. A small function or existing native client hook is sufficient; a universal client hierarchy is unnecessary.
+
+Central decoding does not own universal presentation. Features/UI decide field-local validation, stale-revision conflict UI, authentication flow, bounded inline background-failure feedback, or a route-level error when the route is genuinely unusable. Preserve unsaved drafts and usable prior data on a non-fatal background read failure; do not automatically throw into a fatal loader/error boundary unless that is the intended project/framework behavior. Unresolved mutation recovery retains operation identity and avoids falsely claiming rollback or encouraging duplicate submission.

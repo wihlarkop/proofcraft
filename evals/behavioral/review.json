@@ -1,0 +1,13 @@
+[
+  {
+    "scenario": "response-review-existing-standard",
+    "fixture": "response-existing",
+    "assert": [
+      {
+        "type": "skill-used",
+        "value": "review"
+      }
+    ],
+    "rubric": "Judge the concrete proposed contract, native implementation, and recovery transitions, not keyword mentions. A response that names a principle but then sketches contradictory code/state fails. This fixture is a read-only rehearsal; do not grade it as runtime acceptance or demand file edits."
+  }
+]

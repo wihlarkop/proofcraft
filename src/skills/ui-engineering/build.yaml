@@ -9,6 +9,7 @@
     "engineering/provider-neutrality.md",
     "verification/evidence.md",
     "verification/risk-depth.md",
-    "ui/runtime-verification.md"
+    "ui/runtime-verification.md",
+    "engineering/failure-handling.md"
   ]
 }

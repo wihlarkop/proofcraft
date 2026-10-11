@@ -2,6 +2,7 @@
 import importlib.util
 import sys
 import tempfile
+import subprocess
 import unittest
 from pathlib import Path
 
@@ -13,6 +14,36 @@ spec.loader.exec_module(runner)
 
 
 class EvalSetupTests(unittest.TestCase):
+    def test_fixture_git_commands_cannot_discover_parent_repository(self):
+        with tempfile.TemporaryDirectory() as td:
+            parent = Path(td)
+            runner.initialize_fixture(parent)
+            (parent / "unrelated-parent-file.txt").write_text("not eval input")
+            fixture = parent / "nested-fixture"
+            fixture.mkdir()
+            (fixture / ".git").mkdir()  # Reproduce the ineffective marker from the interrupted run.
+            (fixture / "README.md").write_text("authorized fixture")
+            proof = runner.initialize_fixture(fixture)
+            self.assertFalse(fixture.resolve().is_relative_to(ROOT.resolve()))
+            self.assertEqual(Path(proof["git_toplevel"]).resolve(), fixture.resolve())
+            self.assertEqual(proof["git_status"].strip(), "?? README.md")
+            for args in (["status", "--short"], ["diff", "--name-only"],
+                         ["rev-parse", "--show-toplevel"]):
+                output = subprocess.check_output(
+                    ["git", "-c", f"safe.directory={fixture.as_posix()}", *args],
+                    cwd=fixture, text=True)
+                self.assertNotIn("unrelated-parent-file", output)
+                self.assertNotIn(ROOT.as_posix(), output.replace("\\", "/"))
+
+    def test_fixture_directory_escapes_checkout_and_rejects_nested_git_boundary(self):
+        external = runner.fixture_directory(ROOT / ".eval-workspace" / "boundary-test")
+        try:
+            self.assertFalse(external.resolve().is_relative_to(ROOT.resolve()))
+            with self.assertRaisesRegex(ValueError, "outside Proofcraft"):
+                runner.initialize_fixture(ROOT / ".eval-workspace" / "boundary-test")
+        finally:
+            external.rmdir()
+
     def test_comparison_uses_distinct_fixtures_and_matching_provider_filters(self):
         with tempfile.TemporaryDirectory() as td:
             config = runner.prepare(Path(td), ["shape", "improve"], ROOT / "skills", "gpt-6-sol")
@@ -47,6 +78,32 @@ class EvalSetupTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             with self.assertRaisesRegex(ValueError, "baseline.*shape"):
                 runner.prepare(Path(td) / "run", ["shape"], Path(td) / "missing", "gpt-6-sol")
+
+    def test_response_cases_keep_canonical_rubrics_and_read_only_composition(self):
+        with tempfile.TemporaryDirectory() as td:
+            config = runner.prepare(Path(td), runner.SKILLS, None, "gpt-6-sol", "response-")
+            expected = {
+                f"{skill}:{case_id}"
+                for skill in runner.SKILLS
+                for case_id in runner.scenarios(skill)
+                if case_id.startswith("response-")
+            }
+            self.assertEqual({case["description"] for case in config["tests"]}, expected)
+            providers = {provider["label"]: provider for provider in config["providers"]}
+            for case in config["tests"]:
+                original = runner.scenarios(case["metadata"]["skill"])[case["metadata"]["scenario"]]
+                self.assertEqual(case["vars"]["request"], original["prompt"])
+                self.assertIn(original["expected_output"], case["assert"][-1]["value"])
+                self.assertEqual(len(case["providers"]), 1)
+                provider = providers[case["providers"][0]]
+                self.assertEqual(provider["config"]["sandbox_mode"], "read-only")
+                workspace = Path(provider["config"]["working_dir"])
+                for owner in ("setup", "api-design", "implement", "improve", "review",
+                              "ui-engineering", "reliability-engineering", "integration-engineering"):
+                    self.assertTrue((workspace / ".agents/skills" / owner / "SKILL.md").is_file())
+                contract = workspace / ".agents/skills/api-design/references/response-contract.md"
+                self.assertEqual(contract.read_bytes(),
+                                 (ROOT / "src/skills/api-design/references/response-contract.md").read_bytes())
 
 
 if __name__ == "__main__":
