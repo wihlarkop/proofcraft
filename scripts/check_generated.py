@@ -6,7 +6,7 @@ import sys
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
-from build import build
+from build import build, is_python_bytecode_artifact
 
 
 def compare(a: Path,b: Path,rel=Path('.')):
@@ -15,6 +15,8 @@ def compare(a: Path,b: Path,rel=Path('.')):
     diffs=[]
     for name in sorted(names):
         pa=da/name; pb=db/name; r=rel/name
+        if is_python_bytecode_artifact(name, is_directory=(pa.is_dir() or pb.is_dir())):
+            continue
         if not pa.exists() or not pb.exists(): diffs.append(str(r)); continue
         if pa.is_dir()!=pb.is_dir(): diffs.append(str(r)); continue
         if pa.is_dir(): diffs.extend(compare(a,b,r))

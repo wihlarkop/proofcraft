@@ -9,6 +9,20 @@ SHARED = ROOT / "src" / "shared"
 SOURCE_SKILL_FILE = "SOURCE.md"
 
 
+def is_python_bytecode_artifact(name: str, *, is_directory: bool = False) -> bool:
+    """Return whether a generated-distribution entry is Python bytecode."""
+    return (is_directory and name == "__pycache__") or (not is_directory and name.endswith(".pyc"))
+
+
+def ignore_python_bytecode(directory: str, names: list[str]) -> set[str]:
+    """Filter transient Python bytecode while recursively copying skill assets."""
+    parent = Path(directory)
+    return {
+        name for name in names
+        if is_python_bytecode_artifact(name, is_directory=(parent / name).is_dir())
+    }
+
+
 def load_json_yaml(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -24,11 +38,13 @@ def build(output: Path):
         dest = output / skill_dir.name
         dest.mkdir(parents=True)
         for child in skill_dir.iterdir():
-            if child.name in {"build.yaml", SOURCE_SKILL_FILE}:
+            if child.name in {"build.yaml", SOURCE_SKILL_FILE} or is_python_bytecode_artifact(
+                child.name, is_directory=child.is_dir()
+            ):
                 continue
             target = dest / child.name
             if child.is_dir():
-                shutil.copytree(child, target)
+                shutil.copytree(child, target, ignore=ignore_python_bytecode)
             else:
                 shutil.copy2(child, target)
         manifest_path = skill_dir / "build.yaml"

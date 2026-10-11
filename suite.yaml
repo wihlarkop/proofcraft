@@ -13,6 +13,7 @@
       "debug",
       "improve",
       "review",
+      "security-audit",
       "finish",
       "continue"
     ],
@@ -45,6 +46,7 @@
     "debug",
     "improve",
     "review",
+    "security-audit",
     "finish",
     "continue",
     "ui-engineering",

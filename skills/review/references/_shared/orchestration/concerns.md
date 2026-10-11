@@ -18,4 +18,6 @@ Typical concern owners:
 - latency/throughput/resource efficiency -> performance-engineering
 - LLM/RAG/tools/evals/model behavior -> ai-engineering
 
+An explicit repository or component vulnerability audit is owned by the security-audit core workflow, which composes security-engineering. Ordinary PR/diff review remains with review; security-sensitive subject matter alone does not trigger a full audit.
+
 Classify concerns as primary, supporting, or incidental. Load primary and materially relevant supporting capabilities; do not load incidental capabilities merely because they could theoretically apply.

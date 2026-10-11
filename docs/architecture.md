@@ -17,6 +17,8 @@ Shared references are copied only into skills that declare them. This keeps auth
 
 Domain skills do not take over orchestration and do not recursively invoke each other. They may report an additional concern to the active workflow owner.
 
+The security-audit core workflow owns an explicitly requested scoped or full repository security audit. It composes security-engineering for threat and trust-boundary expertise. Ordinary PR/diff security review remains owned by review; a security-sensitive feature does not trigger a full audit by itself.
+
 Utility skills are explicit, bounded transformations outside the engineering lifecycle. They consume canonical artifacts without becoming their owner. For example, `artifact-export` may emit an OpenSpec representation of settled Proofcraft knowledge while leaving Proofcraft project truth unchanged.
 
 ## Runtime philosophy
