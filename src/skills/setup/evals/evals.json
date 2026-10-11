@@ -56,6 +56,55 @@
       "expected_output": "Setup does not search, grep, read, or otherwise probe harness/global/personal memory. It derives setup context from the current workspace and explicit user-provided context only.",
       "force_skill_invocation": true,
       "should_trigger": true
+    },
+    {
+      "id": "response-greenfield-fastapi",
+      "prompt": "Use setup for this greenfield workspace. Python with FastAPI/Pydantic and HTTP/JSON are already selected for a consumer-facing inventory API; a TypeScript frontend is selected too. There is no application source yet. Rehearse the minimum bootstrap with concrete source sketches and ownership decisions; do not edit files, install dependencies, create demo endpoints, or reopen the stack.",
+      "expected_output": "Automatically establishes a minimal structured HTTP/JSON foundation using native Pydantic modeling where useful and FastAPI/Starlette HTTP translation. For the adopted envelope, shows a registered request-validation exception boundary that normalizes safe consumer details into that contract without returning raw rejected inputs, request bodies, internal/debug context, or treating internal validation bugs as request failures. Provides concrete response-consuming frontend decoding/classification that parses/checks the selected contract and exposes stable codes, transport status, business outcome, and relevant details to features; response types, casts, comments, or a future-decoder promise alone are insufficient. Shows source behavior and wiring, not AGENTS-only setup. Fields remain proportional, actual HTTP/body status agrees, presentation stays feature-owned, and no required filenames, identifiers, hierarchy, dependencies, or full app generator are imposed.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "response-greenfield-go",
+      "prompt": "Use setup for this greenfield workspace. Go with net/http and HTTP/JSON is already selected for a consumer-facing inventory API. No frontend is selected. Rehearse the minimum bootstrap with concrete source sketches and ownership decisions; do not edit files, install dependencies, create demo endpoints, or reopen the stack.",
+      "expected_output": "Automatically establishes minimal structured response/failure semantics through concrete Go-native returned errors, sentinel or structured typed errors as appropriate, wrapping/classification where useful, and one native HTTP response/error boundary. Shows viable serialization and write-failure handling or propagation to an owner that handles it, with response commitment respected. Silently discarded Encode/Write errors, including _ = json.NewEncoder(w).Encode(response), fail when response/error handling is in scope; an error returned then ignored by its only caller is also insufficient. Pre-commit failures may produce a safe fallback; post-commit delivery failures use viable native logging/return/connection behavior rather than an impossible second status/error body. Do not require one universal helper, buffering strategy, or connection API. HTTP/body status agrees and stable codes survive; no Python exceptions, controller/service hierarchy, invented frontend, mandatory filenames/identifiers, mechanically mandatory envelope fields, or AGENTS-only setup.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "response-greenfield-rust",
+      "prompt": "Use setup for this greenfield workspace. Rust with Axum and HTTP/JSON is selected for a consumer-facing inventory API. No frontend is selected. Rehearse the minimum bootstrap with concrete source sketches and ownership decisions; do not edit files, install dependencies, create demo endpoints, or reopen the stack.",
+      "expected_output": "Automatically establishes a minimal structured HTTP/JSON foundation with one coherent native Rust failure path in concrete source: a realistic fallible operation has an actual error-producing branch and returns Result<T, E>; its caller invokes it and propagates/handles the result; inspectable error identity remains available until the contract-relevant classifier; and the same error reaches framework-native HTTP translation into stable consumer codes/types with matching HTTP/body status. A focused parsing/validation helper plus HTTP-facing caller is enough; no registered demo endpoint, persistence choice, extra service layers, or invented domain policy is required. Inspect return types, function bodies, calls, conversions, and mapping as a connected path. An enum plus HTTP converter alone, unused Result signatures, or functions that only return plain values/always-success placeholders is incomplete. Erasing distinctions into strings or opaque context before required classification, or having clients parse human messages, fails. Opaque contextual errors, if used where concrete classification is no longer needed, may use any standard/custom mechanism; no opaque layer needs to be added solely for this sketch. Equivalent propagation and framework mechanisms pass without literal crate names, question-mark syntax, IntoResponse, fixed filenames/type names, or dependency additions. Fields remain proportional; no AGENTS-only setup, exception inheritance, or wrapper around Result.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "response-existing-onboarding",
+      "prompt": "Use setup to onboard this existing Go service. Inspect README.md, http.go, and legacy.go. Rehearse the minimum onboarding changes without editing files. The accepted response convention is different from popular base envelopes. Would onboarding change the application source?",
+      "expected_output": "Inspects and preserves the accepted plain success JSON + application/problem+json contract with stable type identity and native Go error writer. Does not introduce BaseResponse, a second envelope/helper abstraction, or rewrite legacy error mapping during ordinary onboarding merely for consistency. Adds only minimum navigation/context and leaves application source unchanged absent a material task-justified defect.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "response-no-backend-control",
+      "prompt": "Use setup for a greenfield client-only desktop utility. It operates on local files; there is no consumer-facing backend/API. Rehearse minimum bootstrap without editing files or inventing architecture.",
+      "expected_output": "Creates only appropriate minimum workspace context; skips API response/error foundation, envelope and decoder. Does not invent HTTP/JSON, a server, remote contract, or backend dependencies to satisfy a template.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "response-undecided-stack-control",
+      "prompt": "Use setup for a greenfield product that will need a consumer-facing backend. The backend language, framework, and protocol remain explicitly undecided. Rehearse minimum bootstrap without editing files.",
+      "expected_output": "Leaves stack/protocol open, records only known context, and does not choose FastAPI/HTTP/JSON or generate a response implementation/envelope prematurely. Explains the selected-backend foundation becomes applicable after the choices are made without imposing a new decision.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "response-graphql-control",
+      "prompt": "Use setup for a greenfield TypeScript service with GraphQL Yoga already selected as its backend stack and GraphQL as its protocol. Rehearse minimum response/failure bootstrap with a concrete success/failure shape, without editing files or installing anything.",
+      "expected_output": "Establishes minimal native GraphQL data/errors semantics and stable safe error identity/details with a native translation owner. Does not wrap GraphQL into the HTTP/JSON success/status_code/code/data/meta/errors envelope, nor change selected protocol. Preserves outcome/recovery principles without imposing another ecosystem source structure.",
+      "force_skill_invocation": true,
+      "should_trigger": true
     }
   ]
 }

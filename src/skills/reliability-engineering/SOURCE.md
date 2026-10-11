@@ -11,7 +11,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.0"
+  skill-version: "0.1.1"
 ---
 
 
@@ -25,6 +25,7 @@ Make failure behavior observable and recoverable without adding operational mach
 2. Map dependencies and failure modes: timeout, outage, stale state, overload, partial failure, restart, or data loss where relevant.
 3. Choose the minimum useful signal: logs, metrics, traces, health/state probes, or an alert tied to an actionable condition.
 4. Define deadlines, retry classification, degradation, isolation/backpressure, and reconciliation only where failure semantics require them.
+   - Load shared failure-handling guidance for material propagation/recovery concerns. Retryable/permanent and unresolved are distinct; a failed later attempt does not prove an earlier mutation was unapplied. Preserve operation identity and require authoritative resolution. Report consumer-visible recovery-contract concerns to the active core workflow owner, which decides whether to compose `api-design`, without replacing existing conventions.
 5. For recovery, identify what must survive, what can be rebuilt, source of truth, restore/replay procedure, and proof.
 6. Verify at the user/system boundary; alert clearance alone is not recovery evidence.
 7. Convert meaningful incidents or near misses into regression/operational learning instead of adding permanent noisy instrumentation.

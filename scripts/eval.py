@@ -18,7 +18,7 @@ EVALS = ROOT / "evals" / "behavioral"
 STATE = ROOT / ".eval-workspace" / "promptfoo"
 PROMPTFOO_VERSION = "0.123.1"
 CODEX_SDK_VERSION = "0.159.3"
-SKILLS = ("shape", "improve")
+SKILLS = ("shape", "improve", "setup", "api-design", "implement", "ui-engineering", "review")
 
 
 def read_json(path):
@@ -66,6 +66,35 @@ def provider_config(workspace, model, writable=False):
     }
 
 
+def fixture_directory(run):
+    """Keep model-facing projects outside Proofcraft, including custom run directories."""
+    run = run.resolve()
+    if run.is_relative_to(ROOT.resolve()):
+        return Path(tempfile.mkdtemp(prefix="proofcraft-eval-"))
+    return run / "fixtures"
+
+
+def initialize_fixture(workspace):
+    """Create and verify a real local Git boundary, without copying global Git templates."""
+    workspace = workspace.resolve()
+    if workspace.is_relative_to(ROOT.resolve()):
+        raise ValueError(f"Eval fixture must be outside Proofcraft: {workspace}")
+    workspace.mkdir(parents=True, exist_ok=True)
+    env = {name: os.environ[name] for name in
+           ("PATH", "SystemRoot", "WINDIR", "TEMP", "TMP") if name in os.environ}
+    env.update({"GIT_CONFIG_NOSYSTEM": "1", "GIT_CONFIG_GLOBAL": os.devnull})
+    command = ["git", "-c", f"safe.directory={workspace.as_posix()}"]
+    subprocess.run([*command, "init", "--quiet", "--template=", str(workspace)],
+                   env=env, check=True, stdout=subprocess.DEVNULL)
+    top = subprocess.check_output([*command, "rev-parse", "--show-toplevel"],
+                                  cwd=workspace, env=env, text=True).strip()
+    if Path(top).resolve() != workspace:
+        raise ValueError(f"Fixture Git root escaped workspace: {top}")
+    status = subprocess.check_output([*command, "status", "--short"],
+                                     cwd=workspace, env=env, text=True)
+    return {"workspace": workspace.as_posix(), "git_toplevel": top, "git_status": status}
+
+
 def prepare(run, selected, baseline, model, pattern=None):
     run.mkdir(parents=True, exist_ok=True)
     current = run / "distribution"
@@ -74,7 +103,8 @@ def prepare(run, selected, baseline, model, pattern=None):
     if baseline:
         variants["baseline"] = baseline.resolve()
     # Install the same bounded catalog in each fixture, so routing has real competitors.
-    catalog = ("shape", "improve", "debug", "continue", "implement", "architect", "performance-engineering")
+    catalog = ("shape", "improve", "debug", "continue", "implement", "architect", "performance-engineering",
+               "setup", "api-design", "ui-engineering", "review", "reliability-engineering", "integration-engineering")
     for variant, distribution in variants.items():
         for skill in catalog:
             source = distribution / skill
@@ -82,9 +112,10 @@ def prepare(run, selected, baseline, model, pattern=None):
                 raise ValueError(f"{variant} distribution missing {skill}/SKILL.md: {distribution}")
             if any(p.is_symlink() or p.is_junction() for p in [source, *source.rglob("*")]):
                 raise ValueError(f"{variant} skill must contain ordinary files, not links: {source}")
-    grader_dir = run / "grader"
-    grader_dir.mkdir()
-    subprocess.run(["git", "init", "--quiet", str(grader_dir)], check=True, stdout=subprocess.DEVNULL)
+    fixture_root = fixture_directory(run)
+    grader_dir = fixture_root / "grader"
+    grader_dir.mkdir(parents=True)
+    initialize_fixture(grader_dir)
     grader = {"id": "openai:codex-sdk", "config": provider_config(grader_dir, model)}
     providers, tests = [], []
     for skill in selected:
@@ -97,11 +128,11 @@ def prepare(run, selected, baseline, model, pattern=None):
             original = originals[case_id]
             labels = []
             for variant, distribution in variants.items():
-                workspace = run / "fixtures" / description.replace(":", "-") / variant
+                workspace = fixture_root / description.replace(":", "-") / variant
                 shutil.copytree(EVALS / "fixtures" / selection["fixture"], workspace,
                                 ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
-                # Stop ancestor repo/AGENTS discovery at the disposable project boundary.
-                subprocess.run(["git", "init", "--quiet", str(workspace)], check=True, stdout=subprocess.DEVNULL)
+                # Stop ancestor repo/AGENTS discovery at a verified disposable Git boundary.
+                initialize_fixture(workspace)
                 (workspace / "AGENTS.md").write_text(
                     "# Eval fixture\n\nThis disposable directory is the entire project for this request. "
                     "Use the fixture-local .agents/skills catalog when relevant. "
@@ -129,6 +160,10 @@ def prepare(run, selected, baseline, model, pattern=None):
                           "assert": assertions})
     if not tests:
         raise ValueError("No scenarios match the selection")
+    boundaries = [initialize_fixture(Path(provider["config"]["working_dir"]))
+                  for provider in providers]
+    boundaries.append(initialize_fixture(grader_dir))
+    write_json(run / "fixture-boundaries.json", boundaries)
     config = {
         "description": "Proofcraft behavioral evals (current" + (" vs baseline)" if baseline else ")"),
         "prompts": ["{{request}}"], "providers": providers, "tests": tests,

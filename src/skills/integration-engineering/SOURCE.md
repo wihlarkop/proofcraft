@@ -11,7 +11,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.0"
+  skill-version: "0.1.1"
 ---
 
 
@@ -24,6 +24,7 @@ Treat an external system as an unreliable boundary with somebody else's domain m
 1. Inspect the external contract, ownership, authentication mechanism, quotas/rate limits, and actual business job.
 2. Map external identifiers/statuses/objects into an internal boundary model. Avoid allowing vendor-specific DTOs or lifecycle semantics to become the application's domain by accident.
 3. Define timeout, retry, idempotency, duplicate, and partial-failure behavior for each operation that can repeat.
+   - Use shared failure-handling guidance to translate provider failures into application semantics while preserving useful causes internally. Keep success, definitive rejection, and unresolved outcomes distinct; retain original operation identity for reconciliation. Provider status/message text is not automatically the application's public error contract. Report consumer-facing API-contract concerns to the active core workflow owner, which decides whether to compose `api-design`, preserving established project conventions.
 4. Choose webhook, polling, callback, or async/event mechanisms from the provider's actual guarantees and product latency needs.
 5. Define reconciliation: how the application detects and repairs missed callbacks, stale local state, or ambiguous outcomes.
 6. Identify observability needed to answer integration-specific questions without logging secrets/sensitive payloads unnecessarily.

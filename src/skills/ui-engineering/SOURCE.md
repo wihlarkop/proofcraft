@@ -11,7 +11,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.3"
+  skill-version: "0.1.4"
 ---
 
 
@@ -32,6 +32,7 @@ Do not trigger for mobile lifecycle/background/offline behavior without a UI con
 3. Identify the primary UI concern: structure/layout, typography, color, interaction, input modality, motion, accessibility, responsive/adaptive behavior, UX copy, or visual polish.
 4. Preserve established design/system patterns unless the task intentionally changes them. When the project has no settled component/styling strategy or the task intentionally revisits it, follow `references/_shared/ui/component-styling-strategy.md` and compare credible strategy shapes from product/design forces before selecting packages.
 5. Make behavior work across relevant viewport/window sizes and input modes rather than optimizing a single screenshot.
+   - When API failures affect the UI, load shared failure-handling guidance. Use one contract decoding/classification boundary exposing stable codes/types; features own presentation rather than a universal toast. Preserve unsaved state and usable data on non-fatal background failure, and operation identity during unresolved mutation recovery. When the consumer contract needs work, report that concern to the active core workflow owner, which decides whether to compose `api-design`; do not replace an established coherent convention.
 6. Use motion sparingly and purposefully; respect reduced-motion and accessibility needs.
 7. When a specialist visual-design provider is available, route only the matching concern to it and keep project DESIGN.md authoritative.
 8. For interactive claims, use `references/_shared/ui/runtime-verification.md` to verify the rendered surface and relevant interactions, viewport/input modes, and state transitions. Type checks, lint, and builds prove static properties, not runtime interaction correctness. Consider SSR/hydration only where present and material. For verification-only requests, report mismatches and the smallest needed fix; change implementation only when repair is explicitly authorized.

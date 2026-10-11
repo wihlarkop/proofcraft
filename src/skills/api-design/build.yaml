@@ -4,6 +4,8 @@
     "constitution/decision-lock.md",
     "orchestration/concerns.md",
     "engineering/provider-neutrality.md",
-    "verification/evidence.md"
+    "verification/evidence.md",
+    "engineering/failure-handling.md",
+    "engineering/technology-usage.md"
   ]
 }

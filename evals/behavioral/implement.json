@@ -1,0 +1,24 @@
+[
+  {
+    "scenario": "response-existing-normal-feature",
+    "fixture": "response-existing",
+    "assert": [
+      {
+        "type": "skill-used",
+        "value": "implement"
+      }
+    ],
+    "rubric": "Preserving the wire contract alone is not a pass. Inspect every proposed action, including optional cleanup in the implementation plan. Unrelated legacy consolidation without the current task authorizing improvement fails; explicitly leaving it for a separately requested improve/refactor task is valid. Do not infer authorization from comments describing a different eval scenario. Judge concrete endpoint/error behavior and bounded scope, not identifier presence. This is read-only rehearsal; do not demand edits or runtime acceptance. MANDATORY NEW TRANSPORT-FAILURE GATE: distinguish existing fixture code from newly proposed response-boundary operations. Inspect each new serialization/output operation that can fail and trace its returned failure to handling, propagation, or an established justified framework/runtime mechanism. An explicit discard such as _ = Encode(...), an unchecked returned error, or comments claiming handling is not handling by itself. Evaluate the actual Go/framework context rather than requiring a particular syntax or universal helper. Respect response commitment: native diagnostics, propagation, or ending delivery may suffice after commitment; do not demand an impossible second response. If newly introduced transport-boundary code intentionally discards a meaningful serialization/write failure without handling, propagation, or an established justified mechanism, set pass=false. This violation alone is sufficient for FAIL and cannot be offset by correct wire shape, existing-project precedence, or lack of unrelated cleanup. Identify the new failing operation and its error path in the reason. Do not require global refactoring, envelope migration, or changes to historical code outside this generated feature unless the scenario makes that code relevant."
+  },
+  {
+    "scenario": "response-implement-unresolved-recovery",
+    "fixture": "response-recovery",
+    "assert": [
+      {
+        "type": "skill-used",
+        "value": "implement"
+      }
+    ],
+    "rubric": "Judge the concrete proposed contract, native implementation, and recovery transitions, not keyword mentions. A response that names a principle but then sketches contradictory code/state fails. This fixture is a read-only rehearsal; do not grade it as runtime acceptance or demand file edits."
+  }
+]

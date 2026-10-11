@@ -10,7 +10,7 @@ compatibility: Portable Agent Skills methodology; no runtime dependency.
 metadata:
   suite: proofcraft
   suite-version: "0.1.0"
-  skill-version: "0.1.0"
+  skill-version: "0.1.1"
 ---
 
 
@@ -20,10 +20,10 @@ Make consumer-visible semantics explicit enough that providers and consumers do 
 
 ## Workflow
 
-1. Identify the consumer job, domain terms, authority, sensitivity, and failure modes.
+1. Identify the consumer job, domain terms, authority, sensitivity, and failure modes. Apply `references/_shared/engineering/failure-handling.md` precedence: established coherent, materially safe project conventions win; explicit response/error improvement permits bounded consolidation, not automatic replacement.
 2. Choose the interface shape that fits the interaction: request/response, query, command, event, webhook, or stream.
-3. Define representation semantics: identifiers, absent vs null, defaults, enums, timestamps/units, ordering, filtering, and pagination.
-4. For mutations, define validation, preconditions, idempotency scope, concurrency behavior, partial outcomes, long-running operations, and retry-safe errors.
+3. Define representation semantics: identifiers, absent vs null, defaults, enums, timestamps/units, ordering, filtering, and pagination. For selected greenfield HTTP/JSON without a convention, use `references/response-contract.md` to establish the structured base response; preserve native contracts for other protocols. Implementation follows shared technology-usage guidance, not a prescribed source layout.
+4. Use `references/errors-idempotency.md` for stable failure identities and proportional translation policy. For mutations, define validation, preconditions, idempotency scope, concurrency behavior, partial outcomes, long-running operations, and retry-safe errors; distinguish success, definitive rejection, and unresolved outcome.
 5. For async contracts, define delivery/duplicate/order semantics and how consumers detect gaps or replay.
 6. Evaluate compatibility from each consumer perspective and plan additive evolution/deprecation where possible.
 7. Keep implementation framework and storage details out of the public contract unless they are intentionally part of it.

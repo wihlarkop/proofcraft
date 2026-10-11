@@ -1,10 +1,61 @@
 {
   "skill_name": "api-design",
   "evals": [
-    {"id":"rest-contract","prompt":"Design a public endpoint that creates exports and may take minutes to complete.","expected_output":"The contract covers long-running operation semantics, identifiers, status, errors, and idempotency.","force_skill_invocation":false,"should_trigger":true},
-    {"id":"event-contract","prompt":"Define an order-created event consumed by several teams with at-least-once delivery.","expected_output":"The event contract makes identity, schema, duplicates, ordering scope, and evolution explicit.","force_skill_invocation":false,"should_trigger":true},
-    {"id":"negative-third-party","prompt":"Integrate our service with Salesforce's existing REST API and map its objects into our domain.","expected_output":"api-design is not the primary owner; integration-engineering owns the external boundary.","force_skill_invocation":false,"should_trigger":false},
-    {"id":"compatibility","prompt":"Add a field and enum value to an API used by old mobile clients that will remain deployed.","expected_output":"The skill evaluates consumer compatibility rather than assuming additive syntax is automatically safe.","force_skill_invocation":false,"should_trigger":true},
-    {"id":"retry-unknown-outcome","prompt":"Design a payment-intent mutation where clients may timeout after the server commits.","expected_output":"The contract defines idempotency/preconditions and safe behavior for unknown outcomes.","force_skill_invocation":false,"should_trigger":true}
+    {
+      "id": "rest-contract",
+      "prompt": "Design a public endpoint that creates exports and may take minutes to complete.",
+      "expected_output": "The contract covers long-running operation semantics, identifiers, status, errors, and idempotency.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "event-contract",
+      "prompt": "Define an order-created event consumed by several teams with at-least-once delivery.",
+      "expected_output": "The event contract makes identity, schema, duplicates, ordering scope, and evolution explicit.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "negative-third-party",
+      "prompt": "Integrate our service with Salesforce's existing REST API and map its objects into our domain.",
+      "expected_output": "api-design is not the primary owner; integration-engineering owns the external boundary.",
+      "force_skill_invocation": false,
+      "should_trigger": false
+    },
+    {
+      "id": "compatibility",
+      "prompt": "Add a field and enum value to an API used by old mobile clients that will remain deployed.",
+      "expected_output": "The skill evaluates consumer compatibility rather than assuming additive syntax is automatically safe.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "retry-unknown-outcome",
+      "prompt": "Design a payment-intent mutation where clients may timeout after the server commits.",
+      "expected_output": "The contract defines idempotency/preconditions and safe behavior for unknown outcomes.",
+      "force_skill_invocation": false,
+      "should_trigger": true
+    },
+    {
+      "id": "response-transport-business-outcome",
+      "prompt": "Use api-design to review a selected greenfield HTTP/JSON lookup contract. The human intentionally chose HTTP 200 for a valid USER_NOT_FOUND business result. A proposed body is {\"success\":false,\"status_code\":404,\"code\":\"USER_NOT_FOUND\",\"data\":null}. Correct that contract and compare a normal HTTP 404 design without changing the selected business policy. Show the actual HTTP status and body for each.",
+      "expected_output": "Keeps the intentionally selected business absence as HTTP 200 with body status_code 200 (if included), success false and stable USER_NOT_FOUND code. Shows normal HTTP 404 as another valid/default design with transport-consistent body status. Does not emit HTTP 200/body404, insist all not-found must use HTTP200, or erase application outcome into transport status. Optional/null semantics remain explicit.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "response-same-status-recovery",
+      "prompt": "Use api-design for an authorized client that receives two HTTP 404 failures. RESOURCE_NOT_FOUND means the selected row was deleted and should be refreshed; MAKE_DO_DEFINITION_NOT_FOUND means an activity prerequisite needs repair while the draft stays. A teammate proposes using message.includes(\"definition\") because both have status 404. Messages will be localized. Show the minimal server/client contract and classification; do not edit files.",
+      "expected_output": "Requires distinct stable machine-readable codes/types and exposes them through the client classification boundary to the feature. Shows classification by identity, never parsing localized messages or status alone. Preserves different recovery: refresh deleted row versus repair prerequisite and preserve draft. Treats identity as consumer contract while respecting resource-hiding/auth policy rather than revealing forbidden state.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "response-unknown-later-failure",
+      "prompt": "Use api-design to settle this mutation contract. Operation op-17 may have committed but its response was lost. A retry with the same idempotency key gets HTTP 404 MAKE_DO_DEFINITION_NOT_FOUND after a definition was removed. A teammate wants to mark op-17 NOT_APPLIED and enable a new-key resubmission. No authoritative receipt/status has been retrieved yet. What can the API/client conclude and what resolves it? Do not edit files.",
+      "expected_output": "Keeps original op-17 outcome unknown/unresolved; the later 404 describes that attempt, not proof the original was unapplied. Preserves original operation key and pending recovery state, seeks authoritative operation receipt/status/reconciliation, and avoids new-key blind retry/duplicate submission. Distinguishes success, definitive rejection, and unknown outcome separately from retryability. Must not state NOT_APPLIED/rollback or definitive rejection from the later failure alone.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    }
   ]
 }

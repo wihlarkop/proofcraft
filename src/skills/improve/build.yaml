@@ -10,6 +10,7 @@
     "verification/regression-scope.md",
     "verification/risk-depth.md",
     "engineering/simplification.md",
-    "engineering/test-environment-isolation.md"
+    "engineering/test-environment-isolation.md",
+    "engineering/failure-handling.md"
   ]
 }

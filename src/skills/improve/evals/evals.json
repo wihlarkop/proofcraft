@@ -126,6 +126,13 @@
       "expected_output": "Improve enters read-only repository-wide discovery, inspects project orientation, technology/configuration, ownership boundaries, verification surfaces, and representative or high-risk implementation paths rather than mechanically rewriting files. It returns a prioritized MUST / WORTHWHILE / OPTIONAL / OUT OF SCOPE improvement frontier (or explicitly reports no material item), recommends a bounded next target, and makes no code changes.",
       "force_skill_invocation": true,
       "should_trigger": true
+    },
+    {
+      "id": "response-explicit-consolidation",
+      "prompt": "Use improve to explicitly simplify and centralize response/error handling in this existing Go service. Read README.md, http.go, and legacy.go. Audit only the duplicated missing-resource mappings and propose a concrete bounded consolidation without editing files. Preserve wire behavior, native Go semantics, and the accepted architecture.",
+      "expected_output": "Explicit request permits auditing the evidenced duplication in legacyGet/legacyDelete and proposing reuse/consolidation into existing writeFailure/writeProblem owner. Applies deletion/consolidation/native mechanism/existing owner before new abstraction. Preserves plain success JSON/problem+json fields/status/type and native returned/wrapped Go errors, rather than installing the greenfield envelope, Python exceptions, BaseController, or a new service/repository hierarchy. Gives bounded verification of unchanged missing-resource behavior and does not claim unrun checks passed.",
+      "force_skill_invocation": true,
+      "should_trigger": true
     }
   ]
 }

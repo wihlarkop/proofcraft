@@ -15,6 +15,7 @@ The default model is `gpt-5.5` with medium reasoning for both target and rubric 
 ```text
 python scripts/eval.py shape
 python scripts/eval.py improve
+python scripts/eval.py --all --filter response-
 python scripts/eval.py --all
 python scripts/eval.py shape --filter recommend-clear-next-feature
 python scripts/eval.py --all --validate
@@ -36,9 +37,9 @@ On Windows the wrapper locates `npx.cmd`, avoiding PowerShell script-signature r
 
 ## Workspaces, assertions and evidence
 
-Each invocation retains an ignored `.eval-workspace/promptfoo/run-*/` directory containing the built distribution, generated `promptfooconfig.json`, independent fixture repositories, Promptfoo `results.json`, and before/after source hashes. Promptfoo history/database, traces and logs live in `.eval-workspace/promptfoo/state/`; npm packages stay in npm's cache and Codex session state stays in its normal home. These files may contain model outputs, inspected fixture content and local paths. They are local, ignored artifacts, not release inputs.
+Each invocation retains an ignored `.eval-workspace/promptfoo/run-*/` directory containing the built distribution, generated `promptfooconfig.json`, `fixture-boundaries.json`, Promptfoo `results.json`, and before/after source hashes. Model-facing fixture repositories and the empty grader project are retained outside the Proofcraft checkout under an OS temporary `proofcraft-eval-*` directory; the config and boundary evidence record their paths. Promptfoo history/database, traces and logs live in `.eval-workspace/promptfoo/state/`; npm packages stay in npm's cache and Codex session state stays in its normal home. These files may contain model outputs, inspected fixture content and local paths. They are local, ignored artifacts, not release inputs.
 
-The current distribution is built from `src/` into the run directory; checked-in `skills/` is untouched. Each fixture receives ordinary copies of the generated shape, improve, debug, continue, implement, architect and performance-engineering skills in `.agents/skills/`. No duplicate skill text is maintained. A fixture's own Git root and `AGENTS.md` stop parent-project context discovery. Every scenario/variant has a separate fixture.
+The current distribution is built from `src/` into the run directory; checked-in `skills/` is untouched. Each fixture receives ordinary copies of the generated shape, improve, debug, continue, implement, architect, performance-engineering, setup, api-design, ui-engineering, review, reliability-engineering and integration-engineering skills in `.agents/skills/`. This bounded catalog includes the owners needed for response/failure composition. No duplicate skill text is maintained. A real fixture-local Git repository (not an empty `.git` marker) and `AGENTS.md` stop parent-project context discovery. Initialization avoids global Git templates, and preparation verifies `git rev-parse --show-toplevel` equals the fixture root and records `git status --short` before model calls. Every scenario/variant has a separate fixture.
 
 The target provider is `openai:codex-sdk`, with explicit absolute `working_dir`, `approval_policy: never`, network/search disabled, streaming and deep tracing enabled, no thread persistence, no extra writable directories, minimal environment inheritance and subagents disabled. All initial reasoning/control cases use `sandbox_mode: read-only`. **`recommend-control-spec-request` uses `workspace-write`** because its original expected outcome requires recording a spec; only its disposable fixture is writable. No probe runs with the Proofcraft checkout as its working directory. Before/after hashes cover tracked and nonignored new repository files, preserve preexisting dirty work, and fail the command if files change; they detect changes rather than automatically restoring them. Avoid editing source during a run.
 
@@ -50,9 +51,13 @@ Codex `skill-used` / `not-skill-used` are **heuristics**, based on successful di
 
 Selected existing shape cases: `recommend-documented-deferred-opportunities`, `recommend-clear-next-feature`, `recommend-generic-feature-pressure`, `recommend-insufficient-repository-evidence`, `recommend-human-selection-to-shape`, `recommend-control-normal-shape`, and `recommend-control-spec-request`.
 
-Selected existing improve cases: `leave-good-code-alone`, `architecture-escalation`, and `performance-needs-evidence`. These intentionally exercise reasoning/preservation boundaries; write-capable refactoring and the rest of the routing suite remain future coverage. Fixtures are small capability/code snapshots, not full application/runtime acceptance evidence.
+Selected existing improve cases: `leave-good-code-alone`, `architecture-escalation`, `performance-needs-evidence`, and `repository-wide-audit-discovery`. These intentionally exercise reasoning/preservation boundaries; write-capable refactoring and the rest of the routing suite remain future coverage. Fixtures are small capability/code snapshots, not full application/runtime acceptance evidence.
 
-Comparison accepts a **previously built distribution directory**, containing the same seven catalog skills:
+The 15 `response-` cases span setup, api-design, implement, improve, ui-engineering and review. They cover automatic selected-stack bootstrap for FastAPI, Go and Rust; existing-convention precedence in onboarding, feature work and review; explicit consolidation; transport/business outcome consistency; different recovery identities at one HTTP status; lost mutation responses with later lookup/auth failures; and non-fatal background refresh preserving drafts. Controls cover no backend, undecided stack and GraphQL-native behavior.
+
+These are **read-only bootstrap/implementation rehearsals**, requesting concrete source sketches, contract examples or state transitions. Canonical semantic rubrics reject plausible wrong implementations even when they name the right principle; skill-read assertions alone do not establish behavior. They do not prove generated application code compiles, real bootstrap writes work, or frontend recovery passes a browser test. Use `--all --filter response- --validate` for config validation without model calls, and omit `--validate` to collect model evidence. No keyword assertion such as presence of `BaseResponse` stands in for the semantic contract.
+
+Comparison accepts a **previously built distribution directory**, containing the same catalog skills listed above:
 
 ```text
 python scripts/eval.py shape --baseline C:/path/to/previous-checkout/skills
@@ -76,6 +81,6 @@ python -m unittest discover -s tests -p test_eval_runner.py
 git diff --check
 ```
 
-Setup tests need only Python and Git. They check comparison isolation, selection, canonical prompt/rubric preservation and missing baseline failures; behavioral model calls remain separate.
+Setup tests need only Python and Git. They check comparison isolation, selection, canonical prompt/rubric preservation, missing baseline failures, and read-only response-case composition with the generated contract references; behavioral model calls remain separate.
 
 Primary references: [Codex provider](https://www.promptfoo.dev/docs/providers/openai-codex-sdk/), [agent skill testing](https://www.promptfoo.dev/docs/guides/test-agent-skills/), [test/provider filtering](https://www.promptfoo.dev/docs/configuration/test-cases/), [CLI and state](https://www.promptfoo.dev/docs/usage/command-line/), and [published package metadata](https://registry.npmjs.org/promptfoo/0.123.1).

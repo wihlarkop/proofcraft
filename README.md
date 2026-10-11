@@ -26,7 +26,7 @@ setup -> shape/architect -> plan -> implement/debug/improve -> accept/review -> 
 
 | Skill | Purpose |
 | --- | --- |
-| `setup` | Initialize or reconcile thin repository context and `AGENTS.md` guidance. |
+| `setup` | Initialize or reconcile thin repository context and `AGENTS.md` guidance; bootstrap a minimal native response/error foundation when a greenfield consumer backend is selected. |
 | `shape` | Resolve product ambiguity, decisions, specs, opt-in discovery, next product opportunities, and wayfinding when needed. |
 | `architect` | Make consequential architecture decisions and record tradeoffs. |
 | `plan` | Produce implementation contracts with depth proportional to the work. |

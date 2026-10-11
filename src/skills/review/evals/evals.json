@@ -56,6 +56,13 @@
       "expected_output": "Checks ownership and freshness rather than treating file count or generated paths alone as pollution. Accepts the intended generated distribution and preserves the unrelated draft without requiring a clean tree.",
       "force_skill_invocation": false,
       "should_trigger": true
+    },
+    {
+      "id": "response-review-existing-standard",
+      "prompt": "Use review on a proposed new Go endpoint using this service's existing plain success JSON and application/problem+json writer. Read README.md and http.go. It preserves HTTP/body status, safe public text, stable problem type, and errors.Is classification; there is no unresolved mutation. A reviewer wants a mandatory BaseResponse and exception hierarchy for standardization. Are these material findings? Do not edit files.",
+      "expected_output": "Uses the established coherent safe convention as authority and reports no material response/error defect from the supplied change. Does not demand a BaseResponse, exception hierarchy, new abstraction, or stylistic restructuring merely for Proofcraft greenfield compliance. Checks task-specific evidence and distinguishes unverified claims from actual findings rather than inventing defects.",
+      "force_skill_invocation": true,
+      "should_trigger": true
     }
   ]
 }

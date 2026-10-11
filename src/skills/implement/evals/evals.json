@@ -91,6 +91,20 @@
       "expected_output": "Runs proportional verification in the confirmed environment without imposing isolation checks on the pure in-memory command or requiring cloud/container provisioning. Keeps its core ownership and reports only evidence actually collected.",
       "force_skill_invocation": false,
       "should_trigger": true
+    },
+    {
+      "id": "response-existing-normal-feature",
+      "prompt": "Use implement to rehearse adding an authorized archive endpoint to this existing Go service. Read README.md, http.go, and legacy.go. Archive returns plain domain JSON; missing items use the current problem type. Give concrete endpoint/error sketches without editing files. A teammate suggests starting a new BaseResponse wrapper because it is the greenfield recommendation. Decide what to do.",
+      "expected_output": "Uses the established plain success JSON plus application/problem+json standard and its native writeFailure/writeProblem owner for the archive behavior, classifying native Go errors where useful. Preserves the stable missing-resource identity and transport semantics. Limits implementation/proposals to changes required by the archive feature: no BaseResponse, new envelope, second abstraction, or opportunistic consolidation, standardization, rename, relocation, or modernization of adjacent legacy response/error handling. Even an optional recommendation to change legacyGet/legacyDelete as part of this feature plan fails when no feature-correctness need or explicit improvement request exists, regardless of preserved wire behavior or obvious stylistic duplication. May proportionally surface evidenced material correctness/security defects. Does not treat fixture commentary about another explicit improvement scenario as authorization for this task.",
+      "force_skill_invocation": true,
+      "should_trigger": true
+    },
+    {
+      "id": "response-implement-unresolved-recovery",
+      "prompt": "Use implement to rehearse the client recovery change: operation save-91 submitted with idempotency key k-91 loses its response. The next attempt gets 401 after session expiry. Existing code sets state=\"rejected\", clears k-91, and allows Save with a fresh key. No authoritative operation receipt exists in client state yet. Show the corrected state transitions and bounded change without editing files.",
+      "expected_output": "Retains save-91/k-91 and unresolved state despite later authentication failure; auth renewal is attempt recovery, not proof of original rejection. Reconciles original receipt/status under the established contract before definitive success/rejection. Does not clear identity, falsely claim non-application/rollback, or enable duplicate new-key submission. Shows concrete transitions separating pending/unresolved, success, and definitively rejected.",
+      "force_skill_invocation": true,
+      "should_trigger": true
     }
   ]
 }

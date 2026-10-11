@@ -105,6 +105,13 @@
       "expected_output": "ui-engineering reuses the existing Playwright/browser surface, exercises rendered interaction and relevant viewports/focus/error/success states, and uses screenshots/traces only as supporting evidence. It does not add a second browser runner or visual snapshot framework without a concrete unmet need.",
       "force_skill_invocation": false,
       "should_trigger": true
+    },
+    {
+      "id": "response-background-draft-preservation",
+      "prompt": "Use ui-engineering to rehearse a bounded editor repair. The user has an unsaved quantity draft with revision 7. A separate focus-triggered reference-data fetch receives 503 DEPENDENCY_UNAVAILABLE. Its catch currently throws into the fatal route error boundary, unmounting the editor and losing the draft. Prior reference data remains usable; submit/session still work. Show the decoding/presentation ownership and corrected state flow without editing files.",
+      "expected_output": "Classifies the failure once at the existing API decoding boundary with stable code/transport context available to the feature. Keeps editor mounted with unsaved quantity/revision and usable prior data; presents bounded inline background failure/retry feedback. Does not route a nonfatal refresh to fatal route error, overwrite draft on refresh/retry, or universal toast as sole policy. Route-level error is reserved for genuine unusability. Shows concrete state flow; does not claim rendered verification happened.",
+      "force_skill_invocation": true,
+      "should_trigger": true
     }
   ]
 }
