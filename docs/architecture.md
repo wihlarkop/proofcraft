@@ -32,6 +32,7 @@ The suite classifies work by work class, depth, and concerns. Depth is adaptive:
 - Code: implement for new behavior; improve for behavior-preserving quality changes; debug for evidenced repairs
 - Acceptance evidence: accept
 - Closure/reconciliation/handoff: finish
+- Runtime workspace convention: `src/shared/artifacts/runtime-workspace.md`; workflows consume it without duplicating lifecycle policy.
 - External collaboration representations: artifact-export (derived by default; never the canonical owner unless the project explicitly adopts the target format)
 
 Durable facts should have one canonical owner.

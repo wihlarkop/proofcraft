@@ -38,6 +38,7 @@ Do not use for normal feature work.
 8. Keep `AGENTS.md` thin, but ensure its managed block contains the bootstrap guards from the shared AGENTS guidance: project-local context is authoritative before task-specific skill loading; unrelated global/harness memory is not project authority; Git is optional and must not be probed until repository presence is established; unrelated work must be preserved.
 9. Record the workflow schema and suite-major compatibility in project context when this project adopts the suite.
 10. When setup is explicitly rerun after Proofcraft guidance changes, reconcile only the managed AGENTS block and stale project orientation needed to adopt compatible bootstrap rules; do not mutate application/product/architecture artifacts merely because the suite changed.
+11. When setup is explicitly establishing a greenfield workspace, use `references/_shared/artifacts/runtime-workspace.md` for optional runtime output placement and add its ignore rule without replacing human content. In existing projects, inspect and prefer established conventions; installation or ordinary onboarding does not authorize a `.proofcraft/` migration or `.gitignore` edit.
 
 ## Outputs
 

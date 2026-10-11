@@ -12,10 +12,10 @@ import subprocess
 import tempfile
 
 from build import build
+from runtime_workspace import create_run, ensure_runtime_directory
 
 ROOT = Path(__file__).resolve().parents[1]
 EVALS = ROOT / "evals" / "behavioral"
-STATE = ROOT / ".eval-workspace" / "promptfoo"
 PROMPTFOO_VERSION = "0.123.1"
 CODEX_SDK_VERSION = "0.159.3"
 SKILLS = ("shape", "improve", "setup", "api-design", "implement", "ui-engineering", "review")
@@ -68,6 +68,9 @@ def provider_config(workspace, model, writable=False):
 
 def fixture_directory(run):
     """Keep model-facing projects outside Proofcraft, including custom run directories."""
+    run = Path(run).absolute()
+    if run.is_symlink() or (getattr(run, "is_junction", None) and run.is_junction()):
+        raise ValueError(f"Eval run path cannot be a link: {run}")
     run = run.resolve()
     if run.is_relative_to(ROOT.resolve()):
         return Path(tempfile.mkdtemp(prefix="proofcraft-eval-"))
@@ -76,6 +79,9 @@ def fixture_directory(run):
 
 def initialize_fixture(workspace):
     """Create and verify a real local Git boundary, without copying global Git templates."""
+    workspace = Path(workspace).absolute()
+    if workspace.is_symlink() or (getattr(workspace, "is_junction", None) and workspace.is_junction()):
+        raise ValueError(f"Eval fixture cannot be a link: {workspace}")
     workspace = workspace.resolve()
     if workspace.is_relative_to(ROOT.resolve()):
         raise ValueError(f"Eval fixture must be outside Proofcraft: {workspace}")
@@ -95,9 +101,28 @@ def initialize_fixture(workspace):
     return {"workspace": workspace.as_posix(), "git_toplevel": top, "git_status": status}
 
 
+def first_link(path):
+    """Find a symlink or junction without traversing linked directories."""
+    path = Path(path)
+    is_junction = getattr(path, "is_junction", None)
+    if path.is_symlink() or (is_junction and is_junction()):
+        return path
+    for parent, directories, files in os.walk(path, followlinks=False):
+        for name in (*directories, *files):
+            candidate = Path(parent) / name
+            is_junction = getattr(candidate, "is_junction", None)
+            if candidate.is_symlink() or (is_junction and is_junction()):
+                return candidate
+    return None
+
+
 def prepare(run, selected, baseline, model, pattern=None):
     run.mkdir(parents=True, exist_ok=True)
-    current = run / "distribution"
+    artifacts = run / "artifacts"
+    evidence = run / "evidence"
+    artifacts.mkdir(exist_ok=True)
+    evidence.mkdir(exist_ok=True)
+    current = artifacts / "distribution"
     build(current)  # Build from canonical truth without rewriting the checked-in distribution.
     variants = {"current": current}
     if baseline:
@@ -110,8 +135,9 @@ def prepare(run, selected, baseline, model, pattern=None):
             source = distribution / skill
             if not (source / "SKILL.md").is_file():
                 raise ValueError(f"{variant} distribution missing {skill}/SKILL.md: {distribution}")
-            if any(p.is_symlink() or p.is_junction() for p in [source, *source.rglob("*")]):
-                raise ValueError(f"{variant} skill must contain ordinary files, not links: {source}")
+            link = first_link(source)
+            if link:
+                raise ValueError(f"{variant} skill must contain ordinary files, not links: {link}")
     fixture_root = fixture_directory(run)
     grader_dir = fixture_root / "grader"
     grader_dir.mkdir(parents=True)
@@ -126,10 +152,14 @@ def prepare(run, selected, baseline, model, pattern=None):
             if pattern and pattern not in description:
                 continue
             original = originals[case_id]
+            fixture_source = EVALS / "fixtures" / selection["fixture"]
+            link = first_link(fixture_source)
+            if link:
+                raise ValueError(f"Eval fixture source must contain ordinary files, not links: {link}")
             labels = []
             for variant, distribution in variants.items():
                 workspace = fixture_root / description.replace(":", "-") / variant
-                shutil.copytree(EVALS / "fixtures" / selection["fixture"], workspace,
+                shutil.copytree(fixture_source, workspace,
                                 ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
                 # Stop ancestor repo/AGENTS discovery at a verified disposable Git boundary.
                 initialize_fixture(workspace)
@@ -163,14 +193,14 @@ def prepare(run, selected, baseline, model, pattern=None):
     boundaries = [initialize_fixture(Path(provider["config"]["working_dir"]))
                   for provider in providers]
     boundaries.append(initialize_fixture(grader_dir))
-    write_json(run / "fixture-boundaries.json", boundaries)
+    write_json(evidence / "fixture-boundaries.json", boundaries)
     config = {
         "description": "Proofcraft behavioral evals (current" + (" vs baseline)" if baseline else ")"),
         "prompts": ["{{request}}"], "providers": providers, "tests": tests,
         "tracing": {"enabled": True},
         "evaluateOptions": {"maxConcurrency": 2},
     }
-    write_json(run / "promptfooconfig.json", config)
+    write_json(artifacts / "promptfooconfig.json", config)
     return config
 
 
@@ -182,13 +212,91 @@ def promptfoo(args):
     version = subprocess.check_output([node, "--version"], text=True).strip().lstrip("v")
     if tuple(map(int, version.split(".")[:3])) < (22, 22, 0):
         raise ValueError(f"Promptfoo requires Node >=22.22.0; found {version}")
+    state = ensure_runtime_directory(ROOT, "state", "promptfoo")
     env = os.environ.copy()
-    env.update({"PROMPTFOO_CONFIG_DIR": str(STATE / "state"),
-                "PROMPTFOO_LOG_DIR": str(STATE / "state/logs"),
+    env.update({"PROMPTFOO_CONFIG_DIR": str(state),
+                "PROMPTFOO_LOG_DIR": str(state / "logs"),
                 "PROMPTFOO_DISABLE_TELEMETRY": "1"})
     command = [npx, "--yes", f"--package=promptfoo@{PROMPTFOO_VERSION}",
                f"--package=@openai/codex-sdk@{CODEX_SDK_VERSION}", "promptfoo", *args]
     return subprocess.call(command, cwd=ROOT, env=env)
+
+
+def source_revision():
+    """Return the checkout identity when Git is available."""
+    try:
+        return subprocess.check_output(
+            ["git", "-c", f"safe.directory={ROOT.as_posix()}", "rev-parse", "HEAD"],
+            cwd=ROOT, stderr=subprocess.DEVNULL, text=True,
+        ).strip() or None
+    except (OSError, subprocess.SubprocessError):
+        return None
+
+
+def write_report(run, mode, scenario_count, model, result, changed):
+    lines = [
+        "# Behavioral evaluation run",
+        "",
+        f"- Run: `{run.run_id}`",
+        f"- Workflow: `{run.workflow}`",
+        "- Lifecycle: `completed`",
+        f"- Mode: `{mode}`",
+        f"- Scenarios prepared: {scenario_count}",
+        f"- Model: `{model}`",
+        f"- Runner exit code: {result}",
+        "- Evaluation verdict: not recorded in run metadata; inspect retained results when present.",
+    ]
+    if changed:
+        lines.extend(["", "Proofcraft source integrity changed during this invocation:",
+                      *[f"- `{name}`" for name in changed]])
+    (run.path / "report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def execute(args):
+    selected = list(SKILLS) if args.all else [args.skill]
+    mode = "prepare-only" if args.prepare_only else "config-validation" if args.validate else "evaluation"
+    scope = {"skills": selected, "filter": args.filter, "model": args.model,
+             "baseline_comparison": bool(args.baseline), "mode": mode}
+    run = create_run(ROOT, "eval", scope=scope, source_revision=source_revision())
+    evidence = run.path / "evidence"
+    artifacts = run.path / "artifacts"
+    result = 1
+    before = None
+    try:
+        evidence.mkdir()
+        before = snapshot()
+        write_json(evidence / "source-before.json", before)
+        config = prepare(run.path, selected, args.baseline, args.model, args.filter)
+        print(f"Prepared {len(config['tests'])} scenarios: {run.path}", flush=True)
+        print(f"Promptfoo {PROMPTFOO_VERSION}; Codex SDK {CODEX_SDK_VERSION}; model {args.model}", flush=True)
+        path = str(artifacts / "promptfooconfig.json")
+        if args.prepare_only:
+            result = 0
+        else:
+            result = promptfoo(["validate", "config", "-c", path])
+            if result == 0 and not args.validate:
+                result = promptfoo(["eval", "-c", path, "--no-cache", "--no-share",
+                                    "-o", str(artifacts / "results.json")])
+        after = snapshot()
+        write_json(evidence / "source-after.json", after)
+        changed = sorted(name for name in before.keys() | after.keys()
+                         if before.get(name) != after.get(name))
+        if changed:
+            print("Proofcraft source changed during eval; inspect without automatic restoration:")
+            print("\n".join(changed))
+            result = 1
+        else:
+            print("Proofcraft source hashes unchanged.", flush=True)
+        write_report(run, mode, len(config["tests"]), args.model, result, changed)
+        run.update(status="completed")
+    except BaseException as error:
+        # Leave the original execution or filesystem exception authoritative.
+        try:
+            run.update(status="incomplete", incomplete_reason=f"Interrupted by {type(error).__name__}")
+        except OSError:
+            pass
+        raise
+    return run, result
 
 
 def main():
@@ -208,33 +316,7 @@ def main():
         raise SystemExit(promptfoo(["view"]))
     if bool(args.skill) == args.all:
         ap.error("select a skill or --all")
-    STATE.mkdir(parents=True, exist_ok=True)
-    run = Path(tempfile.mkdtemp(prefix="run-", dir=STATE))
-    before = snapshot()
-    write_json(run / "source-before.json", before)
-    result = 1
-    try:
-        config = prepare(run, list(SKILLS) if args.all else [args.skill], args.baseline, args.model, args.filter)
-        print(f"Prepared {len(config['tests'])} scenarios: {run}", flush=True)
-        print(f"Promptfoo {PROMPTFOO_VERSION}; Codex SDK {CODEX_SDK_VERSION}; model {args.model}", flush=True)
-        path = str(run / "promptfooconfig.json")
-        if args.prepare_only:
-            result = 0
-        else:
-            result = promptfoo(["validate", "config", "-c", path])
-            if result == 0 and not args.validate:
-                result = promptfoo(["eval", "-c", path, "--no-cache", "--no-share",
-                                    "-o", str(run / "results.json")])
-    finally:
-        after = snapshot()
-        write_json(run / "source-after.json", after)
-        changed = sorted(name for name in before.keys() | after.keys() if before.get(name) != after.get(name))
-        if changed:
-            print("Proofcraft source changed during eval; inspect without automatic restoration:")
-            print("\n".join(changed))
-            result = 1
-        else:
-            print("Proofcraft source hashes unchanged.", flush=True)
+    run, result = execute(args)
     raise SystemExit(result)
 
 

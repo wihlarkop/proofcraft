@@ -29,6 +29,7 @@ Make failure behavior observable and recoverable without adding operational mach
 5. For recovery, identify what must survive, what can be rebuilt, source of truth, restore/replay procedure, and proof.
 6. Verify at the user/system boundary; alert clearance alone is not recovery evidence.
 7. Convert meaningful incidents or near misses into regression/operational learning instead of adding permanent noisy instrumentation.
+8. Retain only the logs, traces, or recovery observations needed for the operational claim, using `references/_shared/artifacts/runtime-workspace.md` when no stronger project convention already exists.
 
 ## Stop
 

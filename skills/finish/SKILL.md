@@ -30,6 +30,7 @@ Close the work with enough evidence to make the completion claim credible, but n
 7. For production/high-assurance changes, include the relevant migration, security, recovery, rollback, or readiness evidence. Do not run these modes for ordinary small changes.
 8. Record blocked or missing evidence explicitly. A milestone may be implementation-complete while a required readiness/acceptance gate remains BLOCKED; never turn that into a full-verification claim.
 9. Produce a factual handoff/readiness record when future continuation or PR review benefits from it.
+10. Consume and summarize current execution evidence rather than copying it into a second ledger. When closure requires a retained run report, follow `references/_shared/artifacts/runtime-workspace.md`; keep durable readiness in the established handoff owner.
 
 ## Release mode
 
@@ -51,6 +52,7 @@ Load only the references needed for the current task:
 - [reconcile](references/_shared/orchestration/reconcile.md)
 - [handoff](references/_shared/orchestration/handoff.md)
 - [artifact model](references/_shared/artifacts/artifact-model.md)
+- [runtime workspace](references/_shared/artifacts/runtime-workspace.md)
 - [acceptance](references/_shared/artifacts/acceptance.md)
 - [diff discipline](references/_shared/engineering/diff-discipline.md)
 - [evidence](references/_shared/verification/evidence.md)

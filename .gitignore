@@ -1,4 +1,5 @@
 __pycache__/
 *.pyc
 .eval-workspace/
+.proofcraft/
 .DS_Store

@@ -28,6 +28,7 @@ A migration is a controlled transition, not just the target design.
 6. Delay destructive contraction until evidence shows old consumers/state are gone.
 7. Mark irreversible steps explicitly. Do not promise rollback where only roll-forward or restore is credible.
 8. Route schema/query implementation to database-engineering, contract semantics to api-design, platform mechanics to platform-engineering, and recovery evidence to reliability-engineering as needed.
+9. Keep migration plans and cutover decisions in their durable owners; retain run-scoped rehearsal/reconciliation evidence using `references/_shared/artifacts/runtime-workspace.md` when useful.
 
 ## Stop
 
@@ -46,3 +47,4 @@ Load only the references needed for the current task:
 - [authority](references/_shared/state/authority.md)
 - [evidence](references/_shared/verification/evidence.md)
 - [risk depth](references/_shared/verification/risk-depth.md)
+- [runtime workspace](references/_shared/artifacts/runtime-workspace.md)

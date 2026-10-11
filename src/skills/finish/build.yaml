@@ -9,6 +9,7 @@
     "orchestration/reconcile.md",
     "orchestration/handoff.md",
     "artifacts/artifact-model.md",
+    "artifacts/runtime-workspace.md",
     "artifacts/acceptance.md",
     "engineering/diff-discipline.md",
     "verification/evidence.md",
